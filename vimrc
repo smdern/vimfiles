@@ -26,7 +26,7 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled,*.css,tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache
 
 " Status bar
 set laststatus=2
@@ -155,9 +155,6 @@ map <C-l> <C-w>l
 nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
 map <Leader><D-t> :CommandTFlush<CR>:CommandT<CR>
 nmap <Leader><tab> :CommandTBuffer<CR>
-
-set exrc
-set secure
 
 let g:indenthlinfertabmode = 1
 
