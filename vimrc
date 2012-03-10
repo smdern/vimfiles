@@ -188,3 +188,5 @@ set winheight=999
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+au BufNewFile,BufRead *.hamlbars set ft=haml
