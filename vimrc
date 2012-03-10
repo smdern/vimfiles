@@ -190,3 +190,7 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 au BufNewFile,BufRead *.hamlbars set ft=haml
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
