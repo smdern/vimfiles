@@ -35,6 +35,8 @@ Bundle 'mutewinter/nginx.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
+:runtime macros/matchit.vim
+
 filetype plugin indent on
 
 syntax on
@@ -60,7 +62,7 @@ set ignorecase
 set smartcase
 
 " Tab completion
-set wildmode=list:longest,list:full
+set wildmode=longest,list
 set wildmenu
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled,*.css,tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache
 
@@ -130,7 +132,6 @@ let $JS_CMD='node'
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-
 "key mapping for window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -141,26 +142,7 @@ nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
 map <Leader><D-t> :CommandTFlush<CR>:CommandT<CR>
 nmap <Leader><tab> :CommandTBuffer<CR>
 
-let g:indenthlinfertabmode = 1
-
-function! ShowRoutes()
-  " Requires 'scratch' plugin
-  :topleft 100 :split __Routes__
-  " Make sure Vim doesn't write __Routes__ as a file
-  :set buftype=nofile
-  " Delete everything
-  :normal 1GdG
-  " Put routes output in buffer
-  :0r! rake -s routes
-  " Size window to number of lines (1 plus rake output length)
-  :exec ":normal " . line("$") . "_ "
-  " Move cursor to bottom
-  :normal 1GG
-  " Delete empty trailing line
-  :normal dd
-endfunction
-map <leader>gR :call ShowRoutes()<cr>
-
+" Make the window we're on as big as it makes sense to make it
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -182,6 +164,19 @@ endfunction
 "key mapping for error navigation
 nmap <D-]> :call SaveIfModified()<CR>:cnext<CR>
 nmap <D-[> :call SaveIfModified()<CR>:cprev<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
