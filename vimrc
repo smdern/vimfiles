@@ -1,7 +1,37 @@
-call pathogen#infect()
-
 set nocompatible
 let mapleader = ";"
+
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'wincent/Command-T'
+Bundle 'mileszs/ack.vim'
+Bundle 'aaronjensen/vim-sass-status'
+Bundle 'vim-scripts/bufkill.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-rails'
+Bundle 'mrtazz/molokai.vim'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-eunuch'
+Bundle 'itspriddle/vim-jquery'
+
+filetype plugin indent on
 
 set number
 set ruler
