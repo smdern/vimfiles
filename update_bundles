@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 git_bundles = [ 
-  "git://github.com/astashov/vim-ruby-debugger.git",
+  #"git://github.com/astashov/vim-ruby-debugger.git",
   "git://github.com/ervandew/supertab.git",
   "git://github.com/pangloss/vim-javascript.git",
   "git://github.com/tpope/vim-cucumber.git",
@@ -22,7 +22,8 @@ git_bundles = [
   "git://github.com/kchmck/vim-coffee-script.git",
   "git://github.com/tpope/vim-rails.git",
   "git://github.com/mrtazz/molokai.vim.git",
-  "git://github.com/tpope/vim-endwise.git"
+  "git://github.com/tpope/vim-endwise.git",
+  "git://github.com/wojtekmach/vim-rename.git"
 ]
 
 vim_org_scripts = [
