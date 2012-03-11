@@ -5,6 +5,7 @@ if has("gui_macvim")
   " Command-T for CommandT
   macmenu &File.New\ Tab key=<D-T>
   map <D-t> :CommandT<CR>
+  map <Leader><D-t> :CommandTFlush<CR>:CommandT<CR>
   imap <D-t> <Esc>:CommandT<CR>
 
   " Command-Return for fullscreen
@@ -12,14 +13,6 @@ if has("gui_macvim")
 
   " Command-Shift-F for Ack
   map <D-F> :Ack<space>
-
-  " Command-e for ConqueTerm
-  map <D-e> :call StartTerm()<CR>
-
-
-  " Command-][ to increase/decrease indentation
-  vmap <D-]> >gv
-  vmap <D-[> <gv
 
   " Map Command-# to switch tabs
   map  <D-0> 0gt
@@ -53,9 +46,8 @@ if has("gui_macvim")
   map <D-M-Left> <C-w>h
   imap <D-M-Left> <C-w>h
 
-  " Adjust viewports to the same size
-  map <Leader>= <C-w>=
-  imap <Leader>= <Esc> <C-w>=
+  macmenu &File.Close key=<nop>
+  map <D-w> :BD<cr>
 endif
 
 " Don't beep
@@ -64,35 +56,13 @@ set visualbell
 " Start without the toolbar
 set guioptions-=T
 
-" Utility functions to create file commands
-function s:CommandCabbr(abbreviation, expansion)
-  execute 'cabbrev ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
-endfunction
-
-function s:FileCommand(name, ...)
-  if exists("a:1")
-    let funcname = a:1
-  else
-    let funcname = a:name
-  endif
-
-  execute 'command -nargs=1 -complete=file ' . a:name . ' :call ' . funcname . '(<f-args>)'
-endfunction
-
-function s:DefineCommand(name, destination)
-  call s:FileCommand(a:destination)
-  call s:CommandCabbr(a:name, a:destination)
-endfunction
-
-color molokai
-"set guifont=Menlo:h14
-set guifont=Inconsolata-g:h14
-
-macmenu &File.Close key=<nop>
-map <D-w> :BD<cr>
-
+" Get rid of scroll bars
 set guioptions-=L
 set guioptions-=r
+
+color molokai
+set guifont=Inconsolata-g:h14
+"set guifont=Menlo:h14
 
 " Include user's local vim config
 if filereadable(expand("~/.gvimrc.local"))

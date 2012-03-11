@@ -139,7 +139,6 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
-map <Leader><D-t> :CommandTFlush<CR>:CommandT<CR>
 nmap <Leader><tab> :CommandTBuffer<CR>
 
 " Make the window we're on as big as it makes sense to make it
