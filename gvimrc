@@ -2,11 +2,11 @@ if has("gui_macvim") && has("gui_running")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
-  " Command-T for CommandT
+  " Command-T for CtrlP
   macmenu &File.New\ Tab key=<D-T>
-  map <D-t> :CommandT<CR>
-  map <Leader><D-t> :CommandTFlush<CR>:CommandT<CR>
-  imap <D-t> <Esc>:CommandT<CR>
+  map <D-t> :CtrlP<CR>
+  map <Leader><D-t> :CtrlPClearCache<CR>:CtrlP<CR>
+  imap <D-t> <Esc>:CtrlP<CR>
 
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>

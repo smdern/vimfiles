@@ -19,7 +19,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'aaronjensen/vim-sass-status'
 Bundle 'vim-scripts/bufkill.vim'
@@ -68,9 +68,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascrip
 
 " Status bar
 set laststatus=2
-
-" Command-T configuration
-let g:CommandTMaxHeight=20
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
@@ -139,7 +136,6 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
-nmap <Leader><tab> :CommandTBuffer<CR>
 
 " Make the window we're on as big as it makes sense to make it
 set winwidth=84
