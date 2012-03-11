@@ -1,4 +1,4 @@
-if has("gui_macvim")
+if has("gui_macvim") && has("gui_running")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
