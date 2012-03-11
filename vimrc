@@ -161,6 +161,11 @@ nmap <D-]> :call SaveIfModified()<CR>:cnext<CR>
 nmap <D-[> :call SaveIfModified()<CR>:cprev<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Much stuff stolen from Gary Bernhardt:
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! PromoteToLet()
@@ -172,6 +177,30 @@ function! PromoteToLet()
 endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>p :PromoteToLet<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>gv :CtrlP<cr>app/views/
+map <leader>gc :CtrlP<cr>app/controllers/
+map <leader>gm :CtrlP<cr>app/models/
+map <leader>gh :CtrlP<cr>app/helpers/
+map <leader>gl :CtrlP<cr>lib/
+map <leader>gp :CtrlP<cr>public/
+map <leader>gs :CtrlP<cr>app/stylesheets/
+map <leader>gf :CtrlP<cr>features/
+map <leader>f :CtrlP<cr>
+map <leader><leader>f :CtrlPClearCache<cr>:CtrlP<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ARROW KEYS ARE UNACCEPTABLE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Left> :echo "no!"<cr>
+map <Right> :echo "no!"<cr>
+map <Up> :echo "no!"<cr>
+map <Down> :echo "no!"<cr>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
