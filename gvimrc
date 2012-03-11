@@ -47,7 +47,8 @@ if has("gui_macvim") && has("gui_running")
   imap <D-M-Left> <C-w>h
 
   macmenu &File.Close key=<nop>
-  map <D-w> :BD<cr>
+  map <D-w> :CommandW<cr>
+  imap <D-w> <Esc>:CommandW<CR>
 endif
 
 " Don't beep
