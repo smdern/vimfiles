@@ -34,6 +34,7 @@ Bundle 'itspriddle/vim-jquery'
 Bundle 'pangloss/vim-javascript'
 Bundle 'mutewinter/nginx.vim'
 Bundle 'kana/vim-textobj-user'
+Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 :runtime macros/matchit.vim
