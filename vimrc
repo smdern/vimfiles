@@ -182,6 +182,9 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Don't manage working directory
+let g:ctrlp_working_path_mode = 0
+
 map <leader>gv :CtrlP<cr>app/views/
 map <leader>gc :CtrlP<cr>app/controllers/
 map <leader>gm :CtrlP<cr>app/models/
