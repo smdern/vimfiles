@@ -37,6 +37,7 @@ Bundle 'mutewinter/nginx.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'ap/vim-css-color'
 Bundle 'CSApprox'
 
 :runtime macros/matchit.vim
