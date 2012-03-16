@@ -37,6 +37,7 @@ Bundle 'mutewinter/nginx.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'CSApprox'
 
 :runtime macros/matchit.vim
 
@@ -75,6 +76,10 @@ set laststatus=2
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 " set t_ti= t_te=
+
+set t_Co=256
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+let g:CSApprox_eterm = 1
 
 " Show (partial) command in the status line
 set showcmd
@@ -206,6 +211,8 @@ map <Left> :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
 map <Up> :echo "no!"<cr>
 map <Down> :echo "no!"<cr>
+
+color molokai
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))

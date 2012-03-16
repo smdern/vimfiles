@@ -61,7 +61,6 @@ set guioptions-=T
 set guioptions-=L
 set guioptions-=r
 
-color molokai
 set guifont=Inconsolata-g:h14
 "set guifont=Menlo:h14
 
