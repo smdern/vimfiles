@@ -234,6 +234,13 @@ if has('mouse')
   endif
 endif
 
+function! ResizePreviewWindow()
+  if &previewwindow
+    set winheight=999
+  endif
+endfunction
+au WinEnter * call ResizePreviewWindow()
+
 color molokai
 
 " Include user's local vim config
