@@ -166,8 +166,8 @@ function! SaveIfModified()
 endfunction
 
 "key mapping for error navigation
-nmap <D-]> :call SaveIfModified()<CR>:cnext<CR>
-nmap <D-[> :call SaveIfModified()<CR>:cprev<CR>
+nmap <leader>[ :call SaveIfModified()<CR>:cnext<CR>
+nmap <leader>] :call SaveIfModified()<CR>:cprev<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Much stuff stolen from Gary Bernhardt:
