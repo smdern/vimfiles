@@ -169,6 +169,8 @@ endfunction
 nmap <leader>[ :call SaveIfModified()<CR>:cnext<CR>
 nmap <leader>] :call SaveIfModified()<CR>:cprev<CR>
 
+nmap <leader>w :CommandW<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Much stuff stolen from Gary Bernhardt:
 " https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
