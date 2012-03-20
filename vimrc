@@ -39,6 +39,7 @@ Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ap/vim-css-color'
 Bundle 'CSApprox'
+Bundle 'ervandew/supertab'
 
 :runtime macros/matchit.vim
 
