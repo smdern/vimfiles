@@ -155,10 +155,6 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
-" Reselect visual block after indent/outdent
-vnoremap < <gv
-vnoremap > >gv
-
 function! SaveIfModified()
   if &modified
     :w
