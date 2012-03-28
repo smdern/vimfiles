@@ -46,7 +46,7 @@ Bundle 'ervandew/supertab'
 filetype plugin indent on
 
 syntax on
-set hidden
+set nohidden
 set history=10000
 set number
 set ruler
