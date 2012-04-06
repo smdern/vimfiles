@@ -262,12 +262,30 @@ map <leader>y "*y
 map <leader>p "*p
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Git
+" Fugitive
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
 map <leader>ga :Git add --all<cr>:Gcommit<cr>
 map <leader>gb :Gblame<cr>
+
+" Use j/k in status
+function! BufReadIndex()
+  setlocal cursorline
+  setlocal nohlsearch
+
+  nnoremap <buffer> <silent> j /#\t\zs<cr>
+  nnoremap <buffer> <silent> k ?#\t\zs<cr>
+endfunction
+autocmd BufReadCmd  *.git/index                      exe BufReadIndex()
+autocmd BufEnter    *.git/index                      silent normal gg0j
+
+" Start in insert mode for commit
+function! BufEnterCommit()
+  normal gg0
+  start
+endfunction
+autocmd BufEnter    *.git/COMMIT_EDITMSG             exe BufEnterCommit()
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
