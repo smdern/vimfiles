@@ -90,6 +90,7 @@ set laststatus=2
 set t_Co=256
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 let g:CSApprox_eterm = 1
+color molokai
 
 " Show (partial) command in the status line
 set showcmd
@@ -241,14 +242,15 @@ if has('mouse')
   endif
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Preview window size hack
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! ResizePreviewWindow()
   if &previewwindow
     set winheight=999
   endif
 endfunction
 au WinEnter * call ResizePreviewWindow()
-
-color molokai
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
