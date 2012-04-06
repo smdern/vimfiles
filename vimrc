@@ -45,6 +45,14 @@ Bundle 'ervandew/supertab'
 
 filetype plugin indent on
 
+" Backups and swap
+set nobackup
+set nowritebackup
+set noswapfile
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+
+
 syntax on
 set nohidden
 set history=10000
@@ -93,10 +101,6 @@ set t_vb=
 " Use modeline overrides
 set modeline
 set modelines=10
-
-" Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
