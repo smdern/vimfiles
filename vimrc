@@ -192,8 +192,7 @@ function! PromoteToLet()
   :normal ==
 endfunction
 :command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
-
+:map <leader>l :PromoteToLet<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP mappings
@@ -255,6 +254,12 @@ let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTestFile<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Copy paste system clipboard
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>y "*y
+map <leader>p "*p
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
