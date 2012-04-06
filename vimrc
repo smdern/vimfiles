@@ -151,6 +151,9 @@ map <C-l> <C-w>l
 
 nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
 
+" Show 2 lines of context
+set scrolloff=2
+
 " Make the window we're on as big as it makes sense to make it
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
