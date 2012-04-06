@@ -40,6 +40,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ap/vim-css-color'
 Bundle 'CSApprox'
 Bundle 'ervandew/supertab'
+Bundle 'skalnik/vim-vroom'
 
 :runtime macros/matchit.vim
 
@@ -246,6 +247,14 @@ function! ResizePreviewWindow()
   endif
 endfunction
 au WinEnter * call ResizePreviewWindow()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vroom
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vroom_map_keys = 0
+let g:vroom_write_all = 1
+map <leader>t :VroomRunTestFile<cr>
+map <leader>T :VroomRunNearestTestFile<cr>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
