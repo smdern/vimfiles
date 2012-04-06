@@ -200,14 +200,14 @@ endfunction
 " Don't manage working directory
 let g:ctrlp_working_path_mode = 0
 
-map <leader>gv :CtrlP<cr>app/views/
-map <leader>gc :CtrlP<cr>app/controllers/
-map <leader>gm :CtrlP<cr>app/models/
-map <leader>gh :CtrlP<cr>app/helpers/
-map <leader>gl :CtrlP<cr>lib/
-map <leader>gp :CtrlP<cr>public/
-map <leader>gs :CtrlP<cr>app/stylesheets/
-map <leader>gf :CtrlP<cr>features/
+map <leader>jv :CtrlP<cr>app/views/
+map <leader>jc :CtrlP<cr>app/controllers/
+map <leader>jm :CtrlP<cr>app/models/
+map <leader>jh :CtrlP<cr>app/helpers/
+map <leader>jl :CtrlP<cr>lib/
+map <leader>jp :CtrlP<cr>public/
+map <leader>js :CtrlP<cr>app/stylesheets/
+map <leader>jf :CtrlP<cr>features/
 map <leader>f :CtrlP<cr>
 map <leader><leader>f :CtrlPClearCache<cr>:CtrlP<cr>
 
@@ -260,6 +260,14 @@ map <leader>T :VroomRunNearestTestFile<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
 map <leader>p "*p
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Git
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>gs :Gstatus<cr>
+map <leader>gc :Gcommit<cr>
+map <leader>ga :Git add --all<cr>:Gcommit<cr>
+map <leader>gb :Gblame<cr>
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
