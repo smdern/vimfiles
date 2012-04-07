@@ -274,8 +274,8 @@ function! BufReadIndex()
   setlocal cursorline
   setlocal nohlsearch
 
-  nnoremap <buffer> <silent> j /#\t\zs<cr>
-  nnoremap <buffer> <silent> k ?#\t\zs<cr>
+  nnoremap <buffer> <silent> j :call search('^#\t.*','W')<Bar>.<CR>
+  nnoremap <buffer> <silent> k :call search('^#\t.*','Wbe')<Bar>.<CR>
 endfunction
 autocmd BufReadCmd  *.git/index                      exe BufReadIndex()
 autocmd BufEnter    *.git/index                      silent normal gg0j
