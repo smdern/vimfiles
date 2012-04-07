@@ -287,6 +287,14 @@ function! BufEnterCommit()
 endfunction
 autocmd BufEnter    *.git/COMMIT_EDITMSG             exe BufEnterCommit()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quit help easily
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! QuitWithQ()
+  nnoremap <buffer> <silent> q :q<cr>
+endfunction
+autocmd FileType help exe QuitWithQ()
+
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
