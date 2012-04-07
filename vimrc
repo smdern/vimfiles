@@ -291,7 +291,9 @@ autocmd BufEnter    *.git/COMMIT_EDITMSG             exe BufEnterCommit()
 " Quit help easily
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! QuitWithQ()
-  nnoremap <buffer> <silent> q :q<cr>
+  if &buftype == 'help'
+    nnoremap <buffer> <silent> q :q<cr>
+  endif
 endfunction
 autocmd FileType help exe QuitWithQ()
 
