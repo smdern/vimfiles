@@ -283,7 +283,9 @@ autocmd BufEnter    *.git/index                      silent normal gg0j
 " Start in insert mode for commit
 function! BufEnterCommit()
   normal gg0
-  start
+  if getline('.') == ''
+    start
+  end
 endfunction
 autocmd BufEnter    *.git/COMMIT_EDITMSG             exe BufEnterCommit()
 
