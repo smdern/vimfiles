@@ -38,7 +38,6 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ap/vim-css-color'
-Bundle 'CSApprox'
 Bundle 'ervandew/supertab'
 Bundle 'skalnik/vim-vroom'
 
