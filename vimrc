@@ -7,40 +7,111 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
+" Bundler for vim, use :BundleInstall to install these bundles and
+" :BundleUpdate to update all of them
 Bundle 'gmarik/vundle'
 
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-cucumber'
+" Git in vim, use ,gs for git status then - to stage then C to commit
+" check :help Gstatus for more keys
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-repeat'
+
+" Surrond stuff with things. ysiw" surrounds a word with quotes
+" cs"' changes " to '
 Bundle 'tpope/vim-surround'
+
+" Lets you use . to repeat some things like vim-surround
+Bundle 'tpope/vim-repeat'
+
+" Comment with gc (takes a motion) or ^_^_
 Bundle 'tomtom/tcomment_vim'
-Bundle 'vim-ruby/vim-ruby'
+
+" Open a file (like cmd-t but better). Use ,f or ,j(something, see bindings
+" below)
 Bundle 'kien/ctrlp.vim'
+
+" Adds :Ack complete w/ quick fix
 Bundle 'mileszs/ack.vim'
+
+" Updates your status line to show what selector you're in in sass files
 Bundle 'aaronjensen/vim-sass-status'
+
+" Kills a buffer without closing a split, use ,w . Used in conjunction 
+" with command-w, below...
 Bundle 'vim-scripts/bufkill.vim'
+
+" Smarts around killing buffers, will close the split if it's the last buffer in
+" it, and close vim if it's the last buffer/split. Use ,w
 Bundle 'nathanaelkane/vim-command-w'
+
+" Shows syntax errors on several types of files
 Bundle 'scrooloose/syntastic'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-rails'
-Bundle 'mrtazz/molokai.vim'
+
+" Automatically add end at the end of ruby and vim blocks
 Bundle 'tpope/vim-endwise'
+
+" Handy file manipulations. Favorites are :Remove and :Rename
 Bundle 'tpope/vim-eunuch'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'pangloss/vim-javascript'
-Bundle 'mutewinter/nginx.vim'
+
+" Allows custom textobj motions (like i" or a[)
 Bundle 'kana/vim-textobj-user'
+
+" Motion based on indent level. Useful in coffeescript, try vai to select
+" everything on the current indent level. vii is similar, but will not ignore
+" blank lines
 Bundle 'kana/vim-textobj-indent'
+
+" Motion based on ruby blocks. vir selects in a ruby block
 Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'ap/vim-css-color'
+
+" Tab to indent or autocomplete depending on context
 Bundle 'ervandew/supertab'
+
+" Run specs or cucumber features with ,t run only the test under the cursor
+" with ,T also remembers last run test so you can hit it again on non-test
+" files to run the last run test
 Bundle 'skalnik/vim-vroom'
-Bundle 'nelstrom/vim-mac-classic-theme'
+
+" Gives you pipe cursor in insert mode in iterm2. Also lets you autocmd
+" FocusLost in terminal and tmux
 Bundle 'sjl/vitality.vim'
+
+" Vim coffeescript runtime files
+Bundle 'kchmck/vim-coffee-script'
+
+" Stuff for cucumber, try out ^] on a step in a feature to go to step
+" definition
+Bundle 'tpope/vim-cucumber'
+
+" Updated ruby syntax and such
+Bundle 'vim-ruby/vim-ruby'
+
+" Improved javascript indentation
+Bundle 'pangloss/vim-javascript'
+
+" Vim Git runtime files
+Bundle 'tpope/vim-git'
+
+" Vim runtime files for Haml, Sass, and SCSS
+Bundle 'tpope/vim-haml'
+
+" Vim Markdown runtime files
+Bundle 'tpope/vim-markdown'
+
+" Syntax for jquery keywords and selectors
+Bundle 'itspriddle/vim-jquery'
+
+" Syntax for nginx
+Bundle 'mutewinter/nginx.vim'
+
+" Makes css colors show up as their actual colors, works better with CSApprox
+" or macvim
+Bundle 'ap/vim-css-color'
+
+" My favorite dark color scheme
+Bundle 'mrtazz/molokai.vim'
+
+" Decent light color scheme
+Bundle 'nelstrom/vim-mac-classic-theme'
 
 :runtime macros/matchit.vim
 
