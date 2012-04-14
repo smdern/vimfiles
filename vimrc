@@ -40,6 +40,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'ap/vim-css-color'
 Bundle 'ervandew/supertab'
 Bundle 'skalnik/vim-vroom'
+Bundle 'nelstrom/vim-mac-classic-theme'
 Bundle 'sjl/vitality.vim'
 
 :runtime macros/matchit.vim
