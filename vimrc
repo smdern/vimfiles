@@ -235,8 +235,9 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
-" don't delay when you hit esc in terminal vim
-set noesckeys
+" don't delay when you hit esc in terminal vim, this may make arrow keys not
+" work well when ssh'd in
+set ttimeoutlen=5
 
 function! SaveIfModified()
   if &modified
