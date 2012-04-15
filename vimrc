@@ -72,7 +72,7 @@ Bundle 'ervandew/supertab'
 Bundle 'skalnik/vim-vroom'
 
 " Gives you pipe cursor in insert mode in iterm2. Also lets you autocmd
-" FocusLost in terminal and tmux
+" FocusLost in terminal and tmux (but I disable this)
 Bundle 'sjl/vitality.vim'
 
 " Vim coffeescript runtime files
@@ -373,6 +373,12 @@ function! QuitWithQ()
   endif
 endfunction
 autocmd FileType help exe QuitWithQ()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vitality.vim: Don't fix focus.
+" I don't use the autocmds and it messes with bash prompts
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vitality_fix_focus = 0
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
