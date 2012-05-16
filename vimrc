@@ -215,6 +215,9 @@ let $JS_CMD='node'
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
+"map quick quit
+map <leader>qq :qa!<cr>
+
 "key mapping for window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
