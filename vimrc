@@ -165,7 +165,7 @@ let g:CSApprox_eterm = 1
 color molokai
 
 " Show (partial) command in the status line
-set showcmd
+" set showcmd
 
 set noerrorbells
 set visualbell
@@ -191,6 +191,7 @@ au FileType make set noexpandtab
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.hamlbars set ft=haml
+au BufNewFile,BufRead *.hamlc set ft=haml
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
