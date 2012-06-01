@@ -97,6 +97,9 @@ Bundle 'tpope/vim-haml'
 " Vim Markdown runtime files
 Bundle 'tpope/vim-markdown'
 
+" vim handlebars runtime files
+Bundle 'nono/vim-handlebars'
+
 " Syntax for jquery keywords and selectors
 Bundle 'itspriddle/vim-jquery'
 "
