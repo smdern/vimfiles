@@ -99,6 +99,9 @@ Bundle 'tpope/vim-markdown'
 
 " Syntax for jquery keywords and selectors
 Bundle 'itspriddle/vim-jquery'
+"
+" Vim syntax for jst files
+Bundle 'jeyb/vim-jst'
 
 " Syntax for nginx
 Bundle 'mutewinter/nginx.vim'
@@ -192,6 +195,7 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set f
 au BufNewFile,BufRead *.json set ft=javascript
 au BufNewFile,BufRead *.hamlbars set ft=haml
 au BufNewFile,BufRead *.hamlc set ft=haml
+au BufNewFile,BufRead *.jst.ejs set ft=jst
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
