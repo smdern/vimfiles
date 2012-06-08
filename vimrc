@@ -229,7 +229,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Useful for triggering a cucumber run
 nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
+
+" Make the current directory
+nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
 
 " Show 2 lines of context
 set scrolloff=2
