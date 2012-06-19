@@ -119,6 +119,9 @@ Bundle 'mrtazz/molokai.vim'
 " Decent light color scheme
 Bundle 'nelstrom/vim-mac-classic-theme'
 
+" vim powerline -  The ultimate vim statusline utility
+Bundle 'Lokaltog/vim-powerline'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
