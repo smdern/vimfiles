@@ -412,6 +412,11 @@ let g:vitality_fix_focus = 0
 " You'll probably need this too: https://github.com/jenius/Fontforge-Installer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'short'
+call Pl#Theme#RemoveSegment('fugitive:branch')
+call Pl#Theme#RemoveSegment('fileformat')
+call Pl#Theme#RemoveSegment('fileencoding')
+call Pl#Theme#RemoveSegment('scrollpercent')
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
