@@ -305,7 +305,7 @@ map <leader>js :CtrlP<cr>app/stylesheets/
 map <leader>jf :CtrlP<cr>features/
 map <leader>f :CtrlP<cr>
 let g:ctrlp_map = '<leader>f'
-map <leader>b :CtrlPBuffer<cr>
+map <leader>u :CtrlPBuffer<cr>
 map <leader><leader>f :CtrlPClearCache<cr>:CtrlP<cr>
 
 
