@@ -61,7 +61,7 @@ set guioptions-=T
 set guioptions-=L
 set guioptions-=r
 
-set guifont=Inconsolata-g:h14
+set guifont=Inconsolata-g\ for\ Powerline:h14
 "set guifont=Menlo:h14
 
 " Include user's local vim config
