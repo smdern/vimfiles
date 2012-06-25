@@ -71,10 +71,6 @@ Bundle 'ervandew/supertab'
 " files to run the last run test
 Bundle 'skalnik/vim-vroom'
 
-" Gives you pipe cursor in insert mode in iterm2. Also lets you autocmd
-" FocusLost in terminal and tmux (but I disable this)
-Bundle 'sjl/vitality.vim'
-
 " Vim coffeescript runtime files
 Bundle 'kchmck/vim-coffee-script'
 
@@ -174,7 +170,7 @@ let g:CSApprox_eterm = 1
 color molokai
 
 " Show (partial) command in the status line
-" set showcmd
+set showcmd
 
 set noerrorbells
 set visualbell
@@ -396,12 +392,6 @@ function! QuitWithQ()
   endif
 endfunction
 autocmd FileType help exe QuitWithQ()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vitality.vim: Don't fix focus.
-" I don't use the autocmds and it messes with bash prompts
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vitality_fix_focus = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline configuration, you'll need a powerline patched font.
