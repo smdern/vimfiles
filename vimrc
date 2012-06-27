@@ -191,6 +191,7 @@ if has("autocmd")
 endif
 
 " make uses real tabs
+au FileType * set expandtab
 au FileType make set noexpandtab
 
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
