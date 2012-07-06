@@ -292,18 +292,18 @@ endfunction
 " Don't manage working directory
 let g:ctrlp_working_path_mode = 0
 
-map <leader>jv :CtrlP<cr>app/views/
-map <leader>jc :CtrlP<cr>app/controllers/
-map <leader>jm :CtrlP<cr>app/models/
-map <leader>jh :CtrlP<cr>app/helpers/
-map <leader>jl :CtrlP<cr>lib/
-map <leader>jp :CtrlP<cr>public/
-map <leader>js :CtrlP<cr>app/stylesheets/
-map <leader>jf :CtrlP<cr>features/
-map <leader>f :CtrlP<cr>
-let g:ctrlp_map = '<leader>f'
-map <leader>u :CtrlPBuffer<cr>
-map <leader><leader>f :CtrlPClearCache<cr>:CtrlP<cr>
+map <leader>jv :let g:ctrlp_default_input = 'app/views/'<cr>:CtrlP<cr>
+map <leader>jc :let g:ctrlp_default_input = 'app/controllers/'<cr>:CtrlP<cr>
+map <leader>jm :let g:ctrlp_default_input = 'app/models/'<cr>:CtrlP<cr>
+map <leader>jh :let g:ctrlp_default_input = 'app/helpers/'<cr>:CtrlP<cr>
+map <leader>jl :let g:ctrlp_default_input = 'lib'<cr>:CtrlP<cr>
+map <leader>jp :let g:ctrlp_default_input = 'public'<cr>:CtrlP<cr>
+map <leader>js :let g:ctrlp_default_input = 'app/stylesheets/'<cr>:CtrlP<cr>
+map <leader>jj :let g:ctrlp_default_input = 'app/javascripts/'<cr>:CtrlP<cr>
+map <leader>jf :let g:ctrlp_default_input = 'features/'<cr>:CtrlP<cr>
+map <leader>f :let g:ctrlp_default_input = 0<cr>:CtrlP<cr>
+map <leader>u :let g:ctrlp_default_input = 0<cr>:CtrlPBuffer<cr>
+map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:CtrlP<cr>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

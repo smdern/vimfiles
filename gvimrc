@@ -5,8 +5,9 @@ if has("gui_macvim") && has("gui_running")
   " Command-T for CtrlP
   macmenu &File.New\ Tab key=<D-T>
   "map <D-t> :CtrlP<CR>
-  "map <Leader><D-t> :CtrlPClearCache<CR>:CtrlP<CR>
-  "imap <D-t> <Esc>:CtrlP<CR>
+  "map <D-t> :let g:ctrlp_default_input = 0<cr>:CtrlP<cr>
+  "map <Leader><D-t> :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:CtrlP<cr>
+  "imap <D-t> <Esc>:let g:ctrlp_default_input = 0<cr>:CtrlP<cr>
 
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
