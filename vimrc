@@ -49,6 +49,10 @@ Bundle 'scrooloose/syntastic'
 " Automatically add end at the end of ruby and vim blocks
 Bundle 'tpope/vim-endwise'
 
+" Add a few paired mappings, in particular [q and ]q to navigate the quickfix
+" list
+Bundle 'tpope/vim-unimpaired'
+
 " Handy file manipulations. Favorites are :Remove and :Rename
 Bundle 'tpope/vim-eunuch'
 
@@ -263,8 +267,8 @@ function! SaveIfModified()
 endfunction
 
 "key mapping for error navigation
-nmap <leader>[ :call SaveIfModified()<CR>:cnext<CR>
-nmap <leader>] :call SaveIfModified()<CR>:cprev<CR>
+nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
+nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
 
 nmap <leader>w :CommandW<CR>
 
@@ -383,6 +387,10 @@ function! BufEnterCommit()
   end
 endfunction
 autocmd BufEnter    *.git/COMMIT_EDITMSG             exe BufEnterCommit()
+
+" Automatically remove fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
