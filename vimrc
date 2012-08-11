@@ -122,6 +122,9 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 " vim powerline -  The ultimate vim statusline utility
 Bundle 'Lokaltog/vim-powerline'
 
+" makes the command line behave like emacs
+Bundle 'houtsnip/vim-emacscommandline'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
