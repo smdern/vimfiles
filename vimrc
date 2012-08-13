@@ -484,6 +484,7 @@ if exists('$ITERM_PROFILE')
   execute "set <f29>=\<Esc>[201~"
   map <expr> <f28> XTermPasteBegin("i")
   imap <expr> <f28> XTermPasteBegin("")
+  vmap <expr> <f28> XTermPasteBegin("c")
   cmap <f28> <nop>
   cmap <f29> <nop>
 end
