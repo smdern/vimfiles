@@ -7,6 +7,14 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Include user's local vim bundles
+" You can also override mapleader here
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vim_bundles.local"))
+  source ~/.vim_bundles.local
+endif
+
 " Bundler for vim, use :BundleInstall to install these bundles and
 " :BundleUpdate to update all of them
 Bundle 'gmarik/vundle'
@@ -252,6 +260,7 @@ set scrolloff=2
 
 " Make the window we're on as big as it makes sense to make it
 set winwidth=84
+
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
 " fail.
@@ -426,11 +435,6 @@ call Pl#Theme#RemoveSegment('fileformat')
 call Pl#Theme#RemoveSegment('fileencoding')
 call Pl#Theme#RemoveSegment('scrollpercent')
 
-" Include user's local vim config
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This enables iterm cursor changes from vim. In .tmux.conf you'll need:
 " set-option -g terminal-overrides '*88col*:colors=88,*256col*:colors=256,xterm*:XT:Ms=\E]52;%p1%s;%p2%s\007:Cc=\E]12;%p1%s\007:Cr=\E]112\007:Cs=\E]50;CursorShape=%?%p1%{3}%<%t%{0}%e%p1%{2}%-%;%d\007'
@@ -449,8 +453,13 @@ if exists('$ITERM_PROFILE')
 end
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tmux wrapping borrowed from vitality.vim: https://github.com/sjl/vitality.vim
+" This fixes pasting from iterm (and some other terminals, but you'll need to
+" adjust the condition) by using "bracketed paste mode"
+" I modified it to work in tmux and not wait for esc (by using f28/f29)
+"
+" See: http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tmux wrapping borrowed from vitality.vim: https://github.com/sjl/vitality.vim
 function WrapForTmux(s)
   if !exists('$TMUX')
     return a:s
@@ -462,13 +471,6 @@ function WrapForTmux(s)
   return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
 endfunction
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This fixes pasting from iterm (and some other terminals, but you'll need to
-" adjust the condition) by using "bracketed paste mode"
-" I modified it to work in tmux and not wait for esc (by using f28/f29)
-"
-" See: http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('$ITERM_PROFILE')
   let &t_ti = WrapForTmux("\<Esc>[?2004h") . &t_ti
   let &t_te = WrapForTmux("\<Esc>[?2004l") . &t_te
@@ -485,3 +487,12 @@ if exists('$ITERM_PROFILE')
   cmap <f28> <nop>
   cmap <f29> <nop>
 end
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LAST SECTION
+" Include user's local vim config
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
+
