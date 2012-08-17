@@ -133,6 +133,11 @@ Bundle 'Lokaltog/vim-powerline'
 " makes the command line behave like emacs
 Bundle 'houtsnip/vim-emacscommandline'
 
+" Adds gr command to replace text (takes a motion)
+" similar to v(motion)p but also cuts text into black hole register so it is
+" repeatable. So really it's similar to v(motion)"_p
+Bundle 'ReplaceWithRegister'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
