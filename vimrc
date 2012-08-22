@@ -229,7 +229,7 @@ au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 set backspace=indent,eol,start
 
 " Inserts the path of the currently edited file into a command
-" Command mode: Ctrl+P
+" Command mode: %%
 cmap %% <C-R>=expand("%:p:h") . "/" <CR>
 
 " Enable syntastic syntax checking
