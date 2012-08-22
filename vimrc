@@ -230,7 +230,7 @@ set backspace=indent,eol,start
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
-cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+cmap %% <C-R>=expand("%:p:h") . "/" <CR>
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
