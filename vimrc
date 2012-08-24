@@ -479,9 +479,12 @@ endfunction
 if exists('$ITERM_PROFILE')
   " I'm just setting bracketed paste mode in my bashrc now. Setting and
   " unsetting doesn't work very well with tmux as it affects other shells.
+  " put this in your bashrc: [ -n "$ITERM_PROFILE" ] && printf "\e[?2004h"
+  "
   " let &t_ti = WrapForTmux("\<Esc>[?2004h") . &t_ti
   " let &t_te = WrapForTmux("\<Esc>[?2004l") . &t_te
   function XTermPasteBegin(ret)
+    echo huh
       set pastetoggle=<Esc>[201~
       set paste
       return a:ret
