@@ -374,7 +374,7 @@ au WinEnter * call ResizePreviewWindow()
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 map <leader>t :VroomRunTestFile<cr>
-map <leader>T :VroomRunNearestTestFile<cr>
+map <leader>T :VroomRunNearestTest<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy paste system clipboard
