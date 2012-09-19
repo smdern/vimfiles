@@ -138,6 +138,8 @@ Bundle 'houtsnip/vim-emacscommandline'
 " repeatable. So really it's similar to v(motion)"_p
 Bundle 'ReplaceWithRegister'
 
+Bundle 'henrik/vim-yaml-flattener'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
