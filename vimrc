@@ -486,10 +486,9 @@ if exists('$ITERM_PROFILE')
   " let &t_ti = WrapForTmux("\<Esc>[?2004h") . &t_ti
   " let &t_te = WrapForTmux("\<Esc>[?2004l") . &t_te
   function XTermPasteBegin(ret)
-    echo huh
-      set pastetoggle=<Esc>[201~
-      set paste
-      return a:ret
+    set pastetoggle=<Esc>[201~
+    set paste
+    return a:ret
   endfunction
 
   execute "set <f28>=\<Esc>[200~"
