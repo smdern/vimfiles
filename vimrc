@@ -93,6 +93,9 @@ Bundle 'tpope/vim-cucumber'
 " Updated ruby syntax and such
 Bundle 'vim-ruby/vim-ruby'
 
+" Some syntax highlighthing for rails and :Rextract to extract partials
+Bundle 'tpope/vim-rails'
+
 " Improved javascript indentation
 Bundle 'pangloss/vim-javascript'
 
