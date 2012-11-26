@@ -141,6 +141,7 @@ Bundle 'houtsnip/vim-emacscommandline'
 " repeatable. So really it's similar to v(motion)"_p
 Bundle 'ReplaceWithRegister'
 
+" Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
 Bundle 'henrik/vim-yaml-flattener'
 
 :runtime macros/matchit.vim
@@ -180,7 +181,7 @@ set smartcase
 " Tab completion
 set wildmode=longest,list
 set wildmenu
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled,*.css,tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache,bundler_stubs,build
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled,*.css,tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache,bundler_stubs,build,error_pages
 
 " Status bar
 set laststatus=2
