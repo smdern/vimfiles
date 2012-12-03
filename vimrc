@@ -339,6 +339,11 @@ map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:Ctr
 map <leader>a :Ack!<space>
 map <leader>A :Ack! <C-R><C-W><CR>
 
+" Use ag for search, it's much faster than ack.
+" See https://github.com/ggreer/the_silver_searcher
+" on mac: brew install the_silver_searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
