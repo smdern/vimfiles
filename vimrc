@@ -385,7 +385,7 @@ au WinEnter * call ResizePreviewWindow()
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = 'NOEXEC_DISABLE=1 rspec '
+let g:vroom_spec_command = 'zeus rspec '
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 
