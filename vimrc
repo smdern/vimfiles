@@ -450,7 +450,7 @@ autocmd FileType help exe QuitWithQ()
 " You'll probably need this too: https://github.com/jenius/Fontforge-Installer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'short'
+let g:Powerline_stl_path_style = 'relative'
 call Pl#Theme#RemoveSegment('fugitive:branch')
 call Pl#Theme#RemoveSegment('fileformat')
 call Pl#Theme#RemoveSegment('fileencoding')
