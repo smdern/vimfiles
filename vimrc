@@ -388,8 +388,8 @@ au WinEnter * call ResizePreviewWindow()
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = 'zeus rspec '
-let g:vroom_cucumber_path = 'zeus cucumber '
+let g:vroom_spec_command = '`[ -e .zeus.sock ] && echo zeus` rspec '
+let g:vroom_cucumber_path = '`[ -e .zeus.sock ] && echo zeus` cucumber '
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 
