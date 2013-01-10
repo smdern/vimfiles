@@ -231,6 +231,8 @@ au FileType * set softtabstop=2 tabstop=2 shiftwidth=2
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
+au FileType markdown set spell spelllang=en_us
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
