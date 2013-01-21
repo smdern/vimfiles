@@ -155,7 +155,6 @@ set noswapfile
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
-
 syntax on
 set nohidden
 set history=10000
@@ -181,7 +180,9 @@ set smartcase
 " Tab completion
 set wildmode=longest,list
 set wildmenu
-set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled,*.css,tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache,bundler_stubs,build,error_pages,bundle,build,error_pages
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled
+set wildignore+=*.css,tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache
+set wildignore+=bundler_stubs,build,error_pages,bundle,build,error_pages
 
 " Status bar
 set laststatus=2
