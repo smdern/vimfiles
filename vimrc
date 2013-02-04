@@ -144,19 +144,6 @@ Bundle 'ReplaceWithRegister'
 " Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
 Bundle 'henrik/vim-yaml-flattener'
 
-" xmpfilter lets you execute ruby code in a buffer. Results will be output
-" after any #=>. You can press F4 to insert a #=> on the current line and f5
-" runs the entire buffer.
-Bundle 't9md/vim-ruby-xmpfilter'
-nmap <buffer> <F5> <Plug>(xmpfilter-run)
-xmap <buffer> <F5> <Plug>(xmpfilter-run)
-imap <buffer> <F5> <Plug>(xmpfilter-run)
-
-nmap <buffer> <F4> <Plug>(xmpfilter-mark)
-xmap <buffer> <F4> <Plug>(xmpfilter-mark)
-imap <buffer> <F4> <Plug>(xmpfilter-mark)
-
-
 :runtime macros/matchit.vim
 
 filetype plugin indent on
@@ -247,6 +234,9 @@ au FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolumn=80
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
+" Remove trailing whitespace automagically
+au BufWritePre *.rb,*.coffee :%s/\s\+$//e
 
 " Inserts the path of the currently edited file into a command
 " Command mode: %%
