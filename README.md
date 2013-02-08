@@ -7,6 +7,12 @@ You can also install `fonts/Inconsolata-g-Powerline.ttf` if you want fancy power
 Switched the Ack plugin to use [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
 Install OSX: `brew install the_silver_searcher`
 
+For xmpfilter:
+
+```
+$ gem install rcodetools fastri
+```
+
 ### Attributions
 
 Inconsolata-g was originally from http://leonardo-m.livejournal.com/77079.html
