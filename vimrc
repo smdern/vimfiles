@@ -19,9 +19,41 @@ endif
 " :BundleUpdate to update all of them
 Bundle 'gmarik/vundle'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fugitive
+"
 " Git in vim, use ,gs for git status then - to stage then C to commit
 " check :help Gstatus for more keys
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-fugitive'
+
+map <leader>gs :Gstatus<cr>
+map <leader>gc :Gcommit<cr>
+map <leader>ga :Git add --all<cr>:Gcommit<cr>
+map <leader>gb :Gblame<cr>
+
+" Use j/k in status
+function! BufReadIndex()
+  setlocal cursorline
+  setlocal nohlsearch
+
+  nnoremap <buffer> <silent> j :call search('^#\t.*','W')<Bar>.<CR>
+  nnoremap <buffer> <silent> k :call search('^#\t.*','Wbe')<Bar>.<CR>
+endfunction
+autocmd BufReadCmd  *.git/index exe BufReadIndex()
+autocmd BufEnter    *.git/index silent normal gg0j
+
+" Start in insert mode for commit
+function! BufEnterCommit()
+  normal gg0
+  if getline('.') == ''
+    start
+  end
+endfunction
+autocmd BufEnter    *.git/COMMIT_EDITMSG  exe BufEnterCommit()
+
+" Automatically remove fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Surrond stuff with things. ysiw" surrounds a word with quotes
 " cs"' changes " to '
@@ -33,12 +65,45 @@ Bundle 'tpope/vim-repeat'
 " Comment with gc (takes a motion) or ^_^_
 Bundle 'tomtom/tcomment_vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-P
+"
 " Open a file (like cmd-t but better). Use ,f or ,j(something, see bindings
 " below)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'kien/ctrlp.vim'
 
+" Don't manage working directory
+let g:ctrlp_working_path_mode = 0
+
+map <leader>jv :let g:ctrlp_default_input = 'app/views/'<cr>:CtrlP<cr>
+map <leader>jc :let g:ctrlp_default_input = 'app/controllers/'<cr>:CtrlP<cr>
+map <leader>jm :let g:ctrlp_default_input = 'app/models/'<cr>:CtrlP<cr>
+map <leader>jh :let g:ctrlp_default_input = 'app/helpers/'<cr>:CtrlP<cr>
+map <leader>jl :let g:ctrlp_default_input = 'lib'<cr>:CtrlP<cr>
+map <leader>jp :let g:ctrlp_default_input = 'public'<cr>:CtrlP<cr>
+map <leader>js :let g:ctrlp_default_input = 'app/stylesheets/'<cr>:CtrlP<cr>
+map <leader>jj :let g:ctrlp_default_input = 'app/javascripts/'<cr>:CtrlP<cr>
+map <leader>jf :let g:ctrlp_default_input = 'features/'<cr>:CtrlP<cr>
+map <leader>f :let g:ctrlp_default_input = 0<cr>:CtrlP<cr>
+map <leader>u :let g:ctrlp_default_input = 0<cr>:CtrlPBuffer<cr>
+map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:CtrlP<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ack
+"
 " Adds :Ack complete w/ quick fix
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'mileszs/ack.vim'
+
+map <leader>a :Ack!<space>
+map <leader>A :Ack! <C-R><C-W><CR>
+
+" Use ag for search, it's much faster than ack.
+" See https://github.com/ggreer/the_silver_searcher
+" on mac: brew install the_silver_searcher
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 
 " Updates your status line to show what selector you're in in sass files
 Bundle 'aaronjensen/vim-sass-status'
@@ -78,10 +143,22 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " Tab to indent or autocomplete depending on context
 Bundle 'ervandew/supertab'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vroom
+"
 " Run specs or cucumber features with ,t run only the test under the cursor
 " with ,T also remembers last run test so you can hit it again on non-test
 " files to run the last run test
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'skalnik/vim-vroom'
+
+let g:vroom_map_keys = 0
+let g:vroom_write_all = 1
+let g:vroom_use_bundle_exec = 0
+let g:vroom_spec_command = '`[ -e .zeus.sock ] && echo zeus` rspec '
+let g:vroom_cucumber_path = '`[ -e .zeus.sock ] && echo zeus` cucumber -r features '
+map <leader>t :VroomRunTestFile<cr>
+map <leader>T :VroomRunNearestTest<cr>
 
 " Vim coffeescript runtime files
 Bundle 'kchmck/vim-coffee-script'
@@ -144,10 +221,15 @@ Bundle 'ReplaceWithRegister'
 " Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
 Bundle 'henrik/vim-yaml-flattener'
 
-" xmpfilter lets you execute ruby code in a buffer. Results will be output
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" xmpfilter
+"
+" Lets you execute ruby code in a buffer. Results will be output
 " after any #=>. You can press F4 to insert a #=> on the current line and f5
 " runs the entire buffer.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 't9md/vim-ruby-xmpfilter'
+
 nmap <buffer> <F5> <Plug>(xmpfilter-run)
 xmap <buffer> <F5> <Plug>(xmpfilter-run)
 imap <buffer> <F5> <Plug>(xmpfilter-run)
@@ -156,11 +238,16 @@ nmap <buffer> <F4> <Plug>(xmpfilter-mark)
 xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vitality.vim
+"
 " Restores autocmd FocusGained and FocusLost. I don't use it for the cursor
 " fix because mine seems to work better. This requires a custom build of tmux
 " from https://github.com/akracun/tmux
 " You'll need to `export TMUX_CAN_FOCUS=1` as well.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'akracun/vitality.vim'
+
 let g:vitality_fix_cursor = 0
 if exists('$TMUX_CAN_FOCUS')
   let g:vitality_fix_focus = 1
@@ -346,37 +433,6 @@ endfunction
 :map <leader>l :PromoteToLet<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Don't manage working directory
-let g:ctrlp_working_path_mode = 0
-
-map <leader>jv :let g:ctrlp_default_input = 'app/views/'<cr>:CtrlP<cr>
-map <leader>jc :let g:ctrlp_default_input = 'app/controllers/'<cr>:CtrlP<cr>
-map <leader>jm :let g:ctrlp_default_input = 'app/models/'<cr>:CtrlP<cr>
-map <leader>jh :let g:ctrlp_default_input = 'app/helpers/'<cr>:CtrlP<cr>
-map <leader>jl :let g:ctrlp_default_input = 'lib'<cr>:CtrlP<cr>
-map <leader>jp :let g:ctrlp_default_input = 'public'<cr>:CtrlP<cr>
-map <leader>js :let g:ctrlp_default_input = 'app/stylesheets/'<cr>:CtrlP<cr>
-map <leader>jj :let g:ctrlp_default_input = 'app/javascripts/'<cr>:CtrlP<cr>
-map <leader>jf :let g:ctrlp_default_input = 'features/'<cr>:CtrlP<cr>
-map <leader>f :let g:ctrlp_default_input = 0<cr>:CtrlP<cr>
-map <leader>u :let g:ctrlp_default_input = 0<cr>:CtrlPBuffer<cr>
-map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:CtrlP<cr>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ack mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>a :Ack!<space>
-map <leader>A :Ack! <C-R><C-W><CR>
-
-" Use ag for search, it's much faster than ack.
-" See https://github.com/ggreer/the_silver_searcher
-" on mac: brew install the_silver_searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Left> :echo "no!"<cr>
@@ -412,53 +468,11 @@ endfunction
 au WinEnter * call ResizePreviewWindow()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vroom
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:vroom_map_keys = 0
-let g:vroom_write_all = 1
-let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = '`[ -e .zeus.sock ] && echo zeus` rspec '
-let g:vroom_cucumber_path = '`[ -e .zeus.sock ] && echo zeus` cucumber -r features '
-map <leader>t :VroomRunTestFile<cr>
-map <leader>T :VroomRunNearestTest<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy paste system clipboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
 map <leader>p "*p
 map <leader>P "*P
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Fugitive
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>gs :Gstatus<cr>
-map <leader>gc :Gcommit<cr>
-map <leader>ga :Git add --all<cr>:Gcommit<cr>
-map <leader>gb :Gblame<cr>
-
-" Use j/k in status
-function! BufReadIndex()
-  setlocal cursorline
-  setlocal nohlsearch
-
-  nnoremap <buffer> <silent> j :call search('^#\t.*','W')<Bar>.<CR>
-  nnoremap <buffer> <silent> k :call search('^#\t.*','Wbe')<Bar>.<CR>
-endfunction
-autocmd BufReadCmd  *.git/index                      exe BufReadIndex()
-autocmd BufEnter    *.git/index                      silent normal gg0j
-
-" Start in insert mode for commit
-function! BufEnterCommit()
-  normal gg0
-  if getline('.') == ''
-    start
-  end
-endfunction
-autocmd BufEnter    *.git/COMMIT_EDITMSG             exe BufEnterCommit()
-
-" Automatically remove fugitive buffers
-autocmd BufReadPost fugitive://* set bufhidden=delete
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
