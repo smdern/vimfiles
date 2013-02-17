@@ -156,6 +156,18 @@ nmap <buffer> <F4> <Plug>(xmpfilter-mark)
 xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
+" Restores autocmd FocusGained and FocusLost. I don't use it for the cursor
+" fix because mine seems to work better. This requires a custom build of tmux
+" from https://github.com/akracun/tmux
+" You'll need to `export TMUX_CAN_FOCUS=1` as well.
+Bundle 'akracun/vitality.vim'
+let g:vitality_fix_cursor = 0
+if exists('$TMUX_CAN_FOCUS')
+  let g:vitality_fix_focus = 1
+  let g:vitality_tmux_can_focus = 1
+else
+  let g:vitality_fix_focus = 0
+end
 
 :runtime macros/matchit.vim
 
@@ -495,6 +507,7 @@ end
 " This fixes pasting from iterm (and some other terminals, but you'll need to
 " adjust the condition) by using "bracketed paste mode"
 " I modified it to work in tmux and not wait for esc (by using f28/f29)
+" This also requires the custom tmux listed above.
 "
 " See: http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -510,13 +523,12 @@ function WrapForTmux(s)
   return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
 endfunction
 
-if exists('$ITERM_PROFILE')
-  " I'm just setting bracketed paste mode in my bashrc now. Setting and
-  " unsetting doesn't work very well with tmux as it affects other shells.
-  " put this in your bashrc: [ -n "$ITERM_PROFILE" ] && printf "\e[?2004h"
-  "
-  " let &t_ti = WrapForTmux("\<Esc>[?2004h") . &t_ti
-  " let &t_te = WrapForTmux("\<Esc>[?2004l") . &t_te
+if exists('$ITERM_PROFILE') && exists('$TMUX_CAN_FOCUS')
+  let &t_ti = WrapForTmux("\<Esc>[?2004h") . &t_ti
+  let &t_te = WrapForTmux("\<Esc>[?2004l") . &t_te
+  autocmd FocusGained * execute "silent !printf '" . WrapForTmux("\e[?2004h") . "'"
+  autocmd FocusLost * execute "silent !printf '" . WrapForTmux("\e[?2004l") . "'"
+
   function XTermPasteBegin(ret)
     set pastetoggle=<Esc>[201~
     set paste
