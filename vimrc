@@ -525,23 +525,11 @@ end
 "
 " See: http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tmux wrapping borrowed from vitality.vim: https://github.com/sjl/vitality.vim
-function WrapForTmux(s)
-  if !exists('$TMUX')
-    return a:s
-  endif
-
-  let tmux_start = "\<Esc>Ptmux;"
-  let tmux_end = "\<Esc>\\"
-
-  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
-endfunction
-
 if exists('$ITERM_PROFILE') && exists('$TMUX_CAN_FOCUS')
-  let &t_ti = WrapForTmux("\<Esc>[?2004h") . &t_ti
-  let &t_te = WrapForTmux("\<Esc>[?2004l") . &t_te
-  autocmd FocusGained * execute "silent !printf '" . WrapForTmux("\e[?2004h") . "'"
-  autocmd FocusLost * execute "silent !printf '" . WrapForTmux("\e[?2004l") . "'"
+  let &t_ti = "\<Esc>[?2004h" . &t_ti
+  let &t_te = "\<Esc>[?2004l" . &t_te
+  autocmd FocusGained * silent !printf '\e[?2004h'
+  autocmd FocusLost * silent !printf '\e[?2004l'
 
   function XTermPasteBegin(ret)
     set pastetoggle=<Esc>[201~
