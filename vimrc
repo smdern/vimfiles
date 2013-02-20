@@ -238,24 +238,6 @@ nmap <buffer> <F4> <Plug>(xmpfilter-mark)
 xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 imap <buffer> <F4> <Plug>(xmpfilter-mark)
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vitality.vim
-"
-" Restores autocmd FocusGained and FocusLost. I don't use it for the cursor
-" fix because mine seems to work better. This requires a custom build of tmux
-" from https://github.com/akracun/tmux
-" You'll need to `export TMUX_CAN_FOCUS=1` as well.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'akracun/vitality.vim'
-
-let g:vitality_fix_cursor = 0
-if exists('$TMUX_CAN_FOCUS')
-  let g:vitality_fix_focus = 1
-  let g:vitality_tmux_can_focus = 1
-else
-  let g:vitality_fix_focus = 0
-end
-
 :runtime macros/matchit.vim
 
 filetype plugin indent on
@@ -520,16 +502,13 @@ end
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This fixes pasting from iterm (and some other terminals, but you'll need to
 " adjust the condition) by using "bracketed paste mode"
-" I modified it to work in tmux and not wait for esc (by using f28/f29)
-" This also requires the custom tmux listed above.
+" I modified it to wait for esc (by using f28/f29)
 "
 " See: http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists('$ITERM_PROFILE') && exists('$TMUX_CAN_FOCUS')
+if exists('$ITERM_PROFILE') || exists('$TMUX')
   let &t_ti = "\<Esc>[?2004h" . &t_ti
   let &t_te = "\<Esc>[?2004l" . &t_te
-  autocmd FocusGained * silent !printf '\e[?2004h'
-  autocmd FocusLost * silent !printf '\e[?2004l'
 
   function XTermPasteBegin(ret)
     set pastetoggle=<Esc>[201~
