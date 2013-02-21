@@ -92,7 +92,8 @@ map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:Ctr
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ack
 "
-" Adds :Ack complete w/ quick fix
+" Adds :Ack complete w/ quick fix. I prefer to use :Ack! which does not open
+" the first thing it finds automatically.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'mileszs/ack.vim'
 
@@ -237,6 +238,14 @@ imap <buffer> <F5> <Plug>(xmpfilter-run)
 nmap <buffer> <F4> <Plug>(xmpfilter-mark)
 xmap <buffer> <F4> <Plug>(xmpfilter-mark)
 imap <buffer> <F4> <Plug>(xmpfilter-mark)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" matchindent.vim
+"
+" Attempt to guess and automatically set the indentation settings of the
+" opened file. Works for " 2 space, 4 space and tab indentation.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'conormcd/matchindent.vim'
 
 :runtime macros/matchit.vim
 
