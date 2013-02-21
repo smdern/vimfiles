@@ -15,8 +15,12 @@ if filereadable(expand("~/.vim_bundles.local"))
   source ~/.vim_bundles.local
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vundle
+"
 " Bundler for vim, use :BundleInstall to install these bundles and
 " :BundleUpdate to update all of them
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'gmarik/vundle'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -55,14 +59,20 @@ autocmd BufEnter    *.git/COMMIT_EDITMSG  exe BufEnterCommit()
 " Automatically remove fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Surrond stuff with things. ysiw" surrounds a word with quotes
 " cs"' changes " to '
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-surround'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lets you use . to repeat some things like vim-surround
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-repeat'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Comment with gc (takes a motion) or ^_^_
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tomtom/tcomment_vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -105,43 +115,77 @@ map <leader>A :Ack! <C-R><C-W><CR>
 " on mac: brew install the_silver_searcher
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Updates your status line to show what selector you're in in sass files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'aaronjensen/vim-sass-status'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kills a buffer without closing a split, use ,w . Used in conjunction 
 " with command-w, below...
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'vim-scripts/bufkill.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Command W
+"
 " Smarts around killing buffers, will close the split if it's the last buffer in
 " it, and close vim if it's the last buffer/split. Use ,w
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'nathanaelkane/vim-command-w'
 
+nmap <leader>w :CommandW<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic
+"
 " Shows syntax errors on several types of files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'scrooloose/syntastic'
 
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': ['ruby'] }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically add end at the end of ruby and vim blocks
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-endwise'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add a few paired mappings, in particular [q and ]q to navigate the quickfix
 " list
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-unimpaired'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Handy file manipulations. Favorites are :Remove and :Rename
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-eunuch'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Allows custom textobj motions (like i" or a[)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'kana/vim-textobj-user'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion based on indent level. Useful in coffeescript, try vai to select
 " everything on the current indent level. vii is similar, but will not ignore
 " blank lines
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'kana/vim-textobj-indent'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion based on ruby blocks. vir selects in a ruby block
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tab to indent or autocomplete depending on context
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'ervandew/supertab'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,65 +205,119 @@ let g:vroom_cucumber_path = '`[ -e .zeus.sock ] && echo zeus` cucumber -r featur
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'kchmck/vim-coffee-script'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Stuff for cucumber, try out ^] on a step in a feature to go to step
 " definition
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-cucumber'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Updated ruby syntax and such
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'vim-ruby/vim-ruby'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Some syntax highlighthing for rails and :Rextract to extract partials
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-rails'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'pangloss/vim-javascript'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Git runtime files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-git'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim runtime files for Haml, Sass, and SCSS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-haml'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Markdown runtime files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-markdown'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim handlebars runtime files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'nono/vim-handlebars'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax for jquery keywords and selectors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'itspriddle/vim-jquery'
-"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim syntax for jst files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'jeyb/vim-jst'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax for nginx
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'mutewinter/nginx.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Makes css colors show up as their actual colors, works better with CSApprox
 " or macvim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'ap/vim-css-color'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'mrtazz/molokai.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Decent light color scheme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'nelstrom/vim-mac-classic-theme'
 
-" vim powerline -  The ultimate vim statusline utility
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Powerline
+"
+" The ultimate vim statusline utility
+"
+" You'll need a powerline patched font.
+" You should probably use inconsolata-g (included in fonts directory)
+"
+" If not, you can patch your own.
+" See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
+" You'll probably need this too: https://github.com/jenius/Fontforge-Installer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'Lokaltog/vim-powerline'
 
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'relative'
+call Pl#Theme#RemoveSegment('fugitive:branch')
+call Pl#Theme#RemoveSegment('fileformat')
+call Pl#Theme#RemoveSegment('fileencoding')
+call Pl#Theme#RemoveSegment('scrollpercent')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line behave like emacs
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'houtsnip/vim-emacscommandline'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Adds gr command to replace text (takes a motion)
 " similar to v(motion)p but also cuts text into black hole register so it is
 " repeatable. So really it's similar to v(motion)"_p
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'ReplaceWithRegister'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'henrik/vim-yaml-flattener'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -290,13 +388,7 @@ set wildignore+=bundler_stubs,build,error_pages,bundle,build,error_pages
 " Status bar
 set laststatus=2
 
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-" set t_ti= t_te=
-
 set t_Co=256
-let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-let g:CSApprox_eterm = 1
 color molokai
 
 " Show (partial) command in the status line
@@ -321,57 +413,40 @@ if has("autocmd")
 endif
 
 " make uses real tabs
-au FileType * set expandtab
-au FileType make set noexpandtab
+autocmd FileType make setlocal noexpandtab
 
-au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-au BufNewFile,BufRead *.json set ft=javascript
-au BufNewFile,BufRead *.hamlbars set ft=haml
-au BufNewFile,BufRead *.hamlc set ft=haml
-au BufNewFile,BufRead *.jst.ejs set ft=jst
+autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.hamlbars set ft=haml
+autocmd BufNewFile,BufRead *.hamlc set ft=haml
+autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-au FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolumn=80
+autocmd FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolumn=80
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Remove trailing whitespace automagically
-au BufWritePre *.rb,*.coffee :%s/\s\+$//e
+autocmd BufWritePre *.rb,*.coffee :%s/\s\+$//e
 
 " Inserts the path of the currently edited file into a command
 " Command mode: %%
 cmap %% <C-R>=expand("%:p:h") . "/" <CR>
 
-" Enable syntastic syntax checking
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
-
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['ruby'] }
-" Turn off jslint errors by default
-let g:JSLintHighlightErrorLine = 0
-
-" Use Node.js for JavaScript interpretation
-let $JS_CMD='node'
-
 " MacVIM shift+arrow-keys behavior (required in .vimrc)
 let macvim_hig_shift_movement = 1
 
-"map quick quit
+" map quick quit
 map <leader>qq :qa!<cr>
 
-"key mapping for window navigation
+" key mapping for window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-" Useful for triggering a cucumber run
-nmap <Leader>rc :silent !touch features/step_definitions/web_steps.rb<CR>
 
 " Make the current directory
 nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
@@ -399,11 +474,9 @@ function! SaveIfModified()
   endif
 endfunction
 
-"key mapping for error navigation
+" key mapping for error navigation
 nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
 nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
-
-nmap <leader>w :CommandW<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Much stuff stolen from Gary Bernhardt:
@@ -456,7 +529,7 @@ function! ResizePreviewWindow()
     set winheight=999
   endif
 endfunction
-au WinEnter * call ResizePreviewWindow()
+autocmd WinEnter * call ResizePreviewWindow()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy paste system clipboard
@@ -464,7 +537,6 @@ au WinEnter * call ResizePreviewWindow()
 map <leader>y "*y
 map <leader>p "*p
 map <leader>P "*P
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily
@@ -475,21 +547,6 @@ function! QuitWithQ()
   endif
 endfunction
 autocmd FileType help exe QuitWithQ()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Powerline configuration, you'll need a powerline patched font.
-" You should probably use inconsolata-g (included in fonts directory)
-"
-" If not, you can patch your own.
-" See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
-" You'll probably need this too: https://github.com/jenius/Fontforge-Installer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'relative'
-call Pl#Theme#RemoveSegment('fugitive:branch')
-call Pl#Theme#RemoveSegment('fileformat')
-call Pl#Theme#RemoveSegment('fileencoding')
-call Pl#Theme#RemoveSegment('scrollpercent')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This enables iterm cursor changes from vim. In .tmux.conf you'll need:
@@ -550,4 +607,3 @@ set undoreload=10000
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
