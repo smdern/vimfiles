@@ -592,7 +592,7 @@ if exists('$ITERM_PROFILE') || exists('$TMUX')
   let &t_ti = "\<Esc>[?2004h" . &t_ti
   let &t_te = "\<Esc>[?2004l" . &t_te
 
-  function XTermPasteBegin(ret)
+  function! XTermPasteBegin(ret)
     set pastetoggle=<Esc>[201~
     set paste
     return a:ret
