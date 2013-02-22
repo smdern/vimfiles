@@ -302,6 +302,8 @@ call Pl#Theme#RemoveSegment('fugitive:branch')
 call Pl#Theme#RemoveSegment('fileformat')
 call Pl#Theme#RemoveSegment('fileencoding')
 call Pl#Theme#RemoveSegment('scrollpercent')
+autocmd FocusGained * call Pl#UpdateStatusline(1)
+autocmd FocusLost * call Pl#UpdateStatusline(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line behave like emacs
