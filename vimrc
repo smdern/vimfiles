@@ -444,13 +444,20 @@ let macvim_hig_shift_movement = 1
 " map quick quit
 map <leader>qq :qa!<cr>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mapping for window navigation
+"
+" If you're in tmux it'll keep going to tmux splits if you hit the end of
+" your vim splits.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
     execute "wincmd " . a:wincmd
     if previous_winnr == winnr()
-      execute "silent !tmux select-pane -" . a:tmuxdir
+      " The sleep and & gives time to get back to vim so tmux's focus tracking
+      " can kick in and send us our ^[[O
+      execute "silent !sh -c 'sleep 0.01; tmux select-pane -" . a:tmuxdir . "' &"
       redraw!
     endif
   endfunction
