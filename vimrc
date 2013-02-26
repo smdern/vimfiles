@@ -468,6 +468,9 @@ map <leader>qq :qa!<cr>
 "
 " If you're in tmux it'll keep going to tmux splits if you hit the end of
 " your vim splits.
+"
+" For the tmux side see:
+" https://github.com/aaronjensen/dotfiles/blob/e9c3551b40c43264ac2cd21d577f948192a46aea/tmux.conf#L96-L102
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
