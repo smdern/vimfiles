@@ -352,7 +352,19 @@ imap <buffer> <F4> <Plug>(xmpfilter-mark)
 Bundle 'aaronjensen/matchindent.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'conormcd/matchindent.vim'
+" vitality.vim
+"
+" Add FocusGained/FocusLost back.
+" Requires features in HEAD tmux.
+"
+" Using my branch until tmux supports this in a released version.
+" Also this should make it so that anyone else who uses this w/o
+" the right version of tmux will be fine.
+" https://github.com/aaronjensen/vitality.vim/commit/3308bf21fb3d46d55ca84a19d228f8cf2210679d
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'aaronjensen/vitality.vim'
+let g:vitality_fix_focus = 1
+let g:vitality_fix_cursor = 0
 
 :runtime macros/matchit.vim
 
