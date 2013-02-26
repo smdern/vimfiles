@@ -346,6 +346,11 @@ imap <buffer> <F4> <Plug>(xmpfilter-mark)
 "
 " Attempt to guess and automatically set the indentation settings of the
 " opened file. Works for " 2 space, 4 space and tab indentation.
+"
+" Using my branch for now: https://github.com/conormcd/matchindent.vim/pull/2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'aaronjensen/matchindent.vim'
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'conormcd/matchindent.vim'
 
