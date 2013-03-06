@@ -454,6 +454,8 @@ autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
+autocmd FileType cs setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+
 autocmd FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolumn=80
 
 " allow backspacing over everything in insert mode
