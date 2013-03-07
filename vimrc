@@ -353,10 +353,9 @@ Bundle 'aaronjensen/matchindent.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gitgutter.vim
-" Shows if line has changed, using git diff
 "
-" https://github.com/airblade/vim-gitgutter
-"
+" Show the git diff in the gutter. Shows whether each line has been added,
+" modified, and where lines have been removed.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'airblade/vim-gitgutter'
 
