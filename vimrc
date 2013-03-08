@@ -352,6 +352,14 @@ imap <buffer> <F4> <Plug>(xmpfilter-mark)
 Bundle 'aaronjensen/matchindent.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gitgutter.vim
+"
+" Show the git diff in the gutter. Shows whether each line has been added,
+" modified, and where lines have been removed.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'airblade/vim-gitgutter'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vitality.vim
 "
 " Add FocusGained/FocusLost back.
