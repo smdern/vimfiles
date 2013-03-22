@@ -477,11 +477,9 @@ map <leader>qq :qa!<cr>
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
-    execute "wincmd " . a:wincmd
+    silent! execute "wincmd " . a:wincmd
     if previous_winnr == winnr()
-      " The sleep and & gives time to get back to vim so tmux's focus tracking
-      " can kick in and send us our ^[[O
-      execute "silent !sh -c 'sleep 0.01; tmux select-pane -" . a:tmuxdir . "' &"
+      call system("tmux select-pane -" . a:tmuxdir)
       redraw!
     endif
   endfunction
