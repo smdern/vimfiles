@@ -202,8 +202,8 @@ Bundle 'aaronjensen/vim-vroom'
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = '`[ -e .zeus.sock ] && echo zeus` rspec '
-let g:vroom_cucumber_path = '`[ -e .zeus.sock ] && echo zeus` cucumber -r features '
+let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` rspec '
+let g:vroom_cucumber_path = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` cucumber -r features '
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 
@@ -352,14 +352,6 @@ imap <buffer> <F4> <Plug>(xmpfilter-mark)
 Bundle 'aaronjensen/matchindent.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gitgutter.vim
-"
-" Show the git diff in the gutter. Shows whether each line has been added,
-" modified, and where lines have been removed.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'airblade/vim-gitgutter'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vitality.vim
 "
 " Add FocusGained/FocusLost back.
@@ -485,11 +477,9 @@ map <leader>qq :qa!<cr>
 if exists('$TMUX')
   function! TmuxOrSplitSwitch(wincmd, tmuxdir)
     let previous_winnr = winnr()
-    execute "wincmd " . a:wincmd
+    silent! execute "wincmd " . a:wincmd
     if previous_winnr == winnr()
-      " The sleep and & gives time to get back to vim so tmux's focus tracking
-      " can kick in and send us our ^[[O
-      execute "silent !sh -c 'sleep 0.01; tmux select-pane -" . a:tmuxdir . "' &"
+      call system("tmux select-pane -" . a:tmuxdir)
       redraw!
     endif
   endfunction
