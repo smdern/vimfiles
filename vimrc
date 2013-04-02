@@ -374,6 +374,20 @@ let g:vitality_fix_cursor = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'itspriddle/vim-marked'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-slurper
+"
+" Easily enter stories into pivotal
+" Requries slurper gem: https://github.com/hashrocket/slurper
+" You'll also need to set up your slurper_config.yml
+"
+" Use <leader>sn to open a slurper file
+" Use <leader>sf to add a feature (b for bug, c for chore, r for release)
+" Then use <leader>ss to slurp the file into pivotal
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'aaronjensen/vim-slurper'
+nnoremap <leader>sn :new stories.slurper<cr>
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
