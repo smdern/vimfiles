@@ -346,10 +346,8 @@ imap <buffer> <F4> <Plug>(xmpfilter-mark)
 "
 " Attempt to guess and automatically set the indentation settings of the
 " opened file. Works for " 2 space, 4 space and tab indentation.
-"
-" Using my branch for now: https://github.com/conormcd/matchindent.vim/pull/2
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'aaronjensen/matchindent.vim'
+Bundle 'conormcd/matchindent.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vitality.vim
@@ -365,6 +363,28 @@ Bundle 'aaronjensen/matchindent.vim'
 Bundle 'aaronjensen/vitality.vim'
 let g:vitality_fix_focus = 1
 let g:vitality_fix_cursor = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-marked
+"
+" Opens current file in Marked, an OSX markdown preview app:
+" http://markedapp.com/
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'itspriddle/vim-marked'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-slurper
+"
+" Easily enter stories into pivotal
+" Requries slurper gem: https://github.com/hashrocket/slurper
+" You'll also need to set up your slurper_config.yml
+"
+" Use <leader>sn to open a slurper file
+" Use <leader>sf to add a feature (b for bug, c for chore, r for release)
+" Then use <leader>ss to slurp the file into pivotal
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'aaronjensen/vim-slurper'
+nnoremap <leader>sn :new stories.slurper<cr>
 
 :runtime macros/matchit.vim
 
