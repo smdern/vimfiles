@@ -458,7 +458,7 @@ endif
 " make uses real tabs
 autocmd FileType make setlocal noexpandtab
 
-autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 autocmd BufNewFile,BufRead *.hamlc set ft=haml
