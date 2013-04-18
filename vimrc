@@ -521,6 +521,10 @@ else
   map <C-l> <C-w>l
 endif
 
+" Open splits below and right by default
+set splitbelow
+set splitright
+
 " Make the current directory
 nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
 
