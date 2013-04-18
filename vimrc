@@ -132,7 +132,7 @@ Bundle 'vim-scripts/bufkill.vim'
 " Smarts around killing buffers, will close the split if it's the last buffer in
 " it, and close vim if it's the last buffer/split. Use ,w
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'nathanaelkane/vim-command-w'
+Bundle 'aaronjensen/vim-command-w'
 
 nmap <leader>w :CommandW<CR>
 
