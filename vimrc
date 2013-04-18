@@ -201,8 +201,9 @@ Bundle 'aaronjensen/vim-vroom'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
+let g:vroom_use_zeus = 0
 let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` rspec '
+let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo "zeus ") || ([ -e bin/rspec ] && echo "bin/") || echo "bundle exec "`rspec '
 let g:vroom_cucumber_path = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` cucumber -r features '
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
