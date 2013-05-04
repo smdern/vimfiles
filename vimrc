@@ -231,6 +231,13 @@ Bundle 'vim-ruby/vim-ruby'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-rails'
 
+map <leader><leader>a :A<cr>
+map <leader><leader>r :R<cr>
+map <leader>va :AV<cr>
+map <leader>vr :RV<cr>
+map <leader>sa :AS<cr>
+map <leader>sr :RS<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
