@@ -237,6 +237,8 @@ map <leader>va :AV<cr>
 map <leader>vr :RV<cr>
 map <leader>sa :AS<cr>
 map <leader>sr :RS<cr>
+" Make spec/test
+map <leader>ms :exec ':Runittest '.expand("%:t:r").'!'<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
