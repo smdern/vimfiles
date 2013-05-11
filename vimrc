@@ -132,7 +132,7 @@ Bundle 'vim-scripts/bufkill.vim'
 " Smarts around killing buffers, will close the split if it's the last buffer in
 " it, and close vim if it's the last buffer/split. Use ,w
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'nathanaelkane/vim-command-w'
+Bundle 'aaronjensen/vim-command-w'
 
 nmap <leader>w :CommandW<CR>
 
@@ -201,11 +201,14 @@ Bundle 'aaronjensen/vim-vroom'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
+let g:vroom_use_zeus = 0
 let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` rspec '
+let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo "zeus ") || ([ -e bin/rspec ] && echo "bin/") || echo "bundle exec "`rspec '
 let g:vroom_cucumber_path = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` cucumber -r features '
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
+autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :!zeus teabag %<cr>
+autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :!zeus teabag %<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
@@ -227,6 +230,15 @@ Bundle 'vim-ruby/vim-ruby'
 " Some syntax highlighthing for rails and :Rextract to extract partials
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-rails'
+
+map <leader><leader>a :A<cr>
+map <leader><leader>r :R<cr>
+map <leader>va :AV<cr>
+map <leader>vr :RV<cr>
+map <leader>sa :AS<cr>
+map <leader>sr :RS<cr>
+" Make spec/test
+map <leader>ms :exec ':Runittest '.expand("%:t:r").'!'<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
@@ -456,7 +468,7 @@ endif
 " make uses real tabs
 autocmd FileType make setlocal noexpandtab
 
-autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 autocmd BufNewFile,BufRead *.hamlc set ft=haml
@@ -518,6 +530,10 @@ else
   map <C-k> <C-w>k
   map <C-l> <C-w>l
 endif
+
+" Open splits below and right by default
+set splitbelow
+set splitright
 
 " Make the current directory
 nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
