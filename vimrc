@@ -694,3 +694,13 @@ set undoreload=10000
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+let g:rails_projections = {
+  \"app/assets/javascripts/*.coffee": {
+  \  "alternate": ["spec/javascripts/%s_spec.coffee"],
+  \},
+  \"spec/javascripts/*_spec.coffee": {
+  \  "alternate": "app/assets/javascripts/%s.coffee",
+  \},
+\}
+
