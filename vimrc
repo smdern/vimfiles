@@ -116,11 +116,6 @@ map <leader>A :Ack! <C-R><C-W><CR>
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Updates your status line to show what selector you're in in sass files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'aaronjensen/vim-sass-status'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kills a buffer without closing a split, use ,w . Used in conjunction 
 " with command-w, below...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
