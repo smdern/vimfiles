@@ -85,6 +85,7 @@ Bundle 'kien/ctrlp.vim'
 
 " Don't manage working directory
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_follow_symlinks = 2
 
 map <leader>jv :let g:ctrlp_default_input = 'app/views/'<cr>:CtrlP<cr>
 map <leader>jc :let g:ctrlp_default_input = 'app/controllers/'<cr>:CtrlP<cr>
