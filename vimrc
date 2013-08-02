@@ -207,8 +207,8 @@ let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo "zeus ") || ([ -e bin/rs
 let g:vroom_cucumber_path = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` cucumber -r features '
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
-autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teabag %<cr>
-autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teabag %<cr>
+autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
+autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
