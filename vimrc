@@ -85,6 +85,7 @@ Bundle 'kien/ctrlp.vim'
 
 " Don't manage working directory
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_follow_symlinks = 2
 
 map <leader>jv :let g:ctrlp_default_input = 'app/views/'<cr>:CtrlP<cr>
 map <leader>jc :let g:ctrlp_default_input = 'app/controllers/'<cr>:CtrlP<cr>
@@ -95,30 +96,29 @@ map <leader>jp :let g:ctrlp_default_input = 'public'<cr>:CtrlP<cr>
 map <leader>js :let g:ctrlp_default_input = 'app/stylesheets/'<cr>:CtrlP<cr>
 map <leader>jj :let g:ctrlp_default_input = 'app/javascripts/'<cr>:CtrlP<cr>
 map <leader>jf :let g:ctrlp_default_input = 'features/'<cr>:CtrlP<cr>
+map <leader>js :let g:ctrlp_default_input = 'spec/'<cr>:CtrlP<cr>
+map <leader>ja :let g:ctrlp_default_input = 'spec/acceptance/'<cr>:CtrlP<cr>
 map <leader>f :let g:ctrlp_default_input = 0<cr>:CtrlP<cr>
 map <leader>u :let g:ctrlp_default_input = 0<cr>:CtrlPBuffer<cr>
+map <leader>U :let g:ctrlp_default_input = 0<cr>:CtrlPLine<cr>
 map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:CtrlP<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ack
+" Ack/Ag
 "
-" Adds :Ack complete w/ quick fix. I prefer to use :Ack! which does not open
+" Adds :Ack/:Ag complete w/ quick fix. I prefer to use :Ag! which does not open
 " the first thing it finds automatically.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 
-map <leader>a :Ack!<space>
-map <leader>A :Ack! <C-R><C-W><CR>
+map <leader>a :Ag!<space>
+map <leader>A :Ag! <C-R><C-W><CR>
 
 " Use ag for search, it's much faster than ack.
 " See https://github.com/ggreer/the_silver_searcher
 " on mac: brew install the_silver_searcher
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Updates your status line to show what selector you're in in sass files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'aaronjensen/vim-sass-status'
+let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kills a buffer without closing a split, use ,w . Used in conjunction 
@@ -201,14 +201,12 @@ Bundle 'aaronjensen/vim-vroom'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
-let g:vroom_use_zeus = 0
-let g:vroom_use_bundle_exec = 0
-let g:vroom_spec_command = '`([ -e .zeus.sock ] && echo "zeus ") || ([ -e bin/rspec ] && echo "bin/") || echo "bundle exec "`rspec '
-let g:vroom_cucumber_path = '`([ -e .zeus.sock ] && echo zeus) || echo bundle exec` cucumber -r features '
+let g:vroom_use_zeus = 1
+let g:vroom_use_bundle_exec = 1
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
-autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teabag %<cr>
-autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teabag %<cr>
+autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
+autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
@@ -590,6 +588,19 @@ endfunction
 :map <leader>l :PromoteToLet<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Extract function, highlight w/ V then hit C, type the method name,
+" then go down to where you want the method and hit <leader>mp
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PasteExtractedFunction()
+  set paste
+  execute "normal odef \<c-r>.\<cr>\<c-r>\"end"
+  set nopaste
+  normal v`[=
+endfunction
+command! PasteExtractedFunction :call PasteExtractedFunction()
+map <leader>mp :PasteExtractedFunction<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ARROW KEYS ARE UNACCEPTABLE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Left> :echo "no!"<cr>
@@ -700,3 +711,13 @@ set undoreload=10000
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+let g:rails_projections = {
+  \"app/assets/javascripts/*.coffee": {
+  \  "alternate": ["spec/javascripts/%s_spec.coffee"],
+  \},
+  \"spec/javascripts/*_spec.coffee": {
+  \  "alternate": "app/assets/javascripts/%s.coffee",
+  \},
+\}
+
