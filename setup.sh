@@ -5,3 +5,5 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/gvimrc ~/.gvimrc
 
 vim +BundleInstall +qall
+cd ~/.vim/bundle/ctrlp-cmatcher
+./install_linux.sh

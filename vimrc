@@ -80,8 +80,15 @@ Bundle 'tomtom/tcomment_vim'
 "
 " Open a file (like cmd-t but better). Use ,f or ,j(something, see bindings
 " below)
+"
+" Includes a matcher written in c that is faster and more accurate, see:
+" https://github.com/JazzCore/ctrlp-cmatcher
+" It must be built, it requires python-dev as a dependency
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'kien/ctrlp.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
+
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " Don't manage working directory
 let g:ctrlp_working_path_mode = 0

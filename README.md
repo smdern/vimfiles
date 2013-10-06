@@ -13,6 +13,11 @@ For xmpfilter:
 $ gem install rcodetools fastri
 ```
 
+Uses a different [matcher for
+ctrlp](https://github.com/JazzCore/ctrlp-cmatcher) that is written in C. The
+`setup.sh` will build it, but you should have `python-dev` installed if you do
+not.
+
 ### Attributions
 
 Inconsolata-g was originally from http://leonardo-m.livejournal.com/77079.html
