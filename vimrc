@@ -88,6 +88,7 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'JazzCore/ctrlp-cmatcher'
 
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " Don't manage working directory
