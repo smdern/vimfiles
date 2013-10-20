@@ -80,8 +80,16 @@ Bundle 'tomtom/tcomment_vim'
 "
 " Open a file (like cmd-t but better). Use ,f or ,j(something, see bindings
 " below)
+"
+" Includes a matcher written in c that is faster and more accurate, see:
+" https://github.com/JazzCore/ctrlp-cmatcher
+" It must be built, it requires python-dev as a dependency
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'kien/ctrlp.vim'
+Bundle 'JazzCore/ctrlp-cmatcher'
+
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
 
 " Don't manage working directory
 let g:ctrlp_working_path_mode = 0
@@ -389,20 +397,6 @@ let g:vitality_fix_cursor = 0
 " http://markedapp.com/
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'itspriddle/vim-marked'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-slurper
-"
-" Easily enter stories into pivotal
-" Requries slurper gem: https://github.com/hashrocket/slurper
-" You'll also need to set up your slurper_config.yml
-"
-" Use <leader>sn to open a slurper file
-" Use <leader>sf to add a feature (b for bug, c for chore, r for release)
-" Then use <leader>ss to slurp the file into pivotal
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'aaronjensen/vim-slurper'
-nnoremap <leader>sn :new stories.slurper<cr>
 
 :runtime macros/matchit.vim
 
