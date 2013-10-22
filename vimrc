@@ -295,6 +295,12 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'mutewinter/nginx.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax for typescript
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'leafgarland/typescript-vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Makes css colors show up as their actual colors, works better with CSApprox
 " or macvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
