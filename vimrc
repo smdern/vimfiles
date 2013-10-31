@@ -393,6 +393,14 @@ let g:vitality_fix_cursor = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'itspriddle/vim-marked'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-i18n
+"
+" Replaces strings with I18n.t calls
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'stefanoverna/vim-i18n'
+vmap <Leader>t :call I18nTranslateString()<CR>
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
