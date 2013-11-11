@@ -564,6 +564,8 @@ function! SaveIfModified()
   endif
 endfunction
 
+nmap <leader>rr :redraw!<CR>
+
 " key mapping for error navigation
 nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
 nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
