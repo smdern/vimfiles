@@ -570,6 +570,10 @@ nmap <leader>rr :redraw!<CR>
 nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
 nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
 
+" key mapping for ; and , since they do other things now and I don't use marks
+nnoremap m ;
+nnoremap M ,
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Much stuff stolen from Gary Bernhardt:
 " https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
