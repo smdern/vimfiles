@@ -405,6 +405,13 @@ let g:vitality_fix_cursor = 0
 Bundle 'itspriddle/vim-marked'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-i18n
+"
+" Replaces strings with I18n.t calls
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'stefanoverna/vim-i18n'
+vmap <Leader>t :call I18nTranslateString()<CR>
+
 " vim-tmux-navigator
 "
 " If you're in tmux it'll keep going to tmux splits if you hit the end of
@@ -545,9 +552,15 @@ function! SaveIfModified()
   endif
 endfunction
 
+nmap <leader>rr :redraw!<CR>
+
 " key mapping for error navigation
 nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
 nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
+
+" key mapping for ; and , since they do other things now and I don't use marks
+nnoremap m ;
+nnoremap M ,
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Much stuff stolen from Gary Bernhardt:
