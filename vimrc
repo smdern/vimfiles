@@ -401,6 +401,13 @@ Bundle 'itspriddle/vim-marked'
 Bundle 'stefanoverna/vim-i18n'
 vmap <Leader>t :call I18nTranslateString()<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-emblem
+"
+" Syntax highlighting for emblem
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'heartsentwined/vim-emblem'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
