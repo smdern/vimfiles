@@ -412,15 +412,12 @@ Bundle 'itspriddle/vim-marked'
 Bundle 'stefanoverna/vim-i18n'
 vmap <Leader>t :call I18nTranslateString()<CR>
 
-" vim-tmux-navigator
-"
-" If you're in tmux it'll keep going to tmux splits if you hit the end of
-" your vim splits.
-"
-" For the tmux side see:
-" https://github.com/christoomey/vim-tmux-navigator
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'christoomey/vim-tmux-navigator'
+" vim-emblem
+"
+" Syntax highlighting for emblem
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'heartsentwined/vim-emblem'
 
 :runtime macros/matchit.vim
 
