@@ -737,6 +737,10 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
+if filereadable(expand("./.vimrc"))
+  source ./.vimrc
+endif
+
 let g:rails_projections = {
   \"app/assets/javascripts/*.coffee": {
   \  "alternate": ["spec/javascripts/%s_spec.coffee"],
