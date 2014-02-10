@@ -198,7 +198,8 @@ let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_min_num_identifier_candidate_chars = 2
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" disable until I can make it not look up/suggest every method in the world.
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 set complete-=i
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
