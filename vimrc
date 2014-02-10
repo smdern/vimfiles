@@ -348,7 +348,7 @@ Bundle 'ReplaceWithRegister'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'henrik/vim-yaml-flattener'
+" Bundle 'henrik/vim-yaml-flattener'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " xmpfilter
