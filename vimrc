@@ -39,7 +39,6 @@ map <leader>gb :Gblame<cr>
 " Use j/k in status
 function! BufReadIndex()
   setlocal cursorline
-  setlocal nohlsearch
 
   nnoremap <buffer> <silent> j :call search('^#\t.*','W')<Bar>.<CR>
   nnoremap <buffer> <silent> k :call search('^#\t.*','Wbe')<Bar>.<CR>
