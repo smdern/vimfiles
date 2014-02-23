@@ -424,6 +424,18 @@ Bundle 'heartsentwined/vim-emblem'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'Keithbsmiley/rspec.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-abolish
+"
+" Work with variants of a word: search/replace, abbreviations.
+" Also adds coercion:
+" crs snake_case
+" crm MixedCase
+" crc camelCase
+" cru UPPER_CASE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'tpope/vim-abolish'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
