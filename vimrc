@@ -417,6 +417,13 @@ vmap <Leader>t :call I18nTranslateString()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'heartsentwined/vim-emblem'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" rspec.vim
+"
+" Syntax highlighting for rspec in non-rails projects
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'Keithbsmiley/rspec.vim'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
