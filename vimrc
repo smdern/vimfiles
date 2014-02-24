@@ -208,8 +208,7 @@ set complete-=i
 " with ,T also remembers last run test so you can hit it again on non-test
 " files to run the last run test
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" https://github.com/skalnik/vim-vroom/pull/33
-Bundle 'aaronjensen/vim-vroom'
+Bundle 'skalnik/vim-vroom'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
