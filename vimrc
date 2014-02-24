@@ -380,7 +380,8 @@ Bundle 'conormcd/matchindent.vim'
 "
 " Add FocusGained/FocusLost back.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'sjl/vitality.vim'
+" https://github.com/sjl/vitality.vim/pull/23
+Bundle 'aaronjensen/vitality.vim'
 let g:vitality_fix_focus = 1
 let g:vitality_fix_cursor = 0
 
