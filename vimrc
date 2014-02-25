@@ -195,6 +195,9 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'Valloric/YouCompleteMe'
 let g:ycm_min_num_of_chars_for_completion = 2
 let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:autotagCtagsCmd = "ctags --fields=+l --extra=+f"
+
 autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 " disable until I can make it not look up/suggest every method in the world.
@@ -485,7 +488,7 @@ set modeline
 set modelines=10
 
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 
 " Remember last location in file
