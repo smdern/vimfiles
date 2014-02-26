@@ -478,6 +478,11 @@ set wildignore+=*/tmp/*,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache
 set wildignore+=bundler_stubs,build,error_pages,bundle,build,error_pages
 set wildignore+=node_modules
 
+ " enable per-project .vimrc files
+set exrc
+ " Only execute safe per-project vimrc commands
+set secure
+
 " Status bar
 set laststatus=2
 
@@ -753,10 +758,6 @@ set undoreload=10000
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
-endif
-
-if filereadable(expand("./.vimrc"))
-  source ./.vimrc
 endif
 
 let g:rails_projections = {
