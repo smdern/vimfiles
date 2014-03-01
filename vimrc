@@ -306,7 +306,8 @@ Bundle 'ap/vim-css-color'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'tomasr/molokai'
+" https://github.com/tomasr/molokai/pull/30
+Bundle 'aaronjensen/molokai'
 let g:rehash256 = 1
 let g:molokai_original = 1
 set t_Co=256
