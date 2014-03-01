@@ -432,7 +432,10 @@ Bundle "dirkwallenstein/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
 let g:acp_colorForward = 'Pmenu'
 let g:acp_colorReverse = 'Pmenu'
-let g:acp_refeed_checkpoints = [1, 2]
+let g:acp_behaviorKeywordLength = 2
+let g:acp_behaviorRubyOmniMethodLength = 2
+
+" let g:acp_refeed_checkpoints = [2]
 let g:acp_behavior = {}
 
 " Complete keywords first locally, then all buffers
