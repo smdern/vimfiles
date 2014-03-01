@@ -191,18 +191,16 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
+"
+" Two plugins play nice to automatically pop up the autocomplete window if
+" you want that, and let you use tab to cycle through options or restart
+" completion.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:autotagCtagsCmd = "ctags --fields=+l --extra=+f"
-
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" disable until I can make it not look up/suggest every method in the world.
-" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-set complete-=i
+Bundle "AutoComplPop"
+Bundle "ervandew/supertab"
+let g:acp_behaviorRubyOmniSymbolLength = -1
+let g:acp_behaviorRubyOmniMethodLength = -1
+let g:acp_behaviorKeywordCommand = "\<C-p>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vroom
