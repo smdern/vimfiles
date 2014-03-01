@@ -426,110 +426,12 @@ Bundle 'tpope/vim-abolish'
 " Two plugins play nice to automatically pop up the autocomplete window if
 " you want that, and let you use tab to cycle through options or restart
 " completion.
+"
+" Settings are in plugin/mycomplete.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle "L9"
 Bundle "dirkwallenstein/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
-
-let g:acp_colorForward = 'Pmenu'
-let g:acp_colorReverse = 'Pmenu'
-let g:acp_behaviorKeywordLength = 2
-let g:acp_behaviorRubyOmniMethodLength = 2
-let g:acp_reverseMappingInReverseMenu = 1
-" Include things in iskeyword in localcomplete keyword chars so we can match
-" things-like-this in sass and such.
-let g:localcomplete#AdditionalKeywordChars = '$-'
-
-" let g:acp_refeed_checkpoints = [2]
-let g:acp_behavior = {}
-
-" Complete keywords first locally, then all buffers
-" Complete everything else first locally, then all buffers, then omni
-" Include tags if all else fails
-let g:acp_behavior['ruby'] = [
-  \  {
-  \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'g:CompleteCombinerRubyKeywords',
-  \    'meets': 'acp#meetsForKeyword',
-  \    'repeat': 0
-  \  },
-  \  {
-  \    'command' : "\<C-x>\<C-f>",
-  \    'meets'   : 'acp#meetsForFile',
-  \    'repeat'  : 1,
-  \  },
-  \  {
-  \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'g:CompleteCombinerRuby',
-  \    'meets': 'acp#meetsForRubyOmni',
-  \    'repeat': 0
-  \  },
-  \  {
-  \    'command': "\<C-X>\<C-]>",
-  \    'meets': 'acp#meetsForKeyword',
-  \    'repeat': 0
-  \  }]
-let g:acp_behavior['css'] = [
-  \  {
-  \    'command' : "\<C-x>\<C-o>",
-  \    'meets'   : 'acp#meetsForCssOmni',
-  \    'repeat'  : 1,
-  \  },
-  \  {
-  \    'command' : "\<C-x>\<C-f>",
-  \    'meets'   : 'acp#meetsForFile',
-  \    'repeat'  : 1,
-  \  },
-  \  {
-  \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'g:CompleteCombinerCss',
-  \    'meets': 'acp#meetsForKeyword',
-  \    'repeat': 1
-  \  },
-  \  {
-  \    'command' : "\<C-p>",
-  \    'meets'   : 'acp#meetsForKeyword',
-  \    'repeat'  : 0,
-  \  }]
-let g:acp_behavior['sass'] = g:acp_behavior['css']
-let g:acp_behavior['scss'] = g:acp_behavior['css']
-
-function! g:CompleteCombinerRuby(findstart, keyword_base)
-    let l:all_completers = [
-                \ 'localcomplete#localMatches',
-                \ 'localcomplete#allBufferMatches',
-                \ 'rubycomplete#Complete',
-                \ ]
-    return combinerEXP#completeCombinerABSTRACT(
-                \ a:findstart,
-                \ a:keyword_base,
-                \ l:all_completers,
-                \ 2)
-endfunction
-
-function! g:CompleteCombinerRubyKeywords(findstart, keyword_base)
-    let l:all_completers = [
-                \ 'localcomplete#localMatches',
-                \ 'localcomplete#allBufferMatches',
-                \ ]
-    return combinerEXP#completeCombinerABSTRACT(
-                \ a:findstart,
-                \ a:keyword_base,
-                \ l:all_completers,
-                \ 0)
-endfunction
-
-function! g:CompleteCombinerCss(findstart, keyword_base)
-    let l:all_completers = [
-                \ 'localcomplete#localMatches',
-                \ 'localcomplete#allBufferMatches',
-                \ ]
-    return combinerEXP#completeCombinerABSTRACT(
-                \ a:findstart,
-                \ a:keyword_base,
-                \ l:all_completers,
-                \ 0)
-endfunction
 
 :runtime macros/matchit.vim
 
