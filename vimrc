@@ -685,6 +685,7 @@ function! QuitWithQ()
   endif
 endfunction
 autocmd FileType help map <buffer> q :exe QuitWithQ()<cr>
+autocmd FileType help map <buffer> <leader>w :exe QuitWithQ()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This enables iterm cursor changes from vim. In .tmux.conf you'll need:
