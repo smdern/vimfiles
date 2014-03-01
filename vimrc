@@ -545,7 +545,8 @@ set modeline
 set modelines=10
 
 " Include dashes in keywords
-set iskeyword+=-
+autocmd BufRead,BufNewFile *.{css,sass,scss,less,styl,haml,html,erb} setlocal iskeyword+=-
+autocmd BufRead,BufNewFile *.{sass,scss} setlocal iskeyword+=$,+,@
 
 " CTags
 map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
