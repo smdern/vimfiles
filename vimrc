@@ -213,12 +213,6 @@ autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoo
 Bundle 'kchmck/vim-coffee-script'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Stuff for cucumber, try out ^] on a step in a feature to go to step
-" definition
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'tpope/vim-cucumber'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Updated ruby syntax and such
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'vim-ruby/vim-ruby'
@@ -339,11 +333,6 @@ Bundle 'houtsnip/vim-emacscommandline'
 Bundle 'ReplaceWithRegister'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Bundle 'henrik/vim-yaml-flattener'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " xmpfilter
 "
 " Lets you execute ruby code in a buffer. Results will be output
@@ -377,22 +366,6 @@ Bundle 'conormcd/matchindent.vim'
 Bundle 'aaronjensen/vitality.vim'
 let g:vitality_fix_focus = 1
 let g:vitality_fix_cursor = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-marked
-"
-" Opens current file in Marked, an OSX markdown preview app:
-" http://markedapp.com/
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'itspriddle/vim-marked'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-i18n
-"
-" Replaces strings with I18n.t calls
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'stefanoverna/vim-i18n'
-vmap <Leader>t :call I18nTranslateString()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-emblem
@@ -486,7 +459,6 @@ set t_vb=
 " Use modeline overrides
 set modeline
 set modelines=10
-
 
 " CTags
 map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
@@ -612,7 +584,6 @@ let g:rails_projections = {
   \  "alternate": "app/assets/javascripts/%s.coffee",
   \},
 \}
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commonly changed settings, override in your vimrc.local
