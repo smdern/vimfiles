@@ -681,10 +681,10 @@ map <leader>P "*P
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! QuitWithQ()
   if &buftype == 'help'
-    nnoremap <buffer> <silent> q :q<cr>
+    quit
   endif
 endfunction
-autocmd FileType help exe QuitWithQ()
+autocmd FileType help map <buffer> q :exe QuitWithQ()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This enables iterm cursor changes from vim. In .tmux.conf you'll need:
