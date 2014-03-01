@@ -202,6 +202,9 @@ let g:acp_behaviorRubyOmniSymbolLength = -1
 let g:acp_behaviorRubyOmniMethodLength = -1
 let g:acp_behaviorKeywordCommand = "\<C-p>"
 
+" Include dashes in keywords
+set iskeyword+=-
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vroom
 "
