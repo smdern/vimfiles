@@ -231,6 +231,15 @@ map <leader>sr :RS<cr>
 " Make spec/test
 map <leader>ms :exec ':Runittest '.expand("%:t:r").'!'<cr>
 
+let g:rails_projections = {
+  \"app/assets/javascripts/*.coffee": {
+  \  "alternate": ["spec/javascripts/%s_spec.coffee"],
+  \},
+  \"spec/javascripts/*_spec.coffee": {
+  \  "alternate": "app/assets/javascripts/%s.coffee",
+  \},
+\}
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -542,14 +551,6 @@ nnoremap M ,
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ARROW KEYS ARE UNACCEPTABLE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Left> :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up> :echo "no!"<cr>
-map <Down> :echo "no!"<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy paste system clipboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
@@ -576,19 +577,11 @@ set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
 
-let g:rails_projections = {
-  \"app/assets/javascripts/*.coffee": {
-  \  "alternate": ["spec/javascripts/%s_spec.coffee"],
-  \},
-  \"spec/javascripts/*_spec.coffee": {
-  \  "alternate": "app/assets/javascripts/%s.coffee",
-  \},
-\}
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commonly changed settings, override in your vimrc.local
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:expandwindows = 1
+let g:expandWindows = 1
+let g:disableArrowKeys = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION

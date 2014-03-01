@@ -1,4 +1,4 @@
-if !g:expandwindows
+if !g:expandWindows
   finish
 endif
 
