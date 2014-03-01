@@ -190,22 +190,6 @@ Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Auto completion
-"
-" Two plugins play nice to automatically pop up the autocomplete window if
-" you want that, and let you use tab to cycle through options or restart
-" completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle "AutoComplPop"
-Bundle "ervandew/supertab"
-let g:acp_behaviorRubyOmniSymbolLength = -1
-let g:acp_behaviorRubyOmniMethodLength = -1
-let g:acp_behaviorKeywordCommand = "\<C-p>"
-
-" Include dashes in keywords
-set iskeyword+=-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vroom
 "
 " Run specs or cucumber features with ,t run only the test under the cursor
@@ -436,6 +420,73 @@ Bundle 'Keithbsmiley/rspec.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-abolish'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto completion
+"
+" Two plugins play nice to automatically pop up the autocomplete window if
+" you want that, and let you use tab to cycle through options or restart
+" completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle "L9"
+Bundle "dirkwallenstein/vim-autocomplpop"
+Bundle "dirkwallenstein/vim-localcomplete"
+let g:acp_colorForward = 'Pmenu'
+let g:acp_colorReverse = 'Pmenu'
+let g:acp_refeed_checkpoints = [1, 2]
+let g:acp_behavior = {}
+
+" Complete keywords first locally, then all buffers
+" Complete everything else first locally, then all buffers, then omni
+" Include tags if all else fails
+let g:acp_behavior['ruby'] = [
+  \  {
+  \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'g:CompleteCombinerRubyKeywords',
+  \    'meets': 'acp#meetsForKeyword',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command' : "\<C-x>\<C-f>",
+  \    'meets'   : 'acp#meetsForFile',
+  \    'repeat'  : 1,
+  \  },
+  \  {
+  \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'g:CompleteCombinerRuby',
+  \    'meets': 'acp#meetsForRubyOmni',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command': "\<C-X>\<C-]>",
+  \    'meets': 'acp#meetsForKeyword',
+  \    'repeat': 0
+  \  }]
+
+function! g:CompleteCombinerRuby(findstart, keyword_base)
+    let l:all_completers = [
+                \ 'localcomplete#localMatches',
+                \ 'localcomplete#allBufferMatches',
+                \ 'rubycomplete#Complete'
+                \ ]
+    return combinerEXP#completeCombinerABSTRACT(
+                \ a:findstart,
+                \ a:keyword_base,
+                \ l:all_completers,
+                \ 2)
+endfunction
+
+function! g:CompleteCombinerRubyKeywords(findstart, keyword_base)
+    let l:all_completers = [
+                \ 'localcomplete#localMatches',
+                \ 'localcomplete#allBufferMatches'
+                \ ]
+    return combinerEXP#completeCombinerABSTRACT(
+                \ a:findstart,
+                \ a:keyword_base,
+                \ l:all_completers,
+                \ 0)
+endfunction
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
@@ -489,6 +540,9 @@ set t_vb=
 " Use modeline overrides
 set modeline
 set modelines=10
+
+" Include dashes in keywords
+set iskeyword+=-
 
 " CTags
 map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
