@@ -436,6 +436,9 @@ let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 2
 let g:acp_behaviorRubyOmniMethodLength = 2
 let g:acp_reverseMappingInReverseMenu = 1
+" Include things in iskeyword in localcomplete keyword chars so we can match
+" things-like-this in sass and such.
+let g:localcomplete#AdditionalKeywordChars = '$-'
 
 " let g:acp_refeed_checkpoints = [2]
 let g:acp_behavior = {}
@@ -466,11 +469,11 @@ let g:acp_behavior['ruby'] = [
   \    'meets': 'acp#meetsForKeyword',
   \    'repeat': 0
   \  }]
-let g:acp_behavior['sass'] = [
+let g:acp_behavior['css'] = [
   \  {
-  \    'command' : "\<C-P>",
-  \    'meets': 'acp#meetsForKeyword',
-  \    'repeat': 0
+  \    'command' : "\<C-x>\<C-o>",
+  \    'meets'   : 'acp#meetsForCssOmni',
+  \    'repeat'  : 1,
   \  },
   \  {
   \    'command' : "\<C-x>\<C-f>",
@@ -478,16 +481,24 @@ let g:acp_behavior['sass'] = [
   \    'repeat'  : 1,
   \  },
   \  {
-  \    'command' : "\<C-x>\<C-o>",
-  \    'meets'   : 'acp#meetsForCssOmni',
+  \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'g:CompleteCombinerCss',
+  \    'meets': 'acp#meetsForKeyword',
+  \    'repeat': 1
+  \  },
+  \  {
+  \    'command' : "\<C-p>",
+  \    'meets'   : 'acp#meetsForKeyword',
   \    'repeat'  : 0,
   \  }]
+let g:acp_behavior['sass'] = g:acp_behavior['css']
+let g:acp_behavior['scss'] = g:acp_behavior['css']
 
 function! g:CompleteCombinerRuby(findstart, keyword_base)
     let l:all_completers = [
                 \ 'localcomplete#localMatches',
                 \ 'localcomplete#allBufferMatches',
-                \ 'rubycomplete#Complete'
+                \ 'rubycomplete#Complete',
                 \ ]
     return combinerEXP#completeCombinerABSTRACT(
                 \ a:findstart,
@@ -499,7 +510,19 @@ endfunction
 function! g:CompleteCombinerRubyKeywords(findstart, keyword_base)
     let l:all_completers = [
                 \ 'localcomplete#localMatches',
-                \ 'localcomplete#allBufferMatches'
+                \ 'localcomplete#allBufferMatches',
+                \ ]
+    return combinerEXP#completeCombinerABSTRACT(
+                \ a:findstart,
+                \ a:keyword_base,
+                \ l:all_completers,
+                \ 0)
+endfunction
+
+function! g:CompleteCombinerCss(findstart, keyword_base)
+    let l:all_completers = [
+                \ 'localcomplete#localMatches',
+                \ 'localcomplete#allBufferMatches',
                 \ ]
     return combinerEXP#completeCombinerABSTRACT(
                 \ a:findstart,
@@ -562,9 +585,6 @@ set t_vb=
 set modeline
 set modelines=10
 
-" Include dashes in keywords
-autocmd BufRead,BufNewFile *.{css,sass,scss,less,styl,haml,html,erb} setlocal iskeyword+=-
-autocmd BufRead,BufNewFile *.{sass,scss} setlocal iskeyword+=$,+
 
 " CTags
 map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
@@ -584,6 +604,10 @@ autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 autocmd BufNewFile,BufRead *.hamlc set ft=haml
 autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
+
+" Add $ and - as keyword chars in sass/css/haml as necessary
+autocmd BufRead,BufNewFile *.{sass,scss} setlocal iskeyword+=$
+autocmd BufRead,BufNewFile *.{css,sass,scss,less,styl,haml,html,erb} setlocal iskeyword+=-
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
