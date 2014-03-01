@@ -306,7 +306,11 @@ Bundle 'ap/vim-css-color'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'mrtazz/molokai.vim'
+Bundle 'tomasr/molokai'
+let g:rehash256 = 1
+let g:molokai_original = 1
+set t_Co=256
+color molokai
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Decent light color scheme
@@ -472,9 +476,6 @@ set wildignore+=bundler_stubs,build,error_pages,bundle,build,error_pages
 
 " Status bar
 set laststatus=2
-
-set t_Co=256
-color molokai
 
 " Show (partial) command in the status line
 set showcmd
