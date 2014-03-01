@@ -8,7 +8,9 @@ let g:acp_reverseMappingInReverseMenu = 1
 let g:localcomplete#AdditionalKeywordChars = '$-'
 
 " let g:acp_refeed_checkpoints = [2]
-let g:acp_behavior = {}
+if !exists('g:acp_behavior')
+  let g:acp_behavior = {}
+endif
 
 " Complete keywords first locally, then all buffers
 " Complete everything else first locally, then all buffers, then omni
