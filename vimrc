@@ -430,10 +430,12 @@ Bundle 'tpope/vim-abolish'
 Bundle "L9"
 Bundle "dirkwallenstein/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
+
 let g:acp_colorForward = 'Pmenu'
 let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 2
 let g:acp_behaviorRubyOmniMethodLength = 2
+let g:acp_reverseMappingInReverseMenu = 1
 
 " let g:acp_refeed_checkpoints = [2]
 let g:acp_behavior = {}
@@ -463,6 +465,22 @@ let g:acp_behavior['ruby'] = [
   \    'command': "\<C-X>\<C-]>",
   \    'meets': 'acp#meetsForKeyword',
   \    'repeat': 0
+  \  }]
+let g:acp_behavior['sass'] = [
+  \  {
+  \    'command' : "\<C-P>",
+  \    'meets': 'acp#meetsForKeyword',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command' : "\<C-x>\<C-f>",
+  \    'meets'   : 'acp#meetsForFile',
+  \    'repeat'  : 1,
+  \  },
+  \  {
+  \    'command' : "\<C-x>\<C-o>",
+  \    'meets'   : 'acp#meetsForCssOmni',
+  \    'repeat'  : 0,
   \  }]
 
 function! g:CompleteCombinerRuby(findstart, keyword_base)
@@ -546,7 +564,7 @@ set modelines=10
 
 " Include dashes in keywords
 autocmd BufRead,BufNewFile *.{css,sass,scss,less,styl,haml,html,erb} setlocal iskeyword+=-
-autocmd BufRead,BufNewFile *.{sass,scss} setlocal iskeyword+=$,+,@
+autocmd BufRead,BufNewFile *.{sass,scss} setlocal iskeyword+=$,+
 
 " CTags
 map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
