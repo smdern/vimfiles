@@ -3,9 +3,11 @@ let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 2
 let g:acp_behaviorRubyOmniMethodLength = 2
 let g:acp_reverseMappingInReverseMenu = 1
-" Include things in iskeyword in localcomplete keyword chars so we can match
-" things-like-this in sass and such.
+" Include $ and - so we can match things in sass and such.
 let g:localcomplete#AdditionalKeywordChars = '$-'
+let g:localcomplete#OriginNoteLocalcomplete = '%'
+let g:localcomplete#OriginNoteAllBuffers = '+'
+let g:localcomplete#OriginNoteDictionary = '*'
 
 " let g:acp_refeed_checkpoints = [2]
 if !exists('g:acp_behavior')
