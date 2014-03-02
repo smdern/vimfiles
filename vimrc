@@ -488,10 +488,6 @@ autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 autocmd BufNewFile,BufRead *.hamlc set ft=haml
 autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
 
-" Add $ and - as keyword chars in sass/css/haml as necessary
-autocmd BufRead,BufNewFile *.{sass,scss} setlocal iskeyword+=$
-autocmd BufRead,BufNewFile *.{css,sass,scss,less,styl,haml,html,erb} setlocal iskeyword+=-
-
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
 autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
