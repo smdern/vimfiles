@@ -318,16 +318,16 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 " See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
 " You'll probably need this too: https://github.com/jenius/Fontforge-Installer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'Lokaltog/vim-powerline'
-
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'relative'
-call Pl#Theme#RemoveSegment('fugitive:branch')
-call Pl#Theme#RemoveSegment('fileformat')
-call Pl#Theme#RemoveSegment('fileencoding')
-call Pl#Theme#RemoveSegment('scrollpercent')
-autocmd FocusGained * call Pl#UpdateStatusline(1)
-autocmd FocusLost * call Pl#UpdateStatusline(0)
+" Bundle 'Lokaltog/vim-powerline'
+"
+" let g:Powerline_symbols = 'fancy'
+" let g:Powerline_stl_path_style = 'relative'
+" call Pl#Theme#RemoveSegment('fugitive:branch')
+" call Pl#Theme#RemoveSegment('fileformat')
+" call Pl#Theme#RemoveSegment('fileencoding')
+" call Pl#Theme#RemoveSegment('scrollpercent')
+" autocmd FocusGained * call Pl#UpdateStatusline(1)
+" autocmd FocusLost * call Pl#UpdateStatusline(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line behave like emacs
@@ -468,6 +468,14 @@ set t_vb=
 " Use modeline overrides
 set modeline
 set modelines=10
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Performance optimizations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set regexpengine=1 " new regex engine is slow w/ ruby files
+set ttyfast
+set lazyredraw
+syntax sync minlines=256
 
 " CTags
 map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
