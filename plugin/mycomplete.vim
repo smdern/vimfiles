@@ -3,8 +3,8 @@ let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 2
 let g:acp_behaviorRubyOmniMethodLength = 2
 let g:acp_reverseMappingInReverseMenu = 1
-" Include $ and - so we can match things in sass and such.
-let g:localcomplete#AdditionalKeywordChars = '$-'
+" Include - so we can match things in sass and such.
+let g:localcomplete#AdditionalKeywordChars = '-'
 let g:localcomplete#OriginNoteLocalcomplete = '%'
 let g:localcomplete#OriginNoteAllBuffers = '+'
 let g:localcomplete#OriginNoteDictionary = '*'
