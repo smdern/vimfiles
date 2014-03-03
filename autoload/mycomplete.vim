@@ -40,5 +40,5 @@ function mycomplete#MeetsForTags(context)
     return 0
   endif
 
-  return acp#meetsForKeyword(context)
+  return acp#meetsForKeyword(a:context)
 endfunction
