@@ -29,6 +29,12 @@ endif
 let g:acp_behavior['ruby'] = [
   \  {
   \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'mycomplete#CompleteCombinerRuby',
+  \    'meets': 'acp#meetsForRubyOmni',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command': "\<C-X>\<C-U>",
   \    'completefunc': 'mycomplete#CompleteCombinerRubyKeywords',
   \    'meets': 'acp#meetsForKeyword',
   \    'repeat': 0
@@ -37,12 +43,6 @@ let g:acp_behavior['ruby'] = [
   \    'command' : "\<C-x>\<C-f>",
   \    'meets'   : 'acp#meetsForFile',
   \    'repeat'  : 1,
-  \  },
-  \  {
-  \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'mycomplete#CompleteCombinerRuby',
-  \    'meets': 'acp#meetsForRubyOmni',
-  \    'repeat': 0
   \  },
   \  {
   \    'command': "\<C-X>\<C-]>",
