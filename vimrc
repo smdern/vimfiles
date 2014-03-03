@@ -190,11 +190,6 @@ Bundle 'kana/vim-textobj-indent'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tab to indent or autocomplete depending on context
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'ervandew/supertab'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vroom
 "
 " Run specs or cucumber features with ,t run only the test under the cursor
@@ -218,12 +213,6 @@ autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoo
 Bundle 'kchmck/vim-coffee-script'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Stuff for cucumber, try out ^] on a step in a feature to go to step
-" definition
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'tpope/vim-cucumber'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Updated ruby syntax and such
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'vim-ruby/vim-ruby'
@@ -241,6 +230,15 @@ map <leader>sa :AS<cr>
 map <leader>sr :RS<cr>
 " Make spec/test
 map <leader>ms :exec ':Runittest '.expand("%:t:r").'!'<cr>
+
+let g:rails_projections = {
+  \"app/assets/javascripts/*.coffee": {
+  \  "alternate": ["spec/javascripts/%s_spec.coffee"],
+  \},
+  \"spec/javascripts/*_spec.coffee": {
+  \  "alternate": "app/assets/javascripts/%s.coffee",
+  \},
+\}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
@@ -283,20 +281,9 @@ Bundle 'itspriddle/vim-jquery'
 Bundle 'jeyb/vim-jst'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax & indentation for Jade
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'digitaltoad/vim-jade'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax for nginx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'mutewinter/nginx.vim'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntax for typescript
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'leafgarland/typescript-vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Makes css colors show up as their actual colors, works better with CSApprox
@@ -307,7 +294,12 @@ Bundle 'ap/vim-css-color'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'mrtazz/molokai.vim'
+" https://github.com/tomasr/molokai/pull/30
+Bundle 'aaronjensen/molokai'
+let g:rehash256 = 1
+let g:molokai_original = 1
+set t_Co=256
+color molokai
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Decent light color scheme
@@ -326,16 +318,16 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 " See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
 " You'll probably need this too: https://github.com/jenius/Fontforge-Installer
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'Lokaltog/vim-powerline'
-
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'relative'
-call Pl#Theme#RemoveSegment('fugitive:branch')
-call Pl#Theme#RemoveSegment('fileformat')
-call Pl#Theme#RemoveSegment('fileencoding')
-call Pl#Theme#RemoveSegment('scrollpercent')
-autocmd FocusGained * call Pl#UpdateStatusline(1)
-autocmd FocusLost * call Pl#UpdateStatusline(0)
+" Bundle 'Lokaltog/vim-powerline'
+"
+" let g:Powerline_symbols = 'fancy'
+" let g:Powerline_stl_path_style = 'relative'
+" call Pl#Theme#RemoveSegment('fugitive:branch')
+" call Pl#Theme#RemoveSegment('fileformat')
+" call Pl#Theme#RemoveSegment('fileencoding')
+" call Pl#Theme#RemoveSegment('scrollpercent')
+" autocmd FocusGained * call Pl#UpdateStatusline(1)
+" autocmd FocusLost * call Pl#UpdateStatusline(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line behave like emacs
@@ -348,11 +340,6 @@ Bundle 'houtsnip/vim-emacscommandline'
 " repeatable. So really it's similar to v(motion)"_p
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'ReplaceWithRegister'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Just open a YAML file and hit `⌘r` or `<leader>r`. Again to go back.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'henrik/vim-yaml-flattener'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " xmpfilter
@@ -383,33 +370,11 @@ Bundle 'conormcd/matchindent.vim'
 " vitality.vim
 "
 " Add FocusGained/FocusLost back.
-" Requires features in HEAD tmux.
-"
-" Using my branch until tmux supports this in a released version.
-" Also this should make it so that anyone else who uses this w/o
-" the right version of tmux will be fine.
-" https://github.com/aaronjensen/vitality.vim/commit/3308bf21fb3d46d55ca84a19d228f8cf2210679d
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/sjl/vitality.vim/pull/23
 Bundle 'aaronjensen/vitality.vim'
 let g:vitality_fix_focus = 1
 let g:vitality_fix_cursor = 0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-marked
-"
-" Opens current file in Marked, an OSX markdown preview app:
-" http://markedapp.com/
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'itspriddle/vim-marked'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-i18n
-"
-" Replaces strings with I18n.t calls
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'stefanoverna/vim-i18n'
-vmap <Leader>t :call I18nTranslateString()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-emblem
@@ -436,6 +401,19 @@ Bundle 'Keithbsmiley/rspec.vim'
 " cru UPPER_CASE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-abolish'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Auto completion
+"
+" Two plugins play nice to automatically pop up the autocomplete window if
+" you want that, and let you use tab to cycle through options or restart
+" completion.
+"
+" Settings are in plugin/mycomplete.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle "L9"
+Bundle "dirkwallenstein/vim-autocomplpop"
+Bundle "dirkwallenstein/vim-localcomplete"
 
 :runtime macros/matchit.vim
 
@@ -474,20 +452,11 @@ set smartcase
 set wildmode=longest,list
 set wildmenu
 set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,public/javascripts/compiled
-set wildignore+=*/tmp/*,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache
+set wildignore+=tmp,*.orig,*.jpg,*.png,*.gif,log,solr,.sass-cache,.jhw-cache
 set wildignore+=bundler_stubs,build,error_pages,bundle,build,error_pages
-set wildignore+=node_modules
-
- " enable per-project .vimrc files
-set exrc
- " Only execute safe per-project vimrc commands
-set secure
 
 " Status bar
 set laststatus=2
-
-set t_Co=256
-color molokai
 
 " Show (partial) command in the status line
 set showcmd
@@ -500,8 +469,16 @@ set t_vb=
 set modeline
 set modelines=10
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Performance optimizations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set regexpengine=1 " new regex engine is slow w/ ruby files
+set ttyfast
+set lazyredraw
+syntax sync minlines=256
+
 " CTags
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
 map <C-\> :tnext<CR>
 
 " Remember last location in file
@@ -542,41 +519,6 @@ let macvim_hig_shift_movement = 1
 " map quick quit
 map <leader>qq :qa!<cr>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" key mapping for window navigation
-" "
-" " If you're in tmux it'll keep going to tmux splits if you hit the end of
-" " your vim splits.
-" "
-" " For the tmux side see:
-" "
-" https://github.com/aaronjensen/dotfiles/blob/e9c3551b40c43264ac2cd21d577f948192a46aea/tmux.conf#L96-L102
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists('$TMUX')
-  function! TmuxOrSplitSwitch(wincmd, tmuxdir)
-    let previous_winnr = winnr()
-    silent! execute "wincmd " . a:wincmd
-    if previous_winnr == winnr()
-      call system("tmux select-pane -" . a:tmuxdir)
-      redraw!
-    endif
-  endfunction
-
-  let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
-  let &t_ti = "\<Esc>]2;vim\<Esc>\\" .  &t_ti
-  let &t_te = "\<Esc>]2;".  previous_title . "\<Esc>\\" . &t_te
-
-  nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-  nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-  nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-  nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
-else
-  map <C-h> <C-w>h
-  map <C-j> <C-w>j
-  map <C-k> <C-w>k
-  map <C-l> <C-w>l
-endif
-
 " Open splits below and right by default
 set splitbelow
 set splitright
@@ -586,16 +528,6 @@ nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
 
 " Show 2 lines of context
 set scrolloff=2
-
-" Make the window we're on as big as it makes sense to make it
-set winwidth=84
-
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will
-" fail.
-set winheight=5
-set winminheight=5
-set winheight=999
 
 " don't delay when you hit esc in terminal vim, this may make arrow keys not
 " work well when ssh'd in
@@ -623,67 +555,6 @@ nnoremap M ,
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PROMOTE VARIABLE TO RSPEC LET
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! PromoteToLet()
-  :normal! dd
-  " :exec '?^\s*it\>'
-  :normal! P
-  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
-  :normal ==
-endfunction
-:command! PromoteToLet :call PromoteToLet()
-:map <leader>l :PromoteToLet<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Extract function, highlight w/ V then hit C, type the method name,
-" then go down to where you want the method and hit <leader>mp
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! PasteExtractedFunction()
-  set paste
-  execute "normal odef \<c-r>.\<cr>\<c-r>\"end"
-  set nopaste
-  normal v`[=
-endfunction
-command! PasteExtractedFunction :call PasteExtractedFunction()
-map <leader>mp :PasteExtractedFunction<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ARROW KEYS ARE UNACCEPTABLE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <Left> :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up> :echo "no!"<cr>
-map <Down> :echo "no!"<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" tmux stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('mouse')
-  set mouse=a
-  if &term =~ "xterm" || &term =~ "screen"
-    " for some reason, doing this directly with 'set ttymouse=xterm2'
-    " doesn't work -- 'set ttymouse?' returns xterm2 but the mouse
-    " makes tmux enter copy mode instead of selecting or scrolling
-    " inside Vim -- but luckily, setting it up from within autocmds
-    " works
-    autocmd VimEnter * set ttymouse=xterm2
-    autocmd FocusGained * set ttymouse=xterm2
-    autocmd BufEnter * set ttymouse=xterm2
-  endif
-endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Preview window size hack
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ResizePreviewWindow()
-  if &previewwindow
-    set winheight=999
-  endif
-endfunction
-autocmd WinEnter * call ResizePreviewWindow()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Copy paste system clipboard
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>y "*y
@@ -695,53 +566,11 @@ map <leader>P "*P
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! QuitWithQ()
   if &buftype == 'help'
-    nnoremap <buffer> <silent> q :q<cr>
+    quit
   endif
 endfunction
-autocmd FileType help exe QuitWithQ()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This enables iterm cursor changes from vim. In .tmux.conf you'll need:
-" set-option -g terminal-overrides '*88col*:colors=88,*256col*:colors=256,xterm*:XT:Ms=\E]52;%p1%s;%p2%s\007:Cc=\E]12;%p1%s\007:Cr=\E]112\007:Cs=\E]50;CursorShape=%?%p1%{3}%<%t%{0}%e%p1%{2}%-%;%d\007'
-"
-" Source: https://github.com/Casecommons/casecommons_workstation/blob/master/templates/default/dot_tmux.conf.erb
-"         https://github.com/Casecommons/vim-config/blob/master/init/tmux.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists('$ITERM_PROFILE')
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>[3 q"
-    let &t_EI = "\<Esc>[0 q"
-  else
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
-end
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" This fixes pasting from iterm (and some other terminals, but you'll need to
-" adjust the condition) by using "bracketed paste mode"
-" I modified it to wait for esc (by using f28/f29)
-"
-" See: http://stackoverflow.com/questions/5585129/pasting-code-into-terminal-window-into-vim-on-mac-os-x
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists('$ITERM_PROFILE') || exists('$TMUX')
-  let &t_ti = "\<Esc>[?2004h" . &t_ti
-  let &t_te = "\<Esc>[?2004l" . &t_te
-
-  function! XTermPasteBegin(ret)
-    set pastetoggle=<Esc>[201~
-    set paste
-    return a:ret
-  endfunction
-
-  execute "set <f28>=\<Esc>[200~"
-  execute "set <f29>=\<Esc>[201~"
-  map <expr> <f28> XTermPasteBegin("i")
-  imap <expr> <f28> XTermPasteBegin("")
-  vmap <expr> <f28> XTermPasteBegin("c")
-  cmap <f28> <nop>
-  cmap <f29> <nop>
-end
+autocmd FileType help map <buffer> q :exe QuitWithQ()<cr>
+autocmd FileType help map <buffer> <leader>w :exe QuitWithQ()<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Persistent undo
@@ -753,19 +582,15 @@ set undolevels=1000
 set undoreload=10000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Commonly changed settings, override in your vimrc.local
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:expandWindows = 1
+let g:disableArrowKeys = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LAST SECTION
 " Include user's local vim config
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
-let g:rails_projections = {
-  \"app/assets/javascripts/*.coffee": {
-  \  "alternate": ["spec/javascripts/%s_spec.coffee"],
-  \},
-  \"spec/javascripts/*_spec.coffee": {
-  \  "alternate": "app/assets/javascripts/%s.coffee",
-  \},
-\}
-

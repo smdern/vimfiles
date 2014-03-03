@@ -7,3 +7,7 @@ ln -s ~/.vim/gvimrc ~/.gvimrc
 vim +BundleInstall +qall
 cd ~/.vim/bundle/ctrlp-cmatcher
 ./install_linux.sh
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh
+
+brew install ctags
