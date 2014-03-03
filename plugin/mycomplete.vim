@@ -43,7 +43,7 @@ let g:acp_behavior['ruby'] = [
   \  },
   \  {
   \    'command': "\<C-X>\<C-]>",
-  \    'meets': 'acp#meetsForKeyword',
+  \    'meets': 'mycomplete#MeetsForTags',
   \    'repeat': 0
   \  }]
 let g:acp_behavior['css'] = [

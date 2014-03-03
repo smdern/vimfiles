@@ -34,3 +34,11 @@ function mycomplete#CompleteCombinerCss(findstart, keyword_base)
         \ l:all_completers,
         \ 0)
 endfunction
+
+function mycomplete#MeetsForTags(context)
+  if empty(tagfiles())
+    return 0
+  endif
+
+  return acp#meetsForKeyword(context)
+endfunction
