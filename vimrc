@@ -472,7 +472,7 @@ set modelines=10
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Performance optimizations
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set regexpengine=1 " new regex engine is slow w/ ruby files
+silent! set regexpengine=1 " new regex engine is slow w/ ruby files, but not all vims have this
 set ttyfast
 set lazyredraw
 syntax sync minlines=256
