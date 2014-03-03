@@ -1,3 +1,6 @@
+let g:rubycomplete_buffer_loading = 1
+set complete-=i
+
 let g:acp_colorForward = 'Pmenu'
 let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 2
