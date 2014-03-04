@@ -1,3 +1,6 @@
+let g:rubycomplete_buffer_loading = 1
+set complete-=i
+
 let g:acp_colorForward = 'Pmenu'
 let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 2
@@ -26,6 +29,12 @@ endif
 let g:acp_behavior['ruby'] = [
   \  {
   \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'mycomplete#CompleteCombinerRuby',
+  \    'meets': 'acp#meetsForRubyOmni',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command': "\<C-X>\<C-U>",
   \    'completefunc': 'mycomplete#CompleteCombinerRubyKeywords',
   \    'meets': 'acp#meetsForKeyword',
   \    'repeat': 0
@@ -36,14 +45,8 @@ let g:acp_behavior['ruby'] = [
   \    'repeat'  : 1,
   \  },
   \  {
-  \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'mycomplete#CompleteCombinerRuby',
-  \    'meets': 'acp#meetsForRubyOmni',
-  \    'repeat': 0
-  \  },
-  \  {
   \    'command': "\<C-X>\<C-]>",
-  \    'meets': 'acp#meetsForKeyword',
+  \    'meets': 'mycomplete#MeetsForTags',
   \    'repeat': 0
   \  }]
 let g:acp_behavior['css'] = [
