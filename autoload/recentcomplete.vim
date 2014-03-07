@@ -1,5 +1,6 @@
-let s:git_diff = 'git diff --diff-filter=AM --no-color '
-let s:grep_add = '|grep ^+'
+function! s:git_diff(args)
+  return " git diff --diff-filter=AM --no-color ".a:args." 2>/dev/null | grep ^+ 2>/dev/null | grep -v '+++ [ab]/' 2>/dev/null "
+endfunction
 
 function! s:buffer_contents()
   if &fileformat ==# "dos"
@@ -31,29 +32,45 @@ function! s:extract_keywords_from_diff(diff)
 endfunction
 
 function! s:buffer_keywords()
-  let l:diff = system('git diff --no-index -- '.expand('%').' -', s:buffer_contents())
+  if !filereadable(expand('%'))
+    return []
+  endif
+  let l:diff = system("echo ".shellescape(s:buffer_contents()).s:git_diff('--no-index -- '.expand('%').' -'))
   return s:extract_keywords_from_diff(l:diff)
 endfunction
 
 function! s:untracked_keywords()
-  let l:diff = system('git ls-files --others --exclude-standard | xargs -I % git diff /dev/null %')
+  "echom 'git ls-files --others --exclude-standard 2>/dev/null | xargs -I % '.s:git_diff('git diff /dev/null %')
+  " echom 'git ls-files --others --exclude-standard | xargs -I % '.s:git_diff('--no-index /dev/null %')
+  let l:diff = system('git ls-files --others --exclude-standard | xargs -I % '.s:git_diff('--no-index /dev/null %'))
+  "echom l:diff
   return s:extract_keywords_from_diff(l:diff)
 endfunction
 
 function! s:uncommitted_keywords()
-  let l:diff = system(s:git_diff . 'HEAD' . s:grep_add)
+  let l:diff = system(s:git_diff('HEAD'))
   return s:extract_keywords_from_diff(l:diff)
 endfunction
 
+let s:commit_cache = {}
+
 function! s:recently_committed_keywords()
+  let l:head = system("git rev-parse HEAD")
+  if has_key(s:commit_cache, l:head)
+    echom "cached!"
+    return s:commit_cache[l:head]
+  endif
+
   " TODO: cache, maybe one commit at a time
   " To get commits:
   " git log --after="30 minutes ago" --format=%H
   " Then for each:
   " git show --pretty=format: --no-color <SHA>
-  let l:diff = system(s:git_diff . "@'{2.hours.ago}'". s:grep_add)
+  let l:diff = system(s:git_diff("@'{2.hours.ago}'"))
   let l:diff = join(reverse(split(l:diff, '\n')), "\n")
-  return s:extract_keywords_from_diff(l:diff)
+  let l:result = s:extract_keywords_from_diff(l:diff)
+  let s:commit_cache[l:head] = l:result
+  return l:result
 endfunction
 
 function! s:matches(keyword_base)
