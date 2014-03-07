@@ -414,6 +414,7 @@ Bundle 'tpope/vim-abolish'
 Bundle "L9"
 Bundle "dirkwallenstein/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
+Bundle "aaronjensen/vim-recentcomplete"
 
 :runtime macros/matchit.vim
 
