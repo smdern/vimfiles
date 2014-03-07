@@ -35,7 +35,7 @@ function! s:buffer_keywords()
   if !filereadable(expand('%'))
     return []
   endif
-  let l:diff = system("echo ".shellescape(s:buffer_contents()).s:git_diff('--no-index -- '.expand('%').' -'))
+  let l:diff = system("echo ".shellescape(s:buffer_contents())." | ".s:git_diff('--no-index -- '.expand('%').' -'))
   return s:extract_keywords_from_diff(l:diff)
 endfunction
 
