@@ -57,7 +57,6 @@ let s:commit_cache = {}
 function! s:recently_committed_keywords()
   let l:head = system("git rev-parse HEAD")
   if has_key(s:commit_cache, l:head)
-    echom "cached!"
     return s:commit_cache[l:head]
   endif
 
@@ -66,7 +65,7 @@ function! s:recently_committed_keywords()
   " git log --after="30 minutes ago" --format=%H
   " Then for each:
   " git show --pretty=format: --no-color <SHA>
-  let l:diff = system(s:git_diff("@'{2.hours.ago}'"))
+  let l:diff = system(s:git_diff("@'{8.hours.ago}'"))
   let l:diff = join(reverse(split(l:diff, '\n')), "\n")
   let l:result = s:extract_keywords_from_diff(l:diff)
   let s:commit_cache[l:head] = l:result
