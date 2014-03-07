@@ -1,5 +1,5 @@
 function! s:git_diff(args)
-  return " git diff --diff-filter=AM --no-color ".a:args." 2>/dev/null | grep ^+ 2>/dev/null | grep -v '+++ [ab]/' 2>/dev/null "
+  return " git diff --diff-filter=AM --no-color ".a:args." 2>/dev/null | grep \\^+ 2>/dev/null | grep -v '+++ [ab]/' 2>/dev/null "
 endfunction
 
 function! s:buffer_contents()
