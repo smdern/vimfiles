@@ -4,13 +4,13 @@ set complete-=i
 let g:acp_colorForward = 'Pmenu'
 let g:acp_colorReverse = 'Pmenu'
 let g:acp_behaviorKeywordLength = 1
-let g:acp_behaviorRubyOmniMethodLength = 1
+let g:acp_behaviorRubyOmniMethodLength = 0
 let g:acp_reverseMappingInReverseMenu = 1
 let g:localcomplete#OriginNoteLocalcomplete = '%'
 let g:localcomplete#OriginNoteAllBuffers = '+'
 let g:localcomplete#OriginNoteDictionary = '*'
-" let g:localcomplete#LocalMinPrefixLength = 0
-" let g:localcomplete#AllBuffersMinPrefixLength = 0
+let g:localcomplete#LocalMinPrefixLength = 0
+let g:localcomplete#AllBuffersMinPrefixLength = 0
 
 " Add $ and - as keyword chars in sass/css/haml as necessary
 " $ doesn't work w/ localcomplete
