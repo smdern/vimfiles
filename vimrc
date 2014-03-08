@@ -414,6 +414,7 @@ Bundle 'tpope/vim-abolish'
 Bundle "L9"
 Bundle "dirkwallenstein/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
+Bundle "aaronjensen/vim-recentcomplete"
 
 :runtime macros/matchit.vim
 
@@ -560,6 +561,14 @@ nnoremap M ,
 map <leader>y "*y
 map <leader>p "*p
 map <leader>P "*P
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Profiling
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
+nnoremap <silent> <leader>DP :exe ":profile pause"<cr>
+nnoremap <silent> <leader>DC :exe ":profile continue"<cr>
+nnoremap <silent> <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quit help easily

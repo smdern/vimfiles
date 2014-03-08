@@ -1,5 +1,6 @@
 function mycomplete#CompleteCombinerRuby(findstart, keyword_base)
   let l:all_completers = [
+        \ 'recentcomplete#matches',
         \ 'localcomplete#localMatches',
         \ 'localcomplete#allBufferMatches',
         \ 'rubycomplete#Complete',
@@ -13,6 +14,7 @@ endfunction
 
 function mycomplete#CompleteCombinerRubyKeywords(findstart, keyword_base)
   let l:all_completers = [
+        \ 'recentcomplete#matches',
         \ 'localcomplete#localMatches',
         \ 'localcomplete#allBufferMatches',
         \ ]
@@ -25,6 +27,7 @@ endfunction
 
 function mycomplete#CompleteCombinerCss(findstart, keyword_base)
   let l:all_completers = [
+        \ 'recentcomplete#matches',
         \ 'localcomplete#localMatches',
         \ 'localcomplete#allBufferMatches',
         \ ]
