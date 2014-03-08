@@ -412,7 +412,7 @@ Bundle 'tpope/vim-abolish'
 " Settings are in plugin/mycomplete.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle "L9"
-Bundle "dirkwallenstein/vim-autocomplpop"
+Bundle "aaronjensen/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
 Bundle "aaronjensen/vim-recentcomplete"
 
