@@ -416,6 +416,9 @@ Bundle "dirkwallenstein/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
 Bundle "aaronjensen/vim-recentcomplete"
 
+" make enter always be enter, even when popup menu is visible.
+inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
