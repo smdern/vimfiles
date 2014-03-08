@@ -3,8 +3,8 @@ set complete-=i
 
 let g:acp_colorForward = 'Pmenu'
 let g:acp_colorReverse = 'Pmenu'
-let g:acp_behaviorKeywordLength = 2
-let g:acp_behaviorRubyOmniMethodLength = 2
+let g:acp_behaviorKeywordLength = 1
+let g:acp_behaviorRubyOmniMethodLength = 1
 let g:acp_reverseMappingInReverseMenu = 1
 let g:localcomplete#OriginNoteLocalcomplete = '%'
 let g:localcomplete#OriginNoteAllBuffers = '+'
