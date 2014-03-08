@@ -23,19 +23,10 @@ if !exists('g:acp_behavior')
   let g:acp_behavior = {}
 endif
 
-" Complete keywords first locally, then all buffers
-" Complete everything else first locally, then all buffers, then omni
-" Include tags if all else fails
-let g:acp_behavior['ruby'] = [
+let g:acp_behavior['*'] = [
   \  {
   \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'mycomplete#CompleteCombinerRuby',
-  \    'meets': 'acp#meetsForRubyOmni',
-  \    'repeat': 0
-  \  },
-  \  {
-  \    'command': "\<C-X>\<C-U>",
-  \    'completefunc': 'mycomplete#CompleteCombinerRubyKeywords',
+  \    'completefunc': 'mycomplete#CompleteCombinerText',
   \    'meets': 'acp#meetsForKeyword',
   \    'repeat': 0
   \  },
@@ -48,7 +39,37 @@ let g:acp_behavior['ruby'] = [
   \    'command': "\<C-X>\<C-]>",
   \    'meets': 'mycomplete#MeetsForTags',
   \    'repeat': 0
-  \  }]
+  \  },
+  \]
+
+" Complete keywords first locally, then all buffers
+" Complete everything else first locally, then all buffers, then omni
+" Include tags if all else fails
+let g:acp_behavior['ruby'] = [
+  \  {
+  \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'mycomplete#CompleteCombinerRuby',
+  \    'meets': 'acp#meetsForRubyOmni',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command': "\<C-X>\<C-U>",
+  \    'completefunc': 'mycomplete#CompleteCombinerText',
+  \    'meets': 'acp#meetsForKeyword',
+  \    'repeat': 0
+  \  },
+  \  {
+  \    'command' : "\<C-x>\<C-f>",
+  \    'meets'   : 'acp#meetsForFile',
+  \    'repeat'  : 1,
+  \  },
+  \  {
+  \    'command': "\<C-X>\<C-]>",
+  \    'meets': 'mycomplete#MeetsForTags',
+  \    'repeat': 0
+  \  },
+  \]
+
 let g:acp_behavior['css'] = [
   \  {
   \    'command' : "\<C-x>\<C-o>",
@@ -70,6 +91,7 @@ let g:acp_behavior['css'] = [
   \    'command' : "\<C-p>",
   \    'meets'   : 'acp#meetsForKeyword',
   \    'repeat'  : 0,
-  \  }]
+  \  },
+  \]
 let g:acp_behavior['sass'] = g:acp_behavior['css']
 let g:acp_behavior['scss'] = g:acp_behavior['css']
