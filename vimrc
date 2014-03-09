@@ -403,6 +403,17 @@ Bundle 'Keithbsmiley/rspec.vim'
 Bundle 'tpope/vim-abolish'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-vinegar
+"
+" netrw fixes to make it better. Press - in normal mode.
+" Use ,w to get back.
+" Use cd to change your vim current directory.
+" Use - to go up a directory.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle "tpope/vim-vinegar"
+autocmd FileType netrw map <buffer> <leader>w :bwipeout<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
 "
 " Two plugins play nice to automatically pop up the autocomplete window if
