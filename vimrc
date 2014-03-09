@@ -414,6 +414,14 @@ Bundle "tpope/vim-vinegar"
 autocmd FileType netrw map <buffer> <leader>w :bwipeout<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-scriptease
+"
+" Lots of helpers for writing scripts.
+" See :h scriptease
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle "tpope/vim-scriptease"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
 "
 " Two plugins play nice to automatically pop up the autocomplete window if
