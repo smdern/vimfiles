@@ -330,9 +330,9 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 " autocmd FocusLost * call Pl#UpdateStatusline(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" makes the command line behave like emacs
+" makes the command line and insert mode behave like emacs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'houtsnip/vim-emacscommandline'
+Bundle 'tpope/vim-rsi'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Adds gr command to replace text (takes a motion)
