@@ -330,9 +330,9 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 " autocmd FocusLost * call Pl#UpdateStatusline(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" makes the command line behave like emacs
+" makes the command line and insert mode behave like emacs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Bundle 'houtsnip/vim-emacscommandline'
+Bundle 'tpope/vim-rsi'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Adds gr command to replace text (takes a motion)
@@ -403,6 +403,25 @@ Bundle 'Keithbsmiley/rspec.vim'
 Bundle 'tpope/vim-abolish'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-vinegar
+"
+" netrw fixes to make it better. Press - in normal mode.
+" Use ,w to get back.
+" Use cd to change your vim current directory.
+" Use - to go up a directory.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle "tpope/vim-vinegar"
+autocmd FileType netrw map <buffer> <leader>w :bwipeout<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-scriptease
+"
+" Lots of helpers for writing scripts.
+" See :h scriptease
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle "tpope/vim-scriptease"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
 "
 " Two plugins play nice to automatically pop up the autocomplete window if
@@ -412,9 +431,12 @@ Bundle 'tpope/vim-abolish'
 " Settings are in plugin/mycomplete.vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle "L9"
-Bundle "dirkwallenstein/vim-autocomplpop"
+Bundle "aaronjensen/vim-autocomplpop"
 Bundle "dirkwallenstein/vim-localcomplete"
 Bundle "aaronjensen/vim-recentcomplete"
+
+" make enter always be enter, even when popup menu is visible.
+inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 
 :runtime macros/matchit.vim
 
