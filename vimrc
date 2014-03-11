@@ -336,6 +336,8 @@ Bundle 'tpope/vim-rsi'
 noremap!        <M-BS> <C-W>
 cnoremap        <M-BS> <C-W>
 
+" https://github.com/tpope/vim-rsi/pull/3
+" https://github.com/tpope/vim-rsi/pull/10
 if !has("gui_running")
   silent! exe "set <F34>=\<Esc>\<C-?>"
   silent! exe "set <F35>=\<Esc>\<C-H>"
