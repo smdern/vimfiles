@@ -333,6 +333,15 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 " makes the command line and insert mode behave like emacs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-rsi'
+noremap!        <M-BS> <C-W>
+cnoremap        <M-BS> <C-W>
+
+if !has("gui_running")
+  silent! exe "set <F34>=\<Esc>\<C-?>"
+  silent! exe "set <F35>=\<Esc>\<C-H>"
+  map! <F34> <M-Bs>
+  map! <F35> <M-BS>
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Adds gr command to replace text (takes a motion)
