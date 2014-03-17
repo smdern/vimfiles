@@ -1,4 +1,4 @@
-let g:rubycomplete_buffer_loading = 1
+"let g:rubycomplete_buffer_loading = 1
 set complete-=i
 
 let g:acp_colorForward = 'Pmenu'
