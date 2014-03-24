@@ -218,6 +218,11 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntax highlighting for Gemfile
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Bundle 'tpope/vim-bundler'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Some syntax highlighthing for rails and :Rextract to extract partials
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'tpope/vim-rails'
