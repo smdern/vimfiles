@@ -197,11 +197,13 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " files to run the last run test
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Bundle 'skalnik/vim-vroom'
+Bundle 'tpope/vim-dispatch'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 let g:vroom_use_zeus = 1
 let g:vroom_use_bundle_exec = 1
+let g:vroom_use_dispatch = 1
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
