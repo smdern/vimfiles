@@ -15,11 +15,13 @@ set winheight=999
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Special window size hack
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ResizeSpecialWindows()
+function! ResizeWindow()
   if &previewwindow
     set winheight=999
   elseif &buftype == 'quickfix'
     set winheight=10
+  else
+    set winheight=999
   endif
 endfunction
-autocmd WinEnter * call ResizeSpecialWindows()
+autocmd WinEnter * call ResizeWindow()
