@@ -204,6 +204,12 @@ let g:vroom_write_all = 1
 let g:vroom_use_zeus = 1
 let g:vroom_use_bundle_exec = 1
 let g:vroom_use_dispatch = 0
+
+let g:dispatch_compilers = {
+      \ 'bundle exec': '',
+      \ 'clear;': '',
+      \ 'zeus': ''}
+
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 map <leader>/ :Copen!<cr>
