@@ -13,11 +13,15 @@ set winminheight=5
 set winheight=999
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Preview window size hack
+" Special window size hack
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ResizePreviewWindow()
+function! ResizeWindow()
   if &previewwindow
+    set winheight=999
+  elseif &buftype == 'quickfix'
+    set winheight=10
+  else
     set winheight=999
   endif
 endfunction
-autocmd WinEnter * call ResizePreviewWindow()
+autocmd WinEnter * call ResizeWindow()
