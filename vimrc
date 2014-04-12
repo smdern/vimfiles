@@ -309,8 +309,7 @@ Plugin 'ap/vim-css-color'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" https://github.com/tomasr/molokai/pull/30
-Plugin 'aaronjensen/molokai'
+Plugin 'tomasr/molokai'
 let g:rehash256 = 1
 let g:molokai_original = 1
 set t_Co=256
