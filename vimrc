@@ -154,7 +154,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['ruby'] }
+                           \ 'passive_filetypes': ['ruby', 'haml'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically add end at the end of ruby and vim blocks
@@ -202,7 +202,7 @@ Plugin 'tpope/vim-dispatch'
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 let g:vroom_use_zeus = 1
-let g:vroom_use_bundle_exec = 1
+let g:vroom_use_bundle_exec = 0
 let g:vroom_use_dispatch = 0
 
 let g:dispatch_compilers = {
@@ -309,8 +309,7 @@ Plugin 'ap/vim-css-color'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" https://github.com/tomasr/molokai/pull/30
-Plugin 'aaronjensen/molokai'
+Plugin 'tomasr/molokai'
 let g:rehash256 = 1
 let g:molokai_original = 1
 set t_Co=256
