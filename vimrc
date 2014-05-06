@@ -452,6 +452,13 @@ Plugin 'aaronjensen/vim-recentcomplete'
 " make enter always be enter, even when popup menu is visible.
 inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Dockerfile.vim
+"
+" Syntax for Dockerfile
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'ekalinin/Dockerfile.vim'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
