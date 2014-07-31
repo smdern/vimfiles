@@ -551,7 +551,8 @@ autocmd FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolum
 set backspace=indent,eol,start
 
 " Remove trailing whitespace automagically
-autocmd BufWritePre *.rb,*.coffee :%s/\s\+$//e
+autocmd FileType coffee,haml,javascript,php,ruby,sass,scss,sh
+  \ autocmd BufWritePre <buffer> exe '%s/\s\+$//e'
 
 " Inserts the path of the currently edited file into a command
 " Command mode: %%
