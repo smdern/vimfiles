@@ -459,6 +459,15 @@ inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'ekalinin/Dockerfile.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" sideways.vim
+"
+" Move parameters around with ,< and ,>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'AndrewRadev/sideways.vim'
+nnoremap (( :SidewaysLeft<cr>
+nnoremap )) :SidewaysRight<cr>
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
