@@ -213,7 +213,7 @@ let g:dispatch_compilers = {
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 map <leader>/ :Copen!<cr>
-map <silent> <leader>d :let g:vroom_use_dispatch = !g:vroom_use_dispatch<cr>
+map <silent> <leader>i :let g:vroom_use_dispatch = !g:vroom_use_dispatch<cr>
 autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 
@@ -467,6 +467,15 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'AndrewRadev/sideways.vim'
 nnoremap (( :SidewaysLeft<cr>
 nnoremap )) :SidewaysRight<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" dash.vim
+"
+" Look up words in dash
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'rizzatti/dash.vim'
+nmap <silent> <leader>d <Plug>DashGlobalSearch
+nmap <silent> <leader><leader>d <Plug>DashSearch
 
 :runtime macros/matchit.vim
 
