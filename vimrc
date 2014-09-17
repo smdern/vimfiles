@@ -477,6 +477,13 @@ Plugin 'rizzatti/dash.vim'
 nmap <silent> <leader>d <Plug>DashGlobalSearch
 nmap <silent> <leader><leader>d <Plug>DashSearch
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-cjsx
+"
+" Support for coffee-react
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'mtscout6/vim-cjsx'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
