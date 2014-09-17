@@ -84,7 +84,7 @@ Plugin 'tomtom/tcomment_vim'
 " https://github.com/JazzCore/ctrlp-cmatcher
 " It must be built, it requires python-dev as a dependency
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'JazzCore/ctrlp-cmatcher'
 
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
@@ -213,7 +213,7 @@ let g:dispatch_compilers = {
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 map <leader>/ :Copen!<cr>
-map <silent> <leader>d :let g:vroom_use_dispatch = !g:vroom_use_dispatch<cr>
+map <silent> <leader>i :let g:vroom_use_dispatch = !g:vroom_use_dispatch<cr>
 autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 
@@ -458,6 +458,31 @@ inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 " Syntax for Dockerfile
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'ekalinin/Dockerfile.vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" sideways.vim
+"
+" Move parameters around with ,< and ,>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'AndrewRadev/sideways.vim'
+nnoremap (( :SidewaysLeft<cr>
+nnoremap )) :SidewaysRight<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" dash.vim
+"
+" Look up words in dash
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'rizzatti/dash.vim'
+nmap <silent> <leader>d <Plug>DashGlobalSearch
+nmap <silent> <leader><leader>d <Plug>DashSearch
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-cjsx
+"
+" Support for coffee-react
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'mtscout6/vim-cjsx'
 
 :runtime macros/matchit.vim
 
