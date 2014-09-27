@@ -494,6 +494,15 @@ nmap <silent> <leader><leader>d <Plug>DashSearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'mtscout6/vim-cjsx'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-auto-save
+"
+" Automatically save
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin '907th/vim-auto-save'
+let g:auto_save = 1
+let g:auto_save_silent = 1
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
