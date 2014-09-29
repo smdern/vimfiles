@@ -498,12 +498,11 @@ Plugin 'mtscout6/vim-cjsx'
 " vim-auto-save
 "
 " Automatically save
+" My fork does not autosave while in insert mode
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin '907th/vim-auto-save'
-" let g:auto_save = 1
-" let g:auto_save_silent = 1
-" let g:auto_save_no_updatetime = 1
-" set updatetime=1000
+Plugin 'aaronjensen/vim-auto-save'
+let g:auto_save = 1
+let g:auto_save_silent = 1
 
 :runtime macros/matchit.vim
 
