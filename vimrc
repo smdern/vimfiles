@@ -499,10 +499,11 @@ Plugin 'mtscout6/vim-cjsx'
 "
 " Automatically save
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin '907th/vim-auto-save'
-let g:auto_save = 1
-let g:auto_save_silent = 1
-let g:auto_save_no_updatetime = 1
+" Plugin '907th/vim-auto-save'
+" let g:auto_save = 1
+" let g:auto_save_silent = 1
+" let g:auto_save_no_updatetime = 1
+" set updatetime=1000
 
 :runtime macros/matchit.vim
 
