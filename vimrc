@@ -505,6 +505,13 @@ let g:auto_save = 1
 let g:auto_save_silent = 1
 " let g:auto_save_in_insert_mode = 0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-jade
+"
+" Support for jade files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'digitaltoad/vim-jade'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
