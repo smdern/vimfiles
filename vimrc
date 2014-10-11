@@ -449,16 +449,18 @@ Plugin 'tpope/vim-scriptease'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
 "
-" Two plugins play nice to automatically pop up the autocomplete window if
+" Several plugins play nice to automatically pop up the autocomplete window if
 " you want that, and let you use tab to cycle through options or restart
 " completion.
 "
 " Settings are in plugin/mycomplete.vim
+"
+" neocomplete requires vim compiled w/ lua support.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'L9'
-Plugin 'aaronjensen/vim-autocomplpop'
 Plugin 'dirkwallenstein/vim-localcomplete'
 Plugin 'aaronjensen/vim-recentcomplete'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neocomplete.vim'
 
 " make enter always be enter, even when popup menu is visible.
 inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
