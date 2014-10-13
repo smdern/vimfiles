@@ -7,5 +7,7 @@ ln -s ~/.vim/gvimrc ~/.gvimrc
 vim +PluginInstall +qall
 cd ~/.vim/bundle/ctrlp-cmatcher
 CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh
+cd ~/.vim/bundle/vimproc.vim
+make
 
 brew install ctags

@@ -92,7 +92,8 @@ if executable('ag')
   let g:ctrlp_user_command = 'cd %s && ag --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+  " no it isn't
+  " let g:ctrlp_use_caching = 0
 else
   " Fall back to using git ls-files if Ag is not available
   let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
@@ -448,16 +449,18 @@ Plugin 'tpope/vim-scriptease'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
 "
-" Two plugins play nice to automatically pop up the autocomplete window if
+" Several plugins play nice to automatically pop up the autocomplete window if
 " you want that, and let you use tab to cycle through options or restart
 " completion.
 "
 " Settings are in plugin/mycomplete.vim
+"
+" neocomplete requires vim compiled w/ lua support.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'L9'
-Plugin 'aaronjensen/vim-autocomplpop'
 Plugin 'dirkwallenstein/vim-localcomplete'
 Plugin 'aaronjensen/vim-recentcomplete'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/neocomplete.vim'
 
 " make enter always be enter, even when popup menu is visible.
 inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
@@ -502,6 +505,14 @@ Plugin 'mtscout6/vim-cjsx'
 Plugin '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
+" let g:auto_save_in_insert_mode = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-jade
+"
+" Support for jade files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'digitaltoad/vim-jade'
 
 :runtime macros/matchit.vim
 
