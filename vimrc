@@ -605,9 +605,15 @@ autocmd FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolum
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-" Remove trailing whitespace automagically
-autocmd FileType coffee,haml,javascript,php,ruby,sass,scss,sh
-  \ autocmd BufWritePre <buffer> exe '%s/\s\+$//e'
+augroup Miscellaneous
+  au!
+  " Remove trailing whitespace
+  au FileType coffee,eruby,haml,javascript,php,ruby,sass,scss,sh,xml
+    \ au BufWritePre <buffer>
+      \ let pos = getpos('.')
+      \ | execute '%s/\s\+$//e'
+      \ | call setpos('.', pos)
+augroup END
 
 " Inserts the path of the currently edited file into a command
 " Command mode: %%
