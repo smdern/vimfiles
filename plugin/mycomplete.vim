@@ -23,7 +23,7 @@ let g:neocomplete#auto_completion_start_length = 1
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#enable_auto_delimiter = 0
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
