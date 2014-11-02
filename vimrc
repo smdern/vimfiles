@@ -533,7 +533,13 @@ set ruler
 set switchbuf=useopen
 set encoding=utf-8
 
-" Whitespace stuff
+" Whitespace and Wrapping
+"                 +-> Auto-wrap comments using textwidth
+"                 |+-> Allow formatting of comments with 'gq'
+"                 ||+-> Automatically insert the current comment leader after
+"                 |||   hitting Enter in Insert mode
+"                 |||+-> Remove comment leaders when joining lines
+set formatoptions=cqrj
 set nowrap
 set tabstop=2
 set shiftwidth=2
