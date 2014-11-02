@@ -514,6 +514,14 @@ let g:auto_save_in_insert_mode = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'digitaltoad/vim-jade'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-json
+"
+" Support for json files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
@@ -596,7 +604,6 @@ endif
 autocmd FileType make setlocal noexpandtab
 
 autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-autocmd BufNewFile,BufRead *.json set ft=javascript
 autocmd BufNewFile,BufRead *.hamlbars set ft=haml
 autocmd BufNewFile,BufRead *.hamlc set ft=haml
 autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
