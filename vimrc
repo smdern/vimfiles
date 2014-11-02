@@ -1,3 +1,9 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Credits
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+" https://github.com/nocash/vim-rc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible
 let mapleader = ","
 
@@ -332,29 +338,6 @@ color molokai
 Plugin 'nelstrom/vim-mac-classic-theme'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Powerline
-"
-" The ultimate vim statusline utility
-"
-" You'll need a powerline patched font.
-" You should probably use inconsolata-g (included in fonts directory)
-"
-" If not, you can patch your own.
-" See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
-" You'll probably need this too: https://github.com/jenius/Fontforge-Installer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin 'Lokaltog/vim-powerline'
-"
-" let g:Powerline_symbols = 'fancy'
-" let g:Powerline_stl_path_style = 'relative'
-" call Pl#Theme#RemoveSegment('fugitive:branch')
-" call Pl#Theme#RemoveSegment('fileformat')
-" call Pl#Theme#RemoveSegment('fileencoding')
-" call Pl#Theme#RemoveSegment('scrollpercent')
-" autocmd FocusGained * call Pl#UpdateStatusline(1)
-" autocmd FocusLost * call Pl#UpdateStatusline(0)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line and insert mode behave like emacs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'tpope/vim-rsi'
@@ -526,6 +509,10 @@ let g:vim_json_syntax_conceal = 0
 
 filetype plugin indent on
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Backups and swap
 set nobackup
 set nowritebackup
@@ -582,52 +569,14 @@ set t_vb=
 set modeline
 set modelines=10
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Performance optimizations
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set ttyfast
-set lazyredraw
-syntax sync minlines=256
-
-" CTags
-map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
-map <C-\> :tnext<CR>
-
-" Remember last location in file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-augroup Miscellaneous
-  au!
-  " Remove trailing whitespace
-  au FileType coffee,eruby,haml,javascript,php,ruby,sass,scss,sh,xml
-    \ au BufWritePre <buffer>
-      \ let pos = getpos('.')
-      \ | execute '%s/\s\+$//e'
-      \ | call setpos('.', pos)
-augroup END
-
-" Inserts the path of the currently edited file into a command
-" Command mode: %%
-cmap %% <C-R>=expand("%:p:h") . "/" <CR>
-
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
-
-" map quick quit
-map <leader>qq :qa!<cr>
-
 " Open splits below and right by default
 set splitbelow
 set splitright
 
-" Make the current directory
-nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
+" Performance optimizations
+set ttyfast
+set lazyredraw
+syntax sync minlines=256
 
 " Show 2 lines of context
 set scrolloff=2
@@ -636,61 +585,18 @@ set scrolloff=2
 " work well when ssh'd in
 set ttimeoutlen=5
 
-function! SaveIfModified()
-  if &modified
-    :w
-  endif
-endfunction
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
-nmap <leader>rr :redraw!<CR>
-
-" key mapping for error navigation
-nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
-nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
-
-" key mapping for ; and , since they do other things now and I don't use marks
-nnoremap m ;
-nnoremap M ,
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Much stuff stolen from Gary Bernhardt:
-" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Copy paste system clipboard
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
-map <leader>p "*p
-map <leader>P "*P
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Profiling
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
-nnoremap <silent> <leader>DP :exe ":profile pause"<cr>
-nnoremap <silent> <leader>DC :exe ":profile continue"<cr>
-nnoremap <silent> <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quit help easily
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! QuitWithQ()
-  if &buftype == 'help'
-    quit
-  endif
-endfunction
-autocmd FileType help map <buffer> q :exe QuitWithQ()<cr>
-autocmd FileType help map <buffer> <leader>w :exe QuitWithQ()<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Persistent undo
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undofile
 set undodir=$HOME/.vim/undo
 
 set undolevels=1000
 set undoreload=10000
+
+" MacVIM shift+arrow-keys behavior (required in .vimrc)
+let macvim_hig_shift_movement = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commonly changed settings, override in your vimrc.local
