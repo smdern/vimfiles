@@ -585,7 +585,6 @@ set modelines=10
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Performance optimizations
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-silent! set regexpengine=1 " new regex engine is slow w/ ruby files, but not all vims have this
 set ttyfast
 set lazyredraw
 syntax sync minlines=256
@@ -599,21 +598,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
 endif
-
-" make uses real tabs
-autocmd FileType make setlocal noexpandtab
-
-autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-autocmd BufNewFile,BufRead *.hamlbars set ft=haml
-autocmd BufNewFile,BufRead *.hamlc set ft=haml
-autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
-
-" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-autocmd FileType cs setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-autocmd FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolumn=80
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
