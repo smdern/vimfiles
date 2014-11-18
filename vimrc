@@ -530,6 +530,13 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-filetype-haskell
+"
+" Indentation for haskell files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'kana/vim-filetype-haskell'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
