@@ -537,6 +537,13 @@ let g:vim_json_syntax_conceal = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'kana/vim-filetype-haskell'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tabular
+"
+" Align things with :Tab /whatever
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'godlygeek/tabular'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
