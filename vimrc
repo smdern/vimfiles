@@ -508,6 +508,13 @@ nmap <silent> <leader><leader>h <Plug>DashSearch
 Plugin 'mtscout6/vim-cjsx'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-jsx
+"
+" Support for react jsx
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'mxw/vim-jsx'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
 "
 " Automatically save
