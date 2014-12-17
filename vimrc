@@ -5,6 +5,8 @@ let mapleader = ","
 filetype on
 filetype off
 set rtp+=~/.vim/bundle/vundle
+set exrc
+set secure
 call vundle#rc()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
