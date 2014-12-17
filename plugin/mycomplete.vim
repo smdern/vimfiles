@@ -23,7 +23,7 @@ let g:neocomplete#auto_completion_start_length = 1
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#force_overwrite_completefunc = 1
 let g:neocomplete#enable_fuzzy_completion = 1
-let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#enable_auto_delimiter = 0
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
@@ -72,6 +72,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+let g:neocomplete#sources#omni#input_patterns.css = '^\s\+\k\+\|\w\+[):;]\?\s\+\k*\|[@!]'
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'

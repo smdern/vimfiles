@@ -1,3 +1,9 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Credits
+" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
+" https://github.com/nocash/vim-rc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set nocompatible
 let mapleader = ","
 
@@ -24,6 +30,31 @@ endif
 " :PluginUpdate to update all of them
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'gmarik/vundle'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Powerline
+"
+" The ultimate vim statusline utility
+"
+" You'll need a powerline patched font.
+" You should probably use inconsolata-g (included in fonts directory)
+" More here: https://github.com/Lokaltog/powerline-fonts
+"
+" If not, you can patch your own.
+" See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
+" You'll probably need this too: https://github.com/jenius/Fontforge-Installer
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+" let g:Powerline_symbols = 'fancy'
+" let g:Powerline_stl_path_style = 'relative'
+" call Pl#Theme#RemoveSegment('fugitive:branch')
+" call Pl#Theme#RemoveSegment('fileformat')
+" call Pl#Theme#RemoveSegment('fileencoding')
+" call Pl#Theme#RemoveSegment('scrollpercent')
+" autocmd FocusGained * call Pl#UpdateStatusline(1)
+" autocmd FocusLost * call Pl#UpdateStatusline(0)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fugitive
@@ -334,29 +365,6 @@ color molokai
 Plugin 'nelstrom/vim-mac-classic-theme'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Powerline
-"
-" The ultimate vim statusline utility
-"
-" You'll need a powerline patched font.
-" You should probably use inconsolata-g (included in fonts directory)
-"
-" If not, you can patch your own.
-" See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
-" You'll probably need this too: https://github.com/jenius/Fontforge-Installer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin 'Lokaltog/vim-powerline'
-"
-" let g:Powerline_symbols = 'fancy'
-" let g:Powerline_stl_path_style = 'relative'
-" call Pl#Theme#RemoveSegment('fugitive:branch')
-" call Pl#Theme#RemoveSegment('fileformat')
-" call Pl#Theme#RemoveSegment('fileencoding')
-" call Pl#Theme#RemoveSegment('scrollpercent')
-" autocmd FocusGained * call Pl#UpdateStatusline(1)
-" autocmd FocusLost * call Pl#UpdateStatusline(0)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line and insert mode behave like emacs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'tpope/vim-rsi'
@@ -489,8 +497,8 @@ nnoremap )) :SidewaysRight<cr>
 " Look up words in dash
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'rizzatti/dash.vim'
-nmap <silent> <leader>d <Plug>DashGlobalSearch
-nmap <silent> <leader><leader>d <Plug>DashSearch
+nmap <silent> <leader>h <Plug>DashGlobalSearch
+nmap <silent> <leader><leader>h <Plug>DashSearch
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-cjsx
@@ -507,7 +515,7 @@ Plugin 'mtscout6/vim-cjsx'
 Plugin '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
-" let g:auto_save_in_insert_mode = 0
+let g:auto_save_in_insert_mode = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-jade
@@ -516,9 +524,35 @@ let g:auto_save_silent = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'digitaltoad/vim-jade'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-json
+"
+" Support for json files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-filetype-haskell
+"
+" Indentation for haskell files
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'kana/vim-filetype-haskell'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tabular
+"
+" Align things with :Tab /whatever
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'godlygeek/tabular'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Backups and swap
 set nobackup
@@ -535,7 +569,13 @@ set ruler
 set switchbuf=useopen
 set encoding=utf-8
 
-" Whitespace stuff
+" Whitespace and Wrapping
+"                 +-> Auto-wrap comments using textwidth
+"                 |+-> Allow formatting of comments with 'gq'
+"                 ||+-> Automatically insert the current comment leader after
+"                 |||   hitting Enter in Insert mode
+"                 |||+-> Remove comment leaders when joining lines
+set formatoptions=cqrj
 set nowrap
 set tabstop=2
 set shiftwidth=2
@@ -570,63 +610,14 @@ set t_vb=
 set modeline
 set modelines=10
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Performance optimizations
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-silent! set regexpengine=1 " new regex engine is slow w/ ruby files, but not all vims have this
-set ttyfast
-set lazyredraw
-syntax sync minlines=256
-
-" CTags
-map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
-map <C-\> :tnext<CR>
-
-" Remember last location in file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
-
-" make uses real tabs
-autocmd FileType make setlocal noexpandtab
-
-autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-autocmd BufNewFile,BufRead *.json set ft=javascript
-autocmd BufNewFile,BufRead *.hamlbars set ft=haml
-autocmd BufNewFile,BufRead *.hamlc set ft=haml
-autocmd BufNewFile,BufRead *.jst.ejs set ft=jst
-
-" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-autocmd FileType cs setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-autocmd FileType markdown setlocal spell spelllang=en_us textwidth=79 colorcolumn=80
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-" Remove trailing whitespace automagically
-autocmd FileType coffee,haml,javascript,php,ruby,sass,scss,sh
-  \ autocmd BufWritePre <buffer> exe '%s/\s\+$//e'
-
-" Inserts the path of the currently edited file into a command
-" Command mode: %%
-cmap %% <C-R>=expand("%:p:h") . "/" <CR>
-
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-let macvim_hig_shift_movement = 1
-
-" map quick quit
-map <leader>qq :qa!<cr>
-
 " Open splits below and right by default
 set splitbelow
 set splitright
 
-" Make the current directory
-nmap <leader>md :silent !mkdir -p %:h<CR>:redraw!<CR>
+" Performance optimizations
+set ttyfast
+set lazyredraw
+syntax sync minlines=256
 
 " Show 2 lines of context
 set scrolloff=2
@@ -635,61 +626,18 @@ set scrolloff=2
 " work well when ssh'd in
 set ttimeoutlen=5
 
-function! SaveIfModified()
-  if &modified
-    :w
-  endif
-endfunction
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
 
-nmap <leader>rr :redraw!<CR>
-
-" key mapping for error navigation
-nmap <leader>[ :call SaveIfModified()<CR>:cprev<CR>
-nmap <leader>] :call SaveIfModified()<CR>:cnext<CR>
-
-" key mapping for ; and , since they do other things now and I don't use marks
-nnoremap m ;
-nnoremap M ,
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Much stuff stolen from Gary Bernhardt:
-" https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Copy paste system clipboard
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
-map <leader>p "*p
-map <leader>P "*P
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Profiling
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <silent> <leader>DD :exe ":profile start profile.log"<cr>:exe ":profile func *"<cr>:exe ":profile file *"<cr>
-nnoremap <silent> <leader>DP :exe ":profile pause"<cr>
-nnoremap <silent> <leader>DC :exe ":profile continue"<cr>
-nnoremap <silent> <leader>DQ :exe ":profile pause"<cr>:noautocmd qall!<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Quit help easily
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! QuitWithQ()
-  if &buftype == 'help'
-    quit
-  endif
-endfunction
-autocmd FileType help map <buffer> q :exe QuitWithQ()<cr>
-autocmd FileType help map <buffer> <leader>w :exe QuitWithQ()<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Persistent undo
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set undofile
 set undodir=$HOME/.vim/undo
 
 set undolevels=1000
 set undoreload=10000
+
+" MacVIM shift+arrow-keys behavior (required in .vimrc)
+let macvim_hig_shift_movement = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commonly changed settings, override in your vimrc.local
