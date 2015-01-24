@@ -544,6 +544,13 @@ Plugin 'kana/vim-filetype-haskell'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'godlygeek/tabular'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" paredit.vim
+"
+" Structured editing of Lisp S-expressions
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'paredit.vim'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
