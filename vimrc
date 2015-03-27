@@ -551,6 +551,14 @@ Plugin 'godlygeek/tabular'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'paredit.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" words-to-avoid
+"
+" Highlights words like basically, just, so, etc in markdown files so I don't
+" use them.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'nicholaides/words-to-avoid.vim'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
