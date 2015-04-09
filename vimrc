@@ -101,6 +101,13 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" projectionist.vim
+"
+" Gives :A and :E* and such like rails.vim but for other languages/projects
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'tpope/vim-projectionist'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Comment with gc (takes a motion) or ^_^_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'tomtom/tcomment_vim'
@@ -170,7 +177,7 @@ map <leader>A :Ag! <C-R><C-W><CR>
 let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Kills a buffer without closing a split, use ,w . Used in conjunction 
+" Kills a buffer without closing a split, use ,w . Used in conjunction
 " with command-w, below...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'vim-scripts/bufkill.vim'
@@ -545,9 +552,41 @@ Plugin 'kana/vim-filetype-haskell'
 Plugin 'godlygeek/tabular'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clojure stuff
+"
+" http://clojure-doc.org/articles/tutorials/vim_fireplace.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clojure REPL
+"
+" You'll want to install https://github.com/clojure-emacs/cider-nrepl
+"
+" cq - Clojure Quasi-REPL
+" cqq - Populate REPL w/ current expression
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'tpope/vim-fireplace'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leiningen stuff
+"
+" :Console
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'tpope/vim-leiningen'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " paredit.vim
 "
 " Structured editing of Lisp S-expressions
+"
+" ,< - slurp or barf to left
+" ,> - slurp or barf to right
+" ,J - Join
+" ,O - Split (Open)
+" ,W - Wrap with parens
+" ,w[ - Wrap w/ brackets
+" ,S - Splice (opposite of Wrap)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'paredit.vim'
 
