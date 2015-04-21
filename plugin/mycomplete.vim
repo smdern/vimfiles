@@ -69,7 +69,7 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 call neocomplete#custom#source('tag',
-  \ 'disabled_filetypes', {'ruby' : 1})
+  \ 'disabled_filetypes', {'_' : 1})
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
