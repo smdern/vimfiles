@@ -515,13 +515,14 @@ Plugin 'mtscout6/vim-cjsx'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
 "
-" Automatically save
+" Automatically save.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_in_insert_mode = 0
-let g:auto_save_events = ["InsertLeave", "TextChanged"]
+" Avoid InsertLeave, as it causes issues w/ vim-repeat and vim-surround
+let g:auto_save_events = ["CursorHold", "TextChanged"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-jade
