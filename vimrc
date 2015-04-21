@@ -598,6 +598,16 @@ Plugin 'paredit.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'nicholaides/words-to-avoid.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" splitjoin.vim
+"
+" Language aware split/join, for splitting things like postfix ifs
+"
+" gS - split a one-liner into multiple lines
+" gJ - (with the cursor on the first line of a block) join a block into a single-line statement.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'AndrewRadev/splitjoin.vim'
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
