@@ -597,6 +597,16 @@ Plugin 'nicholaides/words-to-avoid.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'AndrewRadev/splitjoin.vim'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightweight implementation of the Emacs 'kill ring' for Vim. It allows you
+" to yank and delete things without worrying about losing the text that you
+" yanked previously.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'maxbrunsfeld/vim-yankstack'
+let g:yankstack_map_keys = 0
+nmap <m-p> <Plug>yankstack_substitute_older_paste
+nmap <m-n> <Plug>yankstack_substitute_newer_paste
+
 :runtime macros/matchit.vim
 
 filetype plugin indent on
