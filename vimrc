@@ -180,7 +180,7 @@ let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
 " Kills a buffer without closing a split, use ,w . Used in conjunction
 " with command-w, below...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'vim-scripts/bufkill.vim'
+Plugin 'aaronjensen/bufkill.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command W
