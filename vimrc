@@ -630,6 +630,9 @@ set ruler
 set switchbuf=useopen
 set encoding=utf-8
 
+" Use sh because it's fast, zsh loads too slow w/ rvm
+set shell=/bin/sh
+
 " Whitespace and Wrapping
 "                 +-> Auto-wrap comments using textwidth
 "                 |+-> Allow formatting of comments with 'gq'
