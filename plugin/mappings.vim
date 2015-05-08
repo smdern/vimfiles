@@ -1,5 +1,5 @@
 " CTags
-map <Leader>rt :!ctags --fields=+l --extra=+f -R *<CR><CR>
+map <Leader>rt :!ctags --tag-relative --fields=+l --extra=+fq -R --languages=-javascript,sql *<CR><CR>
 map <C-\> :tnext<CR>
 
 " Inserts the path of the currently edited file into a command

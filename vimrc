@@ -103,6 +103,13 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" projectionist.vim
+"
+" Gives :A and :E* and such like rails.vim but for other languages/projects
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'tpope/vim-projectionist'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Comment with gc (takes a motion) or ^_^_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'tomtom/tcomment_vim'
@@ -172,10 +179,10 @@ map <leader>A :Ag! <C-R><C-W><CR>
 let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Kills a buffer without closing a split, use ,w . Used in conjunction 
+" Kills a buffer without closing a split, use ,w . Used in conjunction
 " with command-w, below...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'vim-scripts/bufkill.vim'
+Plugin 'moll/vim-bbye'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command W
@@ -186,19 +193,6 @@ Plugin 'vim-scripts/bufkill.vim'
 Plugin 'aaronjensen/vim-command-w'
 
 nmap <leader>w :CommandW<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntastic
-"
-" Shows syntax errors on several types of files
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'scrooloose/syntastic'
-
-let g:syntastic_enable_signs=1
-let g:syntastic_quiet_messages = {'level': 'warnings'}
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'active_filetypes': [],
-                           \ 'passive_filetypes': ['ruby', 'haml'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically add end at the end of ruby and vim blocks
@@ -522,12 +516,14 @@ Plugin 'mxw/vim-jsx'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
 "
-" Automatically save
+" Automatically save.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_in_insert_mode = 0
+" Avoid InsertLeave, as it causes issues w/ vim-repeat and vim-surround
+let g:auto_save_events = ["CursorHold", "TextChanged"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-jade
@@ -559,11 +555,71 @@ Plugin 'kana/vim-filetype-haskell'
 Plugin 'godlygeek/tabular'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clojure stuff
+"
+" http://clojure-doc.org/articles/tutorials/vim_fireplace.html
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Clojure REPL
+"
+" You'll want to install https://github.com/clojure-emacs/cider-nrepl
+"
+" cq - Clojure Quasi-REPL
+" cqq - Populate REPL w/ current expression
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'tpope/vim-fireplace'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leiningen stuff
+"
+" :Console
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'tpope/vim-leiningen'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " paredit.vim
 "
 " Structured editing of Lisp S-expressions
+"
+" ,< - slurp or barf to left
+" ,> - slurp or barf to right
+" ,J - Join
+" ,O - Split (Open)
+" ,W - Wrap with parens
+" ,w[ - Wrap w/ brackets
+" ,S - Splice (opposite of Wrap)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'paredit.vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" words-to-avoid
+"
+" Highlights words like basically, just, so, etc in markdown files so I don't
+" use them.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'nicholaides/words-to-avoid.vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" splitjoin.vim
+"
+" Language aware split/join, for splitting things like postfix ifs
+"
+" gS - split a one-liner into multiple lines
+" gJ - (with the cursor on the first line of a block) join a block into a single-line statement.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'AndrewRadev/splitjoin.vim'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightweight implementation of the Emacs 'kill ring' for Vim. It allows you
+" to yank and delete things without worrying about losing the text that you
+" yanked previously.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plugin 'maxbrunsfeld/vim-yankstack'
+let g:yankstack_map_keys = 0
+nmap <m-p> <Plug>yankstack_substitute_older_paste
+nmap <m-n> <Plug>yankstack_substitute_newer_paste
 
 :runtime macros/matchit.vim
 
@@ -587,6 +643,9 @@ set number
 set ruler
 set switchbuf=useopen
 set encoding=utf-8
+
+" Use sh because it's fast, zsh loads too slow w/ rvm
+set shell=/bin/sh
 
 " Whitespace and Wrapping
 "                 +-> Auto-wrap comments using textwidth
