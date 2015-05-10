@@ -455,6 +455,27 @@ NeoBundle 'Shougo/neocomplete.vim'
 inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Snippets
+"
+" Hit ctrl-k to expand snippets and jump to next field
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'honza/vim-snippets'
+" let g:neosnippet#disable_runtime_snippets = {'_': 1}
+" let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+autocmd FileType * NeoSnippetMakeCache
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Dockerfile.vim
 "
 " Syntax for Dockerfile
