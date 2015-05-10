@@ -4,14 +4,28 @@
 " https://github.com/nocash/vim-rc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
+if has('vim_starting')
+ if &compatible
+   set nocompatible
+ endif
+
+ set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
 let mapleader = ","
 
-" Vundle
-filetype on
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+" NeoBundle
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+      \   'build' : {
+      \     'windows' : 'tools\\update-dll-mingw',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'linux' : 'make',
+      \     'unix' : 'gmake',
+      \   }
+      \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Include user's local vim bundles
@@ -22,20 +36,12 @@ if filereadable(expand("~/.vim_bundles.local"))
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle
-"
-" Bundler for vim, use :PluginInstall to install these bundles and
-" :PluginUpdate to update all of them
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'gmarik/vundle'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fugitive
 "
 " Git in vim, use ,gs for git status then - to stage then C to commit
 " check :help Gstatus for more keys
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-fugitive'
 
 map <leader>gs :Gstatus<cr>
 map <leader>gc :Gcommit<cr>
@@ -68,24 +74,24 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " Surrond stuff with things. ysiw" surrounds a word with quotes
 " cs"' changes " to '
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-surround'
+NeoBundle 'tpope/vim-surround'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lets you use . to repeat some things like vim-surround
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-repeat'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " projectionist.vim
 "
 " Gives :A and :E* and such like rails.vim but for other languages/projects
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-projectionist'
+NeoBundle 'tpope/vim-projectionist'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Comment with gc (takes a motion) or ^_^_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tomtom/tcomment_vim'
+NeoBundle 'tomtom/tcomment_vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-P
@@ -97,8 +103,15 @@ Plugin 'tomtom/tcomment_vim'
 " https://github.com/JazzCore/ctrlp-cmatcher
 " It must be built, it requires python-dev as a dependency
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'JazzCore/ctrlp-cmatcher'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'JazzCore/ctrlp-cmatcher', {
+      \   'build' : {
+      \     'windows' : 'install_windows.bat',
+      \     'mac' : './install.sh',
+      \     'linux' : './install.sh',
+      \     'unix' : './install.sh',
+      \    }
+      \  }
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -140,8 +153,8 @@ map <leader><leader>f :let g:ctrlp_default_input = 0<cr>:CtrlPClearCache<cr>:Ctr
 " Adds :Ack/:Ag complete w/ quick fix. I prefer to use :Ag! which does not open
 " the first thing it finds automatically.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'rking/ag.vim'
 
 map <leader>a :Ag!<space>
 map <leader>A :Ag! <C-R><C-W><CR>
@@ -155,7 +168,7 @@ let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
 " Kills a buffer without closing a split, use ,w . Used in conjunction
 " with command-w, below...
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'moll/vim-bbye'
+NeoBundle 'moll/vim-bbye'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Command W
@@ -163,42 +176,42 @@ Plugin 'moll/vim-bbye'
 " Smarts around killing buffers, will close the split if it's the last buffer in
 " it, and close vim if it's the last buffer/split. Use ,w
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'aaronjensen/vim-command-w'
+NeoBundle 'aaronjensen/vim-command-w'
 
 nmap <leader>w :CommandW<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Automatically add end at the end of ruby and vim blocks
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-endwise'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add a few paired mappings, in particular [q and ]q to navigate the quickfix
 " list
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-unimpaired'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Handy file manipulations. Favorites are :Remove and :Rename
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-eunuch'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Allows custom textobj motions (like i" or a[)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-user'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion based on indent level. Useful in coffeescript, try vai to select
 " everything on the current indent level. vii is similar, but will not ignore
 " blank lines
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-indent'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Motion based on ruby blocks. vir selects in a ruby block
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vroom
@@ -207,8 +220,8 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 " with ,T also remembers last run test so you can hit it again on non-test
 " files to run the last run test
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'skalnik/vim-vroom'
-Plugin 'tpope/vim-dispatch'
+NeoBundle 'skalnik/vim-vroom'
+NeoBundle 'tpope/vim-dispatch'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
@@ -231,22 +244,22 @@ autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoo
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'kchmck/vim-coffee-script'
+NeoBundle 'kchmck/vim-coffee-script'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Updated ruby syntax and such
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'vim-ruby/vim-ruby'
+NeoBundle 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax highlighting for Gemfile
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-bundler'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Some syntax highlighthing for rails and :Rextract to extract partials
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-rails'
+NeoBundle 'tpope/vim-rails'
 
 map <leader><leader>a :A<cr>
 map <leader><leader>r :R<cr>
@@ -269,79 +282,78 @@ let g:rails_projections = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'pangloss/vim-javascript'
+NeoBundle 'pangloss/vim-javascript'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Git runtime files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-git'
+NeoBundle 'tpope/vim-git'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim runtime files for Haml, Sass, and SCSS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-haml'
+NeoBundle 'tpope/vim-haml'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim runtime files for Slim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'slim-template/vim-slim'
+NeoBundle 'slim-template/vim-slim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Markdown runtime files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-markdown'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim handlebars runtime files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'nono/vim-handlebars'
+NeoBundle 'nono/vim-handlebars'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax for jquery keywords and selectors
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'itspriddle/vim-jquery'
+NeoBundle 'itspriddle/vim-jquery'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim syntax for jst files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'jeyb/vim-jst'
+NeoBundle 'jeyb/vim-jst'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntax for nginx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'mutewinter/nginx.vim'
+NeoBundle 'mutewinter/nginx.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Makes css colors show up as their actual colors, works better with CSApprox
 " or macvim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'ap/vim-css-color'
+NeoBundle 'ap/vim-css-color'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " My favorite dark color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tomasr/molokai'
+NeoBundle 'tomasr/molokai'
 let g:rehash256 = 1
 let g:molokai_original = 1
 set t_Co=256
-color molokai
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Decent light color scheme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'nelstrom/vim-mac-classic-theme'
+NeoBundle 'nelstrom/vim-mac-classic-theme'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " makes the command line and insert mode behave like emacs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-rsi'
+NeoBundle 'tpope/vim-rsi'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Adds gr command to replace text (takes a motion)
 " similar to v(motion)p but also cuts text into black hole register so it is
 " repeatable. So really it's similar to v(motion)"_p
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'ReplaceWithRegister'
+NeoBundle 'ReplaceWithRegister'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " xmpfilter
@@ -350,7 +362,7 @@ Plugin 'ReplaceWithRegister'
 " after any #=>. You can press F4 to insert a #=> on the current line and f5
 " runs the entire buffer.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 't9md/vim-ruby-xmpfilter'
+NeoBundle 't9md/vim-ruby-xmpfilter'
 
 nmap <buffer> <F5> <Plug>(xmpfilter-run)
 xmap <buffer> <F5> <Plug>(xmpfilter-run)
@@ -366,7 +378,7 @@ imap <buffer> <F4> <Plug>(xmpfilter-mark)
 " Attempt to guess and automatically set the indentation settings of the
 " opened file. Works for " 2 space, 4 space and tab indentation.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'conormcd/matchindent.vim'
+NeoBundle 'conormcd/matchindent.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vitality.vim
@@ -374,7 +386,7 @@ Plugin 'conormcd/matchindent.vim'
 " Add FocusGained/FocusLost back.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/sjl/vitality.vim/pull/23
-Plugin 'aaronjensen/vitality.vim'
+NeoBundle 'aaronjensen/vitality.vim'
 let g:vitality_fix_focus = 1
 let g:vitality_fix_cursor = 0
 
@@ -383,14 +395,14 @@ let g:vitality_fix_cursor = 0
 "
 " Syntax highlighting for emblem
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'heartsentwined/vim-emblem'
+NeoBundle 'heartsentwined/vim-emblem'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rspec.vim
 "
 " Syntax highlighting for rspec in non-rails projects
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'Keithbsmiley/rspec.vim'
+NeoBundle 'Keithbsmiley/rspec.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-abolish
@@ -402,7 +414,7 @@ Plugin 'Keithbsmiley/rspec.vim'
 " crc camelCase
 " cru UPPER_CASE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-abolish'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-vinegar
@@ -412,7 +424,7 @@ Plugin 'tpope/vim-abolish'
 " Use cd to change your vim current directory.
 " Use - to go up a directory.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-vinegar'
+NeoBundle 'tpope/vim-vinegar'
 autocmd FileType netrw map <buffer> <leader>w :bwipeout<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -421,7 +433,7 @@ autocmd FileType netrw map <buffer> <leader>w :bwipeout<cr>
 " Lots of helpers for writing scripts.
 " See :h scriptease
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-scriptease'
+NeoBundle 'tpope/vim-scriptease'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Auto completion
@@ -434,10 +446,10 @@ Plugin 'tpope/vim-scriptease'
 "
 " neocomplete requires vim compiled w/ lua support.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'dirkwallenstein/vim-localcomplete'
-Plugin 'aaronjensen/vim-recentcomplete'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/neocomplete.vim'
+NeoBundle 'dirkwallenstein/vim-localcomplete'
+NeoBundle 'aaronjensen/vim-recentcomplete'
+
+NeoBundle 'Shougo/neocomplete.vim'
 
 " make enter always be enter, even when popup menu is visible.
 inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
@@ -447,14 +459,14 @@ inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 "
 " Syntax for Dockerfile
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'ekalinin/Dockerfile.vim'
+NeoBundle 'ekalinin/Dockerfile.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " sideways.vim
 "
 " Move parameters around with ,< and ,>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'AndrewRadev/sideways.vim'
+NeoBundle 'AndrewRadev/sideways.vim'
 nnoremap (( :SidewaysLeft<cr>
 nnoremap )) :SidewaysRight<cr>
 
@@ -463,7 +475,7 @@ nnoremap )) :SidewaysRight<cr>
 "
 " Look up words in dash
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'rizzatti/dash.vim'
+NeoBundle 'rizzatti/dash.vim'
 nmap <silent> <leader>h <Plug>DashGlobalSearch
 nmap <silent> <leader><leader>h <Plug>DashSearch
 
@@ -472,14 +484,14 @@ nmap <silent> <leader><leader>h <Plug>DashSearch
 "
 " Support for coffee-react
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'mtscout6/vim-cjsx'
+NeoBundle 'mtscout6/vim-cjsx'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
 "
 " Automatically save.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin '907th/vim-auto-save'
+NeoBundle '907th/vim-auto-save'
 let g:auto_save = 1
 let g:auto_save_silent = 1
 let g:auto_save_in_insert_mode = 0
@@ -491,14 +503,14 @@ let g:auto_save_events = ["CursorHold", "TextChanged"]
 "
 " Support for jade files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'digitaltoad/vim-jade'
+NeoBundle 'digitaltoad/vim-jade'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-json
 "
 " Support for json files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'elzr/vim-json'
+NeoBundle 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -506,14 +518,14 @@ let g:vim_json_syntax_conceal = 0
 "
 " Indentation for haskell files
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'kana/vim-filetype-haskell'
+NeoBundle 'kana/vim-filetype-haskell'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " tabular
 "
 " Align things with :Tab /whatever
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'godlygeek/tabular'
+NeoBundle 'godlygeek/tabular'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Clojure stuff
@@ -530,14 +542,14 @@ Plugin 'godlygeek/tabular'
 " cqq - Populate REPL w/ current expression
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-fireplace'
+NeoBundle 'tpope/vim-fireplace'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leiningen stuff
 "
 " :Console
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'tpope/vim-leiningen'
+NeoBundle 'tpope/vim-leiningen'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " paredit.vim
@@ -552,7 +564,7 @@ Plugin 'tpope/vim-leiningen'
 " ,w[ - Wrap w/ brackets
 " ,S - Splice (opposite of Wrap)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'paredit.vim'
+NeoBundle 'paredit.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " words-to-avoid
@@ -560,7 +572,7 @@ Plugin 'paredit.vim'
 " Highlights words like basically, just, so, etc in markdown files so I don't
 " use them.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'nicholaides/words-to-avoid.vim'
+NeoBundle 'nicholaides/words-to-avoid.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " splitjoin.vim
@@ -570,25 +582,31 @@ Plugin 'nicholaides/words-to-avoid.vim'
 " gS - split a one-liner into multiple lines
 " gJ - (with the cursor on the first line of a block) join a block into a single-line statement.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'AndrewRadev/splitjoin.vim'
+NeoBundle 'AndrewRadev/splitjoin.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lightweight implementation of the Emacs 'kill ring' for Vim. It allows you
 " to yank and delete things without worrying about losing the text that you
 " yanked previously.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'maxbrunsfeld/vim-yankstack'
+NeoBundle 'maxbrunsfeld/vim-yankstack'
 let g:yankstack_map_keys = 0
 nmap <m-p> <Plug>yankstack_substitute_older_paste
 nmap <m-n> <Plug>yankstack_substitute_newer_paste
+
+call neobundle#end()
 
 :runtime macros/matchit.vim
 
 filetype plugin indent on
 
+NeoBundleCheck
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+color molokai
 
 " Backups and swap
 set nobackup
