@@ -30,31 +30,6 @@ endif
 Plugin 'gmarik/vundle'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Powerline
-"
-" The ultimate vim statusline utility
-"
-" You'll need a powerline patched font.
-" You should probably use inconsolata-g (included in fonts directory)
-" More here: https://github.com/Lokaltog/powerline-fonts
-"
-" If not, you can patch your own.
-" See: https://github.com/Lokaltog/vim-powerline/tree/develop/fontpatcher
-" You'll probably need this too: https://github.com/jenius/Fontforge-Installer
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-" set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
-" let g:Powerline_symbols = 'fancy'
-" let g:Powerline_stl_path_style = 'relative'
-" call Pl#Theme#RemoveSegment('fugitive:branch')
-" call Pl#Theme#RemoveSegment('fileformat')
-" call Pl#Theme#RemoveSegment('fileencoding')
-" call Pl#Theme#RemoveSegment('scrollpercent')
-" autocmd FocusGained * call Pl#UpdateStatusline(1)
-" autocmd FocusLost * call Pl#UpdateStatusline(0)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fugitive
 "
 " Git in vim, use ,gs for git status then - to stage then C to commit
