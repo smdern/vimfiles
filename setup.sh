@@ -1,13 +1,8 @@
 #!/bin/bash
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+. ~/.vim/bundle/neobundle.vim/bin/neoinstall
 
 ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/gvimrc ~/.gvimrc
-
-vim +PluginInstall +qall
-cd ~/.vim/bundle/ctrlp-cmatcher
-CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh
-cd ~/.vim/bundle/vimproc.vim
-make
 
 brew install ctags
