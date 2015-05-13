@@ -297,7 +297,7 @@ NeoBundle 'tpope/vim-haml'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim syntax highlighting for less
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'groenewege/vim-less'
+NeoBundle 'groenewege/vim-less'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim runtime files for Slim
@@ -517,7 +517,7 @@ NeoBundle 'mtscout6/vim-cjsx'
 "
 " Support for react jsx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plugin 'mxw/vim-jsx'
+NeoBundle 'mxw/vim-jsx'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
