@@ -642,8 +642,9 @@ set ruler
 set switchbuf=useopen
 set encoding=utf-8
 
-" Use sh because it's fast, zsh loads too slow w/ rvm
-set shell=/bin/sh
+" Use bash because it's fast, zsh loads too slow w/ rvm
+let $BASH_ENV = "~/.bash/env"
+set shell=bash
 
 " Whitespace and Wrapping
 "                 +-> Auto-wrap comments using textwidth
