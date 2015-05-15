@@ -604,6 +604,8 @@ NeoBundle 'nicholaides/words-to-avoid.vim'
 NeoBundle 'AndrewRadev/splitjoin.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-yankstack
+"
 " lightweight implementation of the Emacs 'kill ring' for Vim. It allows you
 " to yank and delete things without worrying about losing the text that you
 " yanked previously.
@@ -612,6 +614,13 @@ NeoBundle 'maxbrunsfeld/vim-yankstack'
 let g:yankstack_map_keys = 0
 nmap <m-p> <Plug>yankstack_substitute_older_paste
 nmap <m-n> <Plug>yankstack_substitute_newer_paste
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-elixir
+"
+" Elixir runtime
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
 
