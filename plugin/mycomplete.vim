@@ -26,6 +26,8 @@ let g:neocomplete#enable_fuzzy_completion = 1
 let g:neocomplete#enable_auto_delimiter = 0
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+" It gets 100ms, then we skip it
+let g:neocomplete#skip_auto_completion_time = 0.1
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
