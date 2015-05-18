@@ -72,6 +72,10 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 call neocomplete#custom#source('tag',
   \ 'disabled_filetypes', {'_' : 1})
+call neocomplete#custom#source('omni', 'rank', 14)
+call neocomplete#custom#source('omni', 'max_candidates', 20)
+call neocomplete#custom#source('vim', 'rank', 15)
+call neocomplete#custom#source('vim', 'max_candidates', 20)
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
