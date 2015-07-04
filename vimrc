@@ -115,7 +115,12 @@ NeoBundle 'JazzCore/ctrlp-cmatcher', {
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'cd %s && ag --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+  let g:ctrlp_user_command = {
+        \   'types': {
+        \     1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others']
+        \   },
+        \   'fallback': 'cd %s && ag --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+        \ }
 
   " ag is fast enough that CtrlP doesn't need to cache
   " no it isn't
