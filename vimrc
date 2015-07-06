@@ -287,7 +287,9 @@ let g:rails_projections = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-NeoBundle 'pangloss/vim-javascript'
+" https://github.com/pangloss/vim-javascript/pull/250
+" NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'utix/vim-javascript', 'develop'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Git runtime files
