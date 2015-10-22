@@ -26,6 +26,8 @@ let g:neocomplete#enable_fuzzy_completion = 1
 let g:neocomplete#enable_auto_delimiter = 0
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+" It gets 100ms, then we skip it
+let g:neocomplete#skip_auto_completion_time = 0.1
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -70,12 +72,17 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 call neocomplete#custom#source('tag',
   \ 'disabled_filetypes', {'_' : 1})
+call neocomplete#custom#source('omni', 'rank', 14)
+call neocomplete#custom#source('omni', 'max_candidates', 20)
+call neocomplete#custom#source('vim', 'rank', 15)
+call neocomplete#custom#source('vim', 'max_candidates', 20)
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.css = '^\s\+\k\+\|\w\+[):;]\?\s\+\k*\|[@!]'
+let g:neocomplete#sources#omni#input_patterns.clojure = '[[:alnum:]_-]\+'
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'

@@ -115,7 +115,12 @@ NeoBundle 'JazzCore/ctrlp-cmatcher', {
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'cd %s && ag --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+  let g:ctrlp_user_command = {
+        \   'types': {
+        \     1: ['.git/', 'cd %s && git ls-files --cached --exclude-standard --others']
+        \   },
+        \   'fallback': 'cd %s && ag --files-with-matches -g "" --ignore "\.git$\|\.hg$\|\.svn$"'
+        \ }
 
   " ag is fast enough that CtrlP doesn't need to cache
   " no it isn't
@@ -282,7 +287,9 @@ let g:rails_projections = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-NeoBundle 'pangloss/vim-javascript'
+" https://github.com/pangloss/vim-javascript/pull/250
+" NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'utix/vim-javascript', 'develop'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Git runtime files
@@ -616,6 +623,8 @@ NeoBundle 'nicholaides/words-to-avoid.vim'
 NeoBundle 'AndrewRadev/splitjoin.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-yankstack
+"
 " lightweight implementation of the Emacs 'kill ring' for Vim. It allows you
 " to yank and delete things without worrying about losing the text that you
 " yanked previously.
@@ -624,6 +633,13 @@ NeoBundle 'maxbrunsfeld/vim-yankstack'
 let g:yankstack_map_keys = 0
 nmap <m-p> <Plug>yankstack_substitute_older_paste
 nmap <m-n> <Plug>yankstack_substitute_newer_paste
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-elixir
+"
+" Elixir runtime
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+NeoBundle 'elixir-lang/vim-elixir'
 
 call neobundle#end()
 

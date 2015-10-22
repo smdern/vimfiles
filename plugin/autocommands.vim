@@ -4,7 +4,7 @@ function! <SID>StripTrailingWhitespaces()
   let pos = getpos('.')
   " Join to the previous command so we don't get into
   " an undo loop with auto save
-  undojoin
+  silent! undojoin
 
   execute '%s/\s\+$//e'
 
