@@ -20,7 +20,7 @@ augroup Miscellaneous
         \| exe "normal g'\"" | endif
 
   " Remove trailing whitespace
-  au FileType coffee,eruby,haml,javascript,php,ruby,sass,scss,sh,xml
+  au FileType coffee,eruby,haml,javascript,php,ruby,sass,scss,sh,xml,elixir
         \ au BufWritePre <buffer>
         \ call <SID>StripTrailingWhitespaces()
 augroup END
