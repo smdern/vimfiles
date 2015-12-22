@@ -33,3 +33,6 @@ map <leader>y "*y
 map <leader>p "*p
 map <leader>P "*P
 map <leader>gr "*gr
+
+" Replace the current find expression
+map <leader>r :%s/<C-r>//
