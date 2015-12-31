@@ -239,11 +239,15 @@ let g:dispatch_compilers = {
       \ 'clear;': '',
       \ 'zeus': ''}
 
+let g:vroom_mix_test_command = 'MIX_ENV=test mix test '
+
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 map <leader>/ :Copen!<cr>
 map <silent> <leader>i :let g:vroom_use_dispatch = !g:vroom_use_dispatch<cr>
 autocmd BufNewFile,BufRead *.spec.js map <buffer> <leader>t :w<cr>:!node_modules/.bin/mocha % -r specs/specHelper.js<cr>
+autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
+autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
