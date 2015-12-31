@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Credits
 " https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 " https://github.com/nocash/vim-rc
@@ -167,7 +167,7 @@ map <leader>A :Ag! <C-R><C-W><CR>
 " Use ag for search, it's much faster than ack.
 " See https://github.com/ggreer/the_silver_searcher
 " on mac: brew install the_silver_searcher
-let g:agprg = 'ag --nogroup --nocolor --column --smart-case'
+let g:ag_prg = 'ag --nogroup --nocolor --column --smart-case'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kills a buffer without closing a split, use ,w . Used in conjunction
@@ -243,8 +243,7 @@ map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
 map <leader>/ :Copen!<cr>
 map <silent> <leader>i :let g:vroom_use_dispatch = !g:vroom_use_dispatch<cr>
-autocmd BufNewFile,BufRead *_spec.coffee map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
-autocmd BufNewFile,BufRead *_spec.js map <buffer> <leader>t :w<cr>:!zeus teaspoon %<cr>
+autocmd BufNewFile,BufRead *.spec.js map <buffer> <leader>t :w<cr>:!node_modules/.bin/mocha % -r specs/specHelper.js<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim coffeescript runtime files
