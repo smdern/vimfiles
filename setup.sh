@@ -6,3 +6,4 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/gvimrc ~/.gvimrc
 
 brew install ctags
+npm install -g eslint_d
