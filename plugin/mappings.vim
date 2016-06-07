@@ -34,5 +34,9 @@ map <leader>p "*p
 map <leader>P "*P
 map <leader>gr "*gr
 
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 " Replace the current find expression
 map <leader>r :%s/<C-r>//
