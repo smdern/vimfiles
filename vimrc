@@ -4,6 +4,10 @@
 " https://github.com/nocash/vim-rc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if has('termguicolors')
+  set termguicolors
+endif
+
 if has('vim_starting')
  if &compatible
    set nocompatible
