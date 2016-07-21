@@ -570,6 +570,7 @@ nmap <m-n> <Plug>yankstack_substitute_newer_paste
 " Elixir runtime
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'elixir-lang/vim-elixir'
+Plug 'archSeer/elixir.nvim', { 'do': function('DoRemote') }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
