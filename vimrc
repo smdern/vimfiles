@@ -456,6 +456,8 @@ NeoBundle 'mxw/vim-jsx'
 Plug 'mxw/vim-jsx'
 >>>>>>> Use Neovime awesomneess
 
+let g:jsx_ext_required = 0
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
 "
