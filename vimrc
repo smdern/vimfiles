@@ -290,9 +290,7 @@ let g:rails_projections = {
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Improved javascript indentation
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" https://github.com/pangloss/vim-javascript/pull/250
-" NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'utix/vim-javascript', 'develop'
+NeoBundle 'pangloss/vim-javascript'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Git runtime files
@@ -528,6 +526,7 @@ NeoBundle 'mtscout6/vim-cjsx'
 " Support for react jsx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 NeoBundle 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-auto-save
