@@ -15,6 +15,7 @@ if has('vim_starting')
 endif
 
 let mapleader = ","
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
 " Plug
 call plug#begin('~/.vim/plugged')
@@ -110,6 +111,7 @@ let g:fzf_layout = { 'down': '~30%' }
 
 
 map <leader>f :FZF<cr>
+map <leader>g :GFiles<cr>
 map <leader>a :Ag<space>
 map <leader>A :Ag! <C-R><C-W><CR>
 
@@ -152,7 +154,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'kana/vim-textobj-user'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Motion based on indent level. Useful in coffeescript, try vai to select
+
 " everything on the current indent level. vii is similar, but will not ignore
 " blank lines
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,19 +174,18 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'skalnik/vim-vroom'
 Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 
 let g:vroom_map_keys = 0
 let g:vroom_write_all = 1
 let g:vroom_use_zeus = 1
 let g:vroom_use_bundle_exec = 0
-let g:vroom_use_dispatch = 0
+let g:vroom_use_dispatch = 1
 
 let g:dispatch_compilers = {
       \ 'bundle exec': '',
       \ 'clear;': '',
       \ 'zeus': ''}
-
-let g:vroom_mix_test_command = 'MIX_ENV=test mix test '
 
 map <leader>t :VroomRunTestFile<cr>
 map <leader>T :VroomRunNearestTest<cr>
@@ -386,10 +387,20 @@ Plug 'tpope/vim-scriptease'
 " Settings are in plugin/mycomplete.vim
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! DoRemote(arg)
-  UpdateRemotePlugins
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'steelsojka/deoplete-flow'
+
+function! StrTrim(txt)
+  return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 endfunction
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+
+let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
+
+if g:flow_path != 'flow not found'
+  let g:deoplete#sources#flow#flow_bin = g:flow_path
+endif
+
+let g:deoplete#enable_at_startup = 1
 
 " make enter always be enter, even when popup menu is visible.
 " inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
@@ -451,14 +462,7 @@ Plug 'mtscout6/vim-cjsx'
 "
 " Support for react jsx
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-<<<<<<< d1141ee4473c55d2d0dbe543a2fb06d32806ae25
-NeoBundle 'mxw/vim-jsx'
-let g:jsx_ext_required = 0
-||||||| merged common ancestors
-NeoBundle 'mxw/vim-jsx'
-=======
 Plug 'mxw/vim-jsx'
->>>>>>> Use Neovime awesomneess
 
 let g:jsx_ext_required = 0
 
@@ -576,28 +580,45 @@ nmap <m-n> <Plug>yankstack_substitute_newer_paste
 " Elixir runtime
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'elixir-lang/vim-elixir'
-Plug 'archSeer/elixir.nvim', { 'do': function('DoRemote') }
+Plug 'slashmili/alchemist.vim'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic
 "
 " Syntax checking for vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/syntastic'
+if has('nvim')
+  Plug 'benekastah/neomake'
+  autocmd BufReadPost * Neomake
+  autocmd! BufWritePost * Neomake
+  map <leader>sc :Neomake!<CR>
 
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint', 'flow']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-let g:syntastic_javascript_flow_exe = 'flow'
+  let g:neomake_place_signs = 1
+  let g:neomake_open_list = 2
 
-map <leader>le :Errors<cr>
+  let g:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+  let g:neomake_javascript_eslint_exe=substitute(g:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+
+  let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+  let g:neomake_jsx_enabled_makers = g:neomake_javascript_enabled_makers
+else
+  Plug 'scrooloose/syntastic'
+
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
+  "
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_javascript_flow_exe = 'flow'
+  let g:syntastic_javascript_eslint_exec = 'eslint_d'
+  let g:syntastic_javascript_checkers = ['eslint', 'flow']
+
+  map <leader>le :Errors<cr>
+  map <leader>sc :SyntasticCheck<CR>
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#end()
