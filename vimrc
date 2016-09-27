@@ -400,8 +400,6 @@ if g:flow_path != 'flow not found'
   let g:deoplete#sources#flow#flow_bin = g:flow_path
 endif
 
-let g:deoplete#enable_at_startup = 1
-
 " make enter always be enter, even when popup menu is visible.
 " inoremap <CR> <C-g>u<C-r>=pumvisible()?"\C-y":""<CR><CR>
 
@@ -591,7 +589,7 @@ if has('nvim')
   Plug 'benekastah/neomake'
   autocmd BufReadPost * Neomake
   autocmd! BufWritePost * Neomake
-  map <leader>sc :Neomake!<CR>
+  map <leader>sc :Neomake<CR>
 
   let g:neomake_place_signs = 1
   let g:neomake_open_list = 2
