@@ -94,7 +94,7 @@ Plug 'tomtom/tcomment_vim'
 " below)
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
@@ -387,17 +387,23 @@ Plug 'tpope/vim-scriptease'
 " Settings are in plugin/mycomplete.vim
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'steelsojka/deoplete-flow'
-
+Plug 'ervandew/supertab'
 function! StrTrim(txt)
   return substitute(a:txt, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 endfunction
-
 let g:flow_path = StrTrim(system('PATH=$(npm bin):$PATH && which flow'))
 
-if g:flow_path != 'flow not found'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+  Plug 'steelsojka/deoplete-flow'
+  let g:deoplete#enable_at_startup = 1
+  let g:SuperTabDefaultCompletionType = "<c-n>"
   let g:deoplete#sources#flow#flow_bin = g:flow_path
+  let g:tern_request_timeout = 1
+  let g:tern_show_signature_in_pum = 0
+  set completeopt-=preview
+else
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 endif
 
 " make enter always be enter, even when popup menu is visible.
@@ -587,25 +593,25 @@ Plug 'slashmili/alchemist.vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim')
   Plug 'benekastah/neomake'
-  autocmd BufReadPost * Neomake
-  autocmd! BufWritePost * Neomake
-  map <leader>sc :Neomake<CR>
 
-  let g:neomake_place_signs = 1
-  let g:neomake_open_list = 2
-
-  let g:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-  let g:neomake_javascript_eslint_exe=substitute(g:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
-  let g:neomake_javascript_enabled_makers = ['eslint', 'flow']
+  let g:neomake_warning_sign = {
+  \ 'text': 'W',
+  \ 'texthl': 'WarningMsg',
+  \ }
+  let g:neomake_error_sign = {
+  \ 'text': 'E',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+  let g:neomake_javascript_enabled_makers = ['eslint_d', 'flow']
   let g:neomake_jsx_enabled_makers = g:neomake_javascript_enabled_makers
+
+  let g:neomake_javascript_flow_exe = g:flow_path
+  let g:neomake_jsx_flow_exe = g:flow_path
+
+  autocmd! BufWritePost * Neomake
 else
   Plug 'scrooloose/syntastic'
 
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
-  "
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
