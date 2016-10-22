@@ -17,8 +17,6 @@ if has('gui_running')
   let macvim_hig_shift_movement = 1
 end
 
-let mapleader = ","
-
 syntax on
 
 let g:rehash256 = 1

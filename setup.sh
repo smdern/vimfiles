@@ -36,3 +36,5 @@ function install_eslint_d {
 
 install_ctags
 install_eslint_d
+
+vim +PlugInstall! +qall
