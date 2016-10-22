@@ -24,7 +24,7 @@ function install_ctags {
 function install_eslint_d {
   case `uname` in
     Darwin)
-      npm install -g eslint_d
+      yarn global add eslint_d
       ;;
     Linux)
       sudo npm install -g eslint_d
