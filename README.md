@@ -6,6 +6,12 @@ Requires vim compiled with lua. On mac:
 $ brew install macvim --with-cscope --with-luajit --override-system-vim
 ```
 
+or install neovim
+
+```
+$ brew install neovim
+```
+
 `git clone git://github.com/smdern/vimfiles.git ~/.vim && ~/.vim/setup.sh`
 
 Switched the Ack plugin to use [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)
