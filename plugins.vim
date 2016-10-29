@@ -24,7 +24,9 @@ Plug 'sheerun/vim-polyglot'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
+  Plug 'Shougo/neoinclude.vim'
   Plug 'steelsojka/deoplete-flow'
+  Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'benekastah/neomake'
   Plug 'kassio/neoterm'
 else
@@ -37,6 +39,5 @@ endif
 " Elixir
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-
 
 call plug#end()
