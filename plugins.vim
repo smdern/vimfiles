@@ -19,6 +19,7 @@ Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'janko-m/vim-test'
 Plug 'rizzatti/dash.vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'tomtom/tcomment_vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
@@ -41,7 +42,7 @@ Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 " Javascript
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
