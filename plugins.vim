@@ -16,14 +16,17 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'janko-m/vim-test'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
   Plug 'steelsojka/deoplete-flow'
   Plug 'benekastah/neomake'
+  Plug 'kassio/neoterm'
 else
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
   Plug 'scrooloose/syntastic'
+  Plug 'tpope/vim-dispatch'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
