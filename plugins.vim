@@ -20,6 +20,7 @@ Plug 'janko-m/vim-test'
 Plug 'rizzatti/dash.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tomtom/tcomment_vim'
+Plug 'sheerun/vim-polyglot'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
@@ -35,17 +36,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Elixir
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Javascript
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'elzr/vim-json', { 'for': 'json' }
-
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 
 call plug#end()
