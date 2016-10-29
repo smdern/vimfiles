@@ -17,6 +17,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'janko-m/vim-test'
+Plug 'rizzatti/dash.vim'
+Plug 'ntpeters/vim-better-whitespace'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
