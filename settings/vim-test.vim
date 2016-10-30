@@ -6,8 +6,8 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 if has('nvim')
   let test#strategy = "neoterm"
-  map <leader>/ :call neoterm#toggle()!<cr>
+  map <leader>q :call neoterm#toggle()<CR>
 else
   let test#strategy = "dispatch"
-  map <leader>/ :Copen!<cr>
+  map <leader>q :Copen!<cr>
 end
