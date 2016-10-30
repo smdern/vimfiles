@@ -21,17 +21,20 @@ Plug 'rizzatti/dash.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tomtom/tcomment_vim'
 Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-  Plug 'Shougo/neoinclude.vim'
-  Plug 'steelsojka/deoplete-flow'
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+  Plug 'steelsojka/deoplete-flow'
+
   Plug 'benekastah/neomake'
   Plug 'kassio/neoterm'
 else
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
   Plug 'scrooloose/syntastic'
+  Plug 'flowtype/vim-flow'
+
   Plug 'tpope/vim-dispatch'
 endif
 
@@ -39,5 +42,10 @@ endif
 " Elixir
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Javascript
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
 
 call plug#end()

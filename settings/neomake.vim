@@ -7,7 +7,11 @@ let g:neomake_error_sign = {
 \ 'texthl': 'ErrorMsg',
 \ }
 let g:neomake_javascript_enabled_makers = ['eslint_d', 'flow']
-let g:neomake_jsx_enabled_makers = g:neomake_javascript_enabled_makers
+let g:neomake_jsx_enabled_makers = ['eslint_d', 'flow']
+
+let g:neomake_javascript_flow_exe = g:flow_path
+let g:neomake_jsx_flow_exe = g:flow_path
+
 let g:neomake_elixir_enabled_makers = ['elixir', 'credo']
 
 autocmd! BufWritePost * Neomake
