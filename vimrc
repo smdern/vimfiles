@@ -13,7 +13,9 @@ set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set ruler                       "Show line and col numbers
-set encoding=utf-8
+if has('vim_starting')
+  set encoding=utf-8
+end
 set switchbuf=useopen
 
 " Use bash because it's fast, zsh loads too slow w/ rvm
