@@ -8,7 +8,7 @@ $ brew install macvim --with-cscope --with-luajit --override-system-vim
 
 or install neovim
 
-```
+```sh
 $ brew install neovim
 ```
 
