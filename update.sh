@@ -1,3 +1,3 @@
 #!/bin/bash
 
-vim +PlugUpdate! +qall
+`(which nvim || which vim)` +PlugUpdate! +qall

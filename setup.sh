@@ -8,19 +8,6 @@ ln -s ~/.vim/gvimrc ~/.gvimrc
 
 unamestr=`uname`
 
-function install_ctags {
-  case `uname` in
-    Darwin)
-      brew install ctags
-      ;;
-    Linux)
-      sudo apt-get install ctags
-      ;;
-    *)
-      exit 1
-  esac
-}
-
 function install_eslint_d {
   case `uname` in
     Darwin)
@@ -34,7 +21,6 @@ function install_eslint_d {
   esac
 }
 
-install_ctags
 install_eslint_d
 
-vim +PlugInstall! +qall
+`(which nvim || which vim)` +PlugInstall! +qall
