@@ -1,2 +1,3 @@
 #!/bin/bash
-vim +NeoBundleInstall! +qall
+
+`(which nvim || which vim)` +PlugUpdate! +qall

@@ -1,5 +1,7 @@
 bundle
+plugged
 .netrwhist
 backup
 undo
 *.pyc
+.init.vim-rplugin~
