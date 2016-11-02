@@ -1,2 +1,2 @@
 " %% to expand active buffer location on cmdline
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+cmap %% <C-R>=expand("%:p:h") . "/" <CR>
