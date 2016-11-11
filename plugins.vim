@@ -15,12 +15,10 @@ Plug 'tpope/vim-git'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 Plug 'janko-m/vim-test'
 Plug 'rizzatti/dash.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tomtom/tcomment_vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-endwise'
 Plug 'rstacruz/vim-closer'
@@ -49,6 +47,19 @@ Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Javascript
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'gavocanov/vim-js-indent', { 'for': 'javascript' }
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Filetypes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'keith/tmux.vim'
+Plug 'moskytw/nginx-contrib-vim'
+Plug 'tpope/vim-haml', { 'for': ['haml', 'scss', 'sass'] }
+Plug 'JulesWang/css.vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'othree/html5.vim', { 'for': ['html'] }
+
+Plug 'vim-jp/vim-cpp', { 'for': ['c', 'cpp'] }
 call plug#end()
