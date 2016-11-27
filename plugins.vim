@@ -42,24 +42,10 @@ endif
 " Elixir
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Javascript
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetypes
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'keith/tmux.vim'
-Plug 'moskytw/nginx-contrib-vim'
-Plug 'tpope/vim-haml', { 'for': ['haml', 'scss', 'sass'] }
-Plug 'JulesWang/css.vim'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-Plug 'othree/html5.vim', { 'for': ['html'] }
+Plug 'sheerun/vim-polyglot'
 
-Plug 'vim-jp/vim-cpp', { 'for': ['c', 'cpp'] }
 call plug#end()
