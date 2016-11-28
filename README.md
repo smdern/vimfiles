@@ -19,8 +19,3 @@ Install OSX: `brew install the_silver_searcher`
 Install Ubuntu: `sudo apt-get install silversearcher-ag`
 
 Uses [fzf](https://github.com/junegunn/fzf) for fuzzy finding
-
-### Attributions
-
-Inconsolata-g was originally from http://leonardo-m.livejournal.com/77079.html
-Many things stolen from Gary Bernhardt: https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
