@@ -29,13 +29,16 @@ Plug 'jszakmeister/vim-togglecursor'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-  Plug 'steelsojka/deoplete-flow'
+  Plug 'steelsojka/deoplete-flow', { 'for': ['javascript', 'javascript.jsx'] }
 
   Plug 'kassio/neoterm'
 else
-  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-  Plug 'larrylv/ycm-elixir'
-  Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javscript.jsx'] }
+  Plug 'Valloric/YouCompleteMe', {
+        \ 'for': ['elixir', 'eelixir', 'javascript', 'javascript.jsx'],
+        \ 'do': './install.py --tern-completer'
+        \}
+  Plug 'larrylv/ycm-elixir', { 'for': ['elixir', 'eelixir'] }
+  Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'] }
 
   Plug 'tpope/vim-dispatch'
 endif
@@ -43,7 +46,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Elixir
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': ['elixir', 'eelixir'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetypes
