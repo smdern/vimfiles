@@ -7,7 +7,7 @@ let g:fzf_action = {
 " - down / up / left / right
 let g:fzf_layout = { 'down': '~30%' }
 
-map <leader>f :FZF<cr>
+map <leader>f :FZF!<cr>
 map <leader>g :GFiles<cr>
 map <leader>a :Ag<space>
 map <leader>A :Ag! <C-R><C-W><CR>
