@@ -12,8 +12,10 @@ let g:neomake_list_height = 5
 let g:neomake_javascript_enabled_makers = ['eslint_d', 'flow']
 let g:neomake_jsx_enabled_makers = ['eslint_d', 'flow']
 
-let g:neomake_javascript_flow_exe = g:flow_path
-let g:neomake_jsx_flow_exe = g:flow_path
+if g:flow_path != 'flow not found'
+  let g:neomake_javascript_flow_exe = g:flow_path
+  let g:neomake_jsx_flow_exe = g:flow_path
+endif
 
 let g:neomake_elixir_mix_maker = {
   \ 'exe': 'mix',
