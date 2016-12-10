@@ -18,9 +18,7 @@ if has('vim_starting')
 end
 set switchbuf=useopen
 
-" Use bash because it's fast, zsh loads too slow w/ rvm
-let $BASH_ENV = "~/.bash/env"
-set shell=bash
+set shell=zsh
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
