@@ -1,4 +1,4 @@
-if !g:expandWindows
+if exists('g:expandWindows') && !g:expandWindows
   finish
 endif
 

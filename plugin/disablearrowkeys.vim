@@ -1,4 +1,4 @@
-if !g:disableArrowKeys
+if exists('g:disableArrowKeys') && !g:disableArrowKeys
   finish
 endif
 
