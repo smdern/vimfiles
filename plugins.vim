@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -23,18 +24,19 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-endwise'
 Plug 'rstacruz/vim-closer'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'benekastah/neomake'
+Plug 'jszakmeister/vim-togglecursor'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
   Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
   Plug 'steelsojka/deoplete-flow'
 
-  Plug 'benekastah/neomake'
   Plug 'kassio/neoterm'
 else
   Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
   Plug 'scrooloose/syntastic'
-  Plug 'flowtype/vim-flow'
+  " Plug 'flowtype/vim-flow'
 
   Plug 'tpope/vim-dispatch'
 endif
