@@ -22,7 +22,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-endwise'
 Plug 'rstacruz/vim-closer'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'benekastah/neomake'
 Plug 'jszakmeister/vim-togglecursor'
 
